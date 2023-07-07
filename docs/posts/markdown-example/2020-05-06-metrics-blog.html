@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Norah Smith">
+<meta name="dcterms.date" content="2022-05-22">
+
+<title>MyBlog - Markdown Demo</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="application/json" class="js-hypothesis-config">
+{
+  "theme": "clean",
+  "openSidebar": false
+}
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">MyBlog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../non_job.html" rel="" target="">
+ <span class="menu-text">Non Job Pursuits</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../job.html" rel="" target="">
+ <span class="menu-text">Professional Experience</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Markdown Demo</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Norah Smith </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 22, 2022</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#metrics" id="toc-metrics" class="nav-link active" data-scroll-target="#metrics">Metrics</a>
+  <ul class="collapse">
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  <li><a href="#confusion-matrix" id="toc-confusion-matrix" class="nav-link" data-scroll-target="#confusion-matrix">Confusion Matrix</a></li>
+  <li><a href="#accuracy" id="toc-accuracy" class="nav-link" data-scroll-target="#accuracy">Accuracy</a></li>
+  <li><a href="#misclassification-rate" id="toc-misclassification-rate" class="nav-link" data-scroll-target="#misclassification-rate">Misclassification Rate</a></li>
+  <li><a href="#precision-positive-predictive-value" id="toc-precision-positive-predictive-value" class="nav-link" data-scroll-target="#precision-positive-predictive-value">Precision / positive predictive value</a></li>
+  <li><a href="#negative-predictive-value" id="toc-negative-predictive-value" class="nav-link" data-scroll-target="#negative-predictive-value">Negative Predictive Value</a></li>
+  <li><a href="#recall-true-positive-rate-sensitivity" id="toc-recall-true-positive-rate-sensitivity" class="nav-link" data-scroll-target="#recall-true-positive-rate-sensitivity">Recall / True Positive Rate / Sensitivity</a></li>
+  <li><a href="#selectivity-true-negative-rate-specificity" id="toc-selectivity-true-negative-rate-specificity" class="nav-link" data-scroll-target="#selectivity-true-negative-rate-specificity">Selectivity / True Negative Rate / Specificity</a></li>
+  <li><a href="#sensitivity-vs-specificity" id="toc-sensitivity-vs-specificity" class="nav-link" data-scroll-target="#sensitivity-vs-specificity">Sensitivity vs Specificity</a></li>
+  <li><a href="#false-positive-rate-type-i-error" id="toc-false-positive-rate-type-i-error" class="nav-link" data-scroll-target="#false-positive-rate-type-i-error">False Positive Rate / Type I error</a></li>
+  <li><a href="#false-negative-rate-type---ii-error" id="toc-false-negative-rate-type---ii-error" class="nav-link" data-scroll-target="#false-negative-rate-type---ii-error">False Negative Rate / Type - II error</a></li>
+  <li><a href="#false-discovery-rate" id="toc-false-discovery-rate" class="nav-link" data-scroll-target="#false-discovery-rate">False Discovery Rate</a></li>
+  <li><a href="#false-omission-rate" id="toc-false-omission-rate" class="nav-link" data-scroll-target="#false-omission-rate">False Omission Rate</a></li>
+  <li><a href="#f-1-score-beta-1" id="toc-f-1-score-beta-1" class="nav-link" data-scroll-target="#f-1-score-beta-1">F 1 Score (beta = 1 )</a></li>
+  <li><a href="#f-2-score-beta-2" id="toc-f-2-score-beta-2" class="nav-link" data-scroll-target="#f-2-score-beta-2">F 2 Score (beta = 2 )</a></li>
+  <li><a href="#f-beta-score" id="toc-f-beta-score" class="nav-link" data-scroll-target="#f-beta-score">F Beta Score</a></li>
+  <li><a href="#averaging-parameter" id="toc-averaging-parameter" class="nav-link" data-scroll-target="#averaging-parameter">Averaging parameter</a></li>
+  <li><a href="#precision-recall-curve" id="toc-precision-recall-curve" class="nav-link" data-scroll-target="#precision-recall-curve">Precision Recall Curve</a></li>
+  <li><a href="#roc-auc-curve" id="toc-roc-auc-curve" class="nav-link" data-scroll-target="#roc-auc-curve">ROC-AUC curve</a></li>
+  <li><a href="#cohens-kappa" id="toc-cohens-kappa" class="nav-link" data-scroll-target="#cohens-kappa">Cohen’s kappa</a></li>
+  <li><a href="#hamming-loss" id="toc-hamming-loss" class="nav-link" data-scroll-target="#hamming-loss">Hamming Loss</a></li>
+  <li><a href="#matthews-correlation-coefficient" id="toc-matthews-correlation-coefficient" class="nav-link" data-scroll-target="#matthews-correlation-coefficient">Matthews Correlation Coefficient</a></li>
+  <li><a href="#average-precision-score" id="toc-average-precision-score" class="nav-link" data-scroll-target="#average-precision-score">Average Precision Score</a></li>
+  <li><a href="#balanced-accuracy" id="toc-balanced-accuracy" class="nav-link" data-scroll-target="#balanced-accuracy">Balanced Accuracy</a></li>
+  <li><a href="#concordance-and-discordance" id="toc-concordance-and-discordance" class="nav-link" data-scroll-target="#concordance-and-discordance">Concordance and Discordance</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="metrics" class="level1">
+<h1>Metrics</h1>
+<section id="example" class="level2">
+<h2 class="anchored" data-anchor-id="example">Example</h2>
+<p>Let’s take an example of Binary classification where the task is to predict whether we have Dog or not. So in an Image if model predicts Dog that’s a positive class if it predicts no Dog that’s a negative class.</p>
+</section>
+<section id="confusion-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="confusion-matrix">Confusion Matrix</h2>
+<p>A confusion matrix is a table that is used to describe the performance of a classification model.</p>
+<p><img src="{{ site.baseurl }}/images/confusionmatrix.png" title="confusion matrix" class="img-fluid"></p>
+<p>Let’s consider this example table where N denotes the total number of images our model will predict upon.</p>
+<p>N = 150 Total Number of Dog Images = 100 Total Number of No Dog Images = 50</p>
+<p>In total 100 Dog Images 1. Model Predicted 60 Correct which is your True Positive. 2. Model Predicted 40 incorrect which is False Negative.(Since It has to predict Dog and It Predicted No Dog which is a False prediction to a Negative class.)</p>
+<p>Similarly in 50 No Dog Images 1. Model Predicted 30 Correct which is True Negative. 2. Model Predicted 20 Incorrect which is False Positive. (Since It has to predict No Dog and It predicted Dog which is a False prediction to a Positive class.)</p>
+<p>TP-&gt;60 FN-&gt;40 TN-&gt;30 FP-&gt;20</p>
+</section>
+<section id="accuracy" class="level2">
+<h2 class="anchored" data-anchor-id="accuracy">Accuracy</h2>
+<p>Accuracy is a basic metric which just tells models overall performance. How many predictions made by model is correct.</p>
+<p><span class="math display">\[
+Accuracy = \frac{True Positive + True Negative}{N}
+\]</span></p>
+<p><span class="math display">\[
+Accuracy = \frac{60+30}{150} = 0.6 = 60
+\]</span></p>
+<p>Accuracy gave us a idea about how 60 % prediction was correct. Accuracy can only be a good metric. if all the classes are balanced i.e No of positive sample is approximately equal to No of negative samples. Per class Accuracy can also be calculated to know for which classes model is behaving well.</p>
+</section>
+<section id="misclassification-rate" class="level2">
+<h2 class="anchored" data-anchor-id="misclassification-rate">Misclassification Rate</h2>
+<p>Misclassification Rate tells overall how poor model performance is. It just opposite of Accuracy.</p>
+<p><span class="math display">\[
+misclassification\ rate = 1 - Accuracy
+\]</span></p>
+<p><span class="math display">\[
+misclassifcation\ rate = \frac{False Postive + False Negative}{N}
+\]</span></p>
+<p><span class="math display">\[
+misclassification\ rate = \frac{20+40}{150} = 0.4 = 40\%
+\]</span></p>
+</section>
+<section id="precision-positive-predictive-value" class="level2">
+<h2 class="anchored" data-anchor-id="precision-positive-predictive-value">Precision / positive predictive value</h2>
+<p>Precision is another metric which tells while predicting how accurately can I predict positive classes .</p>
+<p><span class="math display">\[
+Positive\ class\ prediction  = True\ positive + False\ Positive
+\]</span></p>
+<p><span class="math display">\[
+precision = \frac{True\ Positive}{positive\ class\ prediction}
+\]</span></p>
+<p><span class="math display">\[
+precision = \frac {60}{60 + 20} = 0.75 = 75\%
+\]</span></p>
+<p>We are only worried about the prediction of one class which is Dog and the positive prediction class will have (Positive class, Negative class) from Actuals. That’s why it is positive predictive value.</p>
+<p>Let’s consider two example where</p>
+<ol type="1">
+<li><p>Spam detection -&gt; Classify whether an email is Spam or Not Spam.</p>
+<p>​ Here the goal is to accurately classify spam emails. It’s okay to classify a Spam mail as Not Spam mail as it will come in our inbox it does no harm to use. But if we classify as Not Spam Mail as Spam mail then there is a problem because we generally do not open our Spam Box.</p>
+<p>​ If you think about it the first case is False Negative and Second case is False Positive and we are okay with False Negative’s but we are not okay with False Positives and our goal is to reduce False Positive.</p>
+<p>​ So in Spam detection task precision is a good metric. since it is inversely proportionate to False Positives.</p></li>
+<li><p>Cancer detection -&gt; Classify whether a person has a cancer or not.</p>
+<p>​ Here the goal is to accurately classify whether a person has a cancer or Not. It’s okay to classify a person Not having cancer as cancer. But it’s not okay to predict a person having cancer as Not cancer.</p>
+<p>​ If you think the first case is False Positive and Second case is False Negative and we are okay with False Positive but not okay with False Negative.</p>
+<p>​ Hence in this particular task Precision plays no role.</p></li>
+</ol>
+<p>Hence to reduce False Positives Precision is used. Precision can easily be effected by class Imbalance.</p>
+</section>
+<section id="negative-predictive-value" class="level2">
+<h2 class="anchored" data-anchor-id="negative-predictive-value">Negative Predictive Value</h2>
+<p>Negative Predictive Value is another metric which tells while predicting how accurately can I predict Negative classes .</p>
+<p><span class="math display">\[
+Negative\ class\ prediction  = True\ Negative + False\ Negative
+\]</span></p>
+<p><span class="math display">\[
+Negative\ Prediction\ Value = \frac{True\ Negative}{Negative\ class\ prediction}
+\]</span></p>
+<p><span class="math display">\[
+negative\ prediction\ value = \frac {60}{60 + 20} = 0.75 = 75\%
+\]</span></p>
+<p>We are only worried about the prediction of one class which is Dog and the positive prediction class will have (Positive class, Negative class) from Actuals. That’s why it is positive predictive value.</p>
+<p>Let Suppose we don’t want to have any additional process for screening patients checked as healthy (not cancer) then we may want to make sure that our negative predictive value is high.</p>
+</section>
+<section id="recall-true-positive-rate-sensitivity" class="level2">
+<h2 class="anchored" data-anchor-id="recall-true-positive-rate-sensitivity">Recall / True Positive Rate / Sensitivity</h2>
+<p>Recall is another metric which tells us while predicting how accurately can it predict positive classes given a set of Actual Positives. <span class="math display">\[
+Actual\ positive\ class = True\ Positive + False\ Negative
+\]</span></p>
+<p><span class="math display">\[
+recall = \frac{True\ Positive}{Actual\ positive\ class}
+\]</span></p>
+<p><span class="math display">\[
+recall = \frac{60}{100} = 0.6 = 60\%
+\]</span></p>
+<p>Here our concern is about Given a set of Positive Samples which is like giving all the Dog images and then making prediction on it. The prediction will have (positive class , Negative class ) from Actual positives. That’s why recall is also True Positive Rate .</p>
+<p>The reason why it’s called recall is given all the positive sample knowledge how well the model can recall that knowledge to predicted accurately by decreasing the error rate for the Actual positive class.</p>
+<p>Going back to the Cancer Example it is very clear know that for Cancer Detection we will use Recall as our metric. Recall is good metric to be used for class Imbalance problem.</p>
+</section>
+<section id="selectivity-true-negative-rate-specificity" class="level2">
+<h2 class="anchored" data-anchor-id="selectivity-true-negative-rate-specificity">Selectivity / True Negative Rate / Specificity</h2>
+<p>Similar to True positive rate, True Negative rate tells us while predicting how accurately can it predict Negative classes given a set of Actual Negatives. <span class="math display">\[
+Actual\ negative\ class = True\ Negative + False\ Positive
+\]</span></p>
+<p><span class="math display">\[
+True\ Negative\ Rate = \frac{True\ Negative}{Actual\ negative\ class}
+\]</span></p>
+<p><span class="math display">\[
+True\ Negative\ Rate = \frac{60}{100} = 0.6 = 60\%
+\]</span></p>
+<p>Here our concern is about Given a set of Negative Samples which is like giving all the No Dog images and then making prediction on it. The prediction will have (positive class , Negative class ) from Actual Negatives.</p>
+<p>For the same cancer example True Negative rate will show how many non cancer people are identified as not having cancer.</p>
+</section>
+<section id="sensitivity-vs-specificity" class="level2">
+<h2 class="anchored" data-anchor-id="sensitivity-vs-specificity">Sensitivity vs Specificity</h2>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Sensitivity_and_specificity.svg/350px-Sensitivity_and_specificity.svg.png" class="img-fluid"></p>
+<p>n many tests, including diagnostic <a href="https://en.wikipedia.org/wiki/Medical_test">medical tests</a>, sensitivity is the extent to which actual positives are not overlooked (so false negatives are few), and specificity is the extent to which actual negatives are classified as such (so false positives are few). Thus, a highly sensitive test rarely overlooks an actual positive (for example, showing “nothing bad” despite something bad existing); a highly specific test rarely registers a positive classification for anything that is not the target of testing (for example, finding one bacterial species and mistaking it for another closely related one that is the true target); and a test that is highly sensitive <em>and</em> highly specific does both, so it “rarely overlooks a thing that it is looking for” <em>and</em> it “rarely mistakes anything else for that thing.” Because most medical tests do not have sensitivity and specificity values above 99%, “rarely” does <em>not</em> equate to <a href="https://en.wikipedia.org/wiki/Certainty">certainty</a>. But for practical reasons, tests with sensitivity and specificity values above 90% have high credibility, albeit usually no certainty, in <a href="https://en.wikipedia.org/wiki/Differential_diagnosis">differential diagnosis</a>.</p>
+<p>Sensitivity, therefore, quantifies the avoidance of <a href="https://en.wikipedia.org/wiki/False_positives_and_false_negatives">false negatives</a> and specificity does the same for <a href="https://en.wikipedia.org/wiki/False_positives_and_false_negatives">false positives</a>.</p>
+</section>
+<section id="false-positive-rate-type-i-error" class="level2">
+<h2 class="anchored" data-anchor-id="false-positive-rate-type-i-error">False Positive Rate / Type I error</h2>
+<p>When the model predicts something Falsely to the positive class which then it is contributing to the False Positive rate. we can think of it as False alert. For example if in a production house based on certain machine parameters the model has to predict whether the situation insider the production house is dangerous or not and it has to raise alarm if its dangerous. Now if everything is fine and still the model predicts as dangerous situation then that’s a False alarm which you can say a False Positive Rate.</p>
+<p>False Positive Rate is just opposite of True Negative Rate <span class="math display">\[
+Actual\ negative\ class = True\ Negative + False\ Positive
+\]</span></p>
+<p><span class="math display">\[
+False\ positive\ Rate = \frac{False\ Positive}{Actual\ negative\ class}
+\]</span></p>
+<p><span class="math display">\[
+False\ Positive\ Rate = 1 - True\ Negative\ Rate
+\]</span></p>
+<p>The lower the False Positive Rate the better the model.</p>
+</section>
+<section id="false-negative-rate-type---ii-error" class="level2">
+<h2 class="anchored" data-anchor-id="false-negative-rate-type---ii-error">False Negative Rate / Type - II error</h2>
+<p>When the model doesn’t predict something which it should then it is contributing to the False Negative Rate. We can think it as Miss Rate. For example in Online fraud transaction if the model classifies a Fraud Transaction as a Non Fraud Transaction then the model basically missed to catch that Fraud transaction.</p>
+<p>False Negative Rate is just of True Positive Rate <span class="math display">\[
+Actual\ positive\ class = True\ Positive + False\ Negative
+\]</span></p>
+<p><span class="math display">\[
+False\ Negative\ Rate = \frac{False\ Negative}{Actual\ positive\ class}
+\]</span></p>
+<p><span class="math display">\[
+False\ Negative\ Rate = 1 - True\ Positive\ Rate
+\]</span></p>
+</section>
+<section id="false-discovery-rate" class="level2">
+<h2 class="anchored" data-anchor-id="false-discovery-rate">False Discovery Rate</h2>
+<p>False Discovery Rate is just opposite of Precision It measures how many predictions out of all positive predictions were incorrect. <span class="math display">\[
+Positive\ class\ prediction  = True\ positive + False\ Positive
+\]</span></p>
+<p><span class="math display">\[
+False\ Discovery\ Rate = \frac{False\ Positive}{positive\ class\ prediction}
+\]</span></p>
+<p><span class="math display">\[
+False\ Discovery\ Rate = 1 - Precision
+\]</span></p>
+<p>When raising False alert is expensive it is worth looking every Positive prediction then we should optimize for precision.</p>
+</section>
+<section id="false-omission-rate" class="level2">
+<h2 class="anchored" data-anchor-id="false-omission-rate">False Omission Rate</h2>
+<p>False Omission Rate is just opposite of Negative Predictive Value <span class="math display">\[
+False\ Omission\ Rate = 1 - Negative\ Predictive\ Value
+\]</span></p>
+</section>
+<section id="f-1-score-beta-1" class="level2">
+<h2 class="anchored" data-anchor-id="f-1-score-beta-1">F 1 Score (beta = 1 )</h2>
+<p>Now that two important metric which is used often is precision and recall and rather then having too look two number F1 score combines precision and recall.</p>
+<p>The score lies in the range [0,1] with 1 being ideal and 0 being the worst. The two ways to combine Precision and recall is <span class="math display">\[
+Arithmetic\ Mean\\
+F1\ score = \frac{precision + recall}{2}
+\]</span></p>
+<p><span class="math display">\[
+Harmonic\ Mean\\
+F1\ Score = \frac{2}{\frac{1}{precision} + \frac{1}{recall}}
+\]</span></p>
+<p>The reason to choose Harmonic mean over Arithmetic mean is precision and recall both have same numerator but different denominators so it makes no sense to average two different things as, fractions are more sensible to average by arithmetic mean when they have the same denominator. Rather we take reciprocal so that the average makes sense.</p>
+</section>
+<section id="f-2-score-beta-2" class="level2">
+<h2 class="anchored" data-anchor-id="f-2-score-beta-2">F 2 Score (beta = 2 )</h2>
+<p>It’s a metric that combines precision and recall, putting <strong>2x emphasis on recall</strong>. <span class="math display">\[
+F2\ score = \frac{1+2}{\frac{2}{precision} + \frac{1}{recall}}
+\]</span></p>
+</section>
+<section id="f-beta-score" class="level2">
+<h2 class="anchored" data-anchor-id="f-beta-score">F Beta Score</h2>
+<p>F beta score is a general formula for F1 score and F2 score</p>
+<p>When choosing beta in your F-beta score <strong>the more you care about recall</strong> over precision <strong>the higher beta</strong> you should choose. For example, with F1 score we care equally about recall and precision with F2 score, recall is twice as important to us.</p>
+<p>With 0&lt;beta&lt;1 we care more about precision <span class="math display">\[
+F beta \ score = \frac{1+\beta}{\frac{\beta}{precision} + \frac{1}{recall}}
+\]</span></p>
+</section>
+<section id="averaging-parameter" class="level2">
+<h2 class="anchored" data-anchor-id="averaging-parameter">Averaging parameter</h2>
+<p><strong>micro</strong></p>
+<p>Calculate metrics globally by counting the total number of times each class was correctly predicted and incorrectly predicted. Micro Average captures class-imbalance and will bring down the precision</p>
+<p>For example in Iris Dataset the model prediction result is given in the table</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>TP</th>
+<th>FP</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Setosa</td>
+<td>45</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>Virgnica</td>
+<td>10</td>
+<td>60</td>
+</tr>
+<tr class="odd">
+<td>Versicolor</td>
+<td>40</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[
+micro\ precision = \frac{45 + 10 + 40}{45+ 10 + 40 + 5+60+10 }  = 0.55
+\]</span></p>
+<p><strong>macro</strong></p>
+<p>Calculate metrics for each “class” independently, and find their unweighted mean. This does not take label imbalance into account. In problems where infrequent classes are nonetheless important, macro-averaging may be a means of highlighting their performance. On the other hand, the assumption that all classes are equally important is often untrue, such that macro-averaging will over-emphasize the typically low performance on an infrequent class. <span class="math display">\[
+Setosa\ precision = \frac{45}{45+5} =0.9\\
+virgnica\ precision = \frac{10}{10 + 60} =0.14\\
+versicolor\ precision = \frac{40}{40+10} = 0.8\\
+\]</span></p>
+<p><span class="math display">\[
+Macro\ Precision = \frac{0.9+0.14+0.8}{3} = 0.613
+\]</span></p>
+<p><strong>weighted</strong> accounts for class imbalance by computing the average of binary metrics in which each class’s score is weighted by its presence in the true data sample.</p>
+</section>
+<section id="precision-recall-curve" class="level2">
+<h2 class="anchored" data-anchor-id="precision-recall-curve">Precision Recall Curve</h2>
+<p>Precision-Recall is a useful measure of success of prediction when the classes are very imbalanced. In information retrieval, precision is a measure of result relevancy, while recall is a measure of how many truly relevant results are returned.</p>
+<p>The precision-recall curve shows the tradeoff between precision and recall for different threshold. A high area under the curve represents both high recall and high precision, where high precision relates to a low false positive rate, and high recall relates to a low false negative rate. High scores for both show that the classifier is returning accurate results (high precision), as well as returning a majority of all positive results (high recall).</p>
+<p>A system with high recall but low precision returns many results, but most of its predicted labels are incorrect when compared to the training labels. A system with high precision but low recall is just the opposite, returning very few results, but most of its predicted labels are correct when compared to the training labels. An ideal system with high precision and high recall will return many results, with all results labeled correctly.</p>
+<p><img src="https://scikit-learn.org/stable/_images/sphx_glr_plot_precision_recall_001.png" class="img-fluid"></p>
+</section>
+<section id="roc-auc-curve" class="level2">
+<h2 class="anchored" data-anchor-id="roc-auc-curve">ROC-AUC curve</h2>
+<p>A receiver operating characteristic (ROC), or simply ROC curve, is a graphical plot which illustrates the performance of a binary classifier system as its discrimination threshold is varied. It is created by plotting the fraction of true positives out of the positives (TPR = true positive rate) vs.&nbsp;the fraction of false positives out of the negatives (FPR = false positive rate), at various threshold settings. TPR is also known as sensitivity, and FPR is one minus the specificity or true negative rate.</p>
+<p>The top left corner of the plot is the “ideal” point - a false positive rate of zero, and a true positive rate of one. This is not very realistic, but it does mean that a larger area under the curve (AUC) is usually better.</p>
+<p>The “steepness” of ROC curves is also important, since it is ideal to maximize the true positive rate while minimizing the false positive rate.</p>
+<p>It can also be used for Mutli label classification problem.</p>
+<p><img src="https://scikit-learn.org/stable/_images/sphx_glr_plot_roc_001.png" class="img-fluid"></p>
+</section>
+<section id="cohens-kappa" class="level2">
+<h2 class="anchored" data-anchor-id="cohens-kappa">Cohen’s kappa</h2>
+<p>The function <a href="https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.cohen_kappa_score.html#sklearn.metrics.cohen_kappa_score"><code>cohen_kappa_score</code></a> computes <a href="https://en.wikipedia.org/wiki/Cohen's_kappa">Cohen’s kappa</a> statistic. This measure is intended to compare labelings by different human annotators, not a classifier versus a ground truth.</p>
+<p>The kappa score is a number between -1 and 1. Scores above .8 are generally considered good agreement; zero or lower means no agreement (practically random labels).</p>
+<p>Kappa scores can be computed for binary or multiclass problems, but not for multilabel problems (except by manually computing a per-label score) and not for more than two annotators.</p>
+<p>For Kappa score formulae and calculation refer <a href="https://en.wikipedia.org/wiki/Cohen's_kappa">Cohen’s kappa</a></p>
+</section>
+<section id="hamming-loss" class="level2">
+<h2 class="anchored" data-anchor-id="hamming-loss">Hamming Loss</h2>
+<p>The Hamming loss is the fraction of labels that are incorrectly predicted.</p>
+<p>Evaluation metrics for multi-label classification performance are inherently different from those used in multi-class (or binary) classification, due to the inherent differences of the classification problem. If T denotes the true set of labels for a given sample, and P the predicted set of labels, then the following metrics can be defined on that sample:</p>
+<p>Hamming loss: the fraction of the wrong labels to the total number of labels, i.e.&nbsp;</p>
+<p><span class="math display">\[
+hamming\ loss  = {\frac {1}{|N|\ . |L|}}\sum_{i=1}^{|N|}\sum_{j=1}^{|L|}xor (y_{i,j},z_{i,j})
+\]</span></p>
+<p>where y_ij target and z_ij is the prediction. This is a loss function, so the optimal value is zero.</p>
+<p>Hamming Loss computes Hamming distance and In information theory, the <a href="https://en.wikipedia.org/wiki/Hamming_distance">Hamming distance</a> between two strings of equal length is the number of positions at which the corresponding symbols are different. In other words, it measures the minimum number of substitutions required to change one string into the other, or the minimum number of errors that could have transformed one string into the other. In a more general context, the Hamming distance is one of several string metrics for measuring the edit distance between two sequences. It is named after the American mathematician Richard Hamming.</p>
+</section>
+<section id="matthews-correlation-coefficient" class="level2">
+<h2 class="anchored" data-anchor-id="matthews-correlation-coefficient">Matthews Correlation Coefficient</h2>
+<p>Till Now For Binary Classification Problem we haven’t encountered any metric which incorporates all 4 parts of the confusion matrix and works good either we have balanced dataset or a Imbalanced one.</p>
+<p>Matthews Correlation Coefficient is the answer It is a more reliable statistical rate which produces high score only if the prediction obtained good results in all 4 parts of the confusion matrix.</p>
+<p>It computes correlation coefficient between the true class and the predicted class the higher the correlation coefficient the better the model is at prediction.</p>
+<p>The MCC is in essence a correlation coefficient value between -1 and +1. A coefficient of +1 represents a perfect prediction, 0 an average random prediction and -1 an inverse prediction. The statistic is also known as the <a href="https://en.wikipedia.org/wiki/Phi_coefficient">phi coefficient</a>.</p>
+<p><span class="math display">\[
+MCC = \frac{TP \times TN - FP \times FN }{\sqrt{(TP+FP)(TP+FN)(TN+FP)(TN+FN)}}
+\]</span></p>
+<p>If there is no False prediction, then the model has +1 as a correlation coefficient since (FP x FN = 0) vice-versa if (TP x TN = 0) then the model has -1 as a correlation coefficient.</p>
+<p><a href="https://en.wikipedia.org/wiki/Matthews_correlation_coefficient">Advantages of MCC over accuracy and F1 score</a></p>
+</section>
+<section id="average-precision-score" class="level2">
+<h2 class="anchored" data-anchor-id="average-precision-score">Average Precision Score</h2>
+<p>AP summarizes a precision-recall curve as the weighted mean of precisions achieved at each threshold, with the increase in recall from the previous threshold used as the weight:</p>
+<p><span class="math display">\[
+AP = \sum_n{(R_n-R_{n-1}) P_n}
+\]</span></p>
+<p>where Pn and Rn denotes the nth threshold.</p>
+<p>This metric is also used in Object Detection.</p>
+<ol type="1">
+<li><a href="https://makarandtapaswi.wordpress.com/2012/07/02/intuition-behind-average-precision-and-map/">Intution Behind Average Precision</a></li>
+<li><a href="https://en.wikipedia.org/w/index.php?title=Information_retrieval&amp;oldid=793358396#Average_precision">Wikipedia Average Precision</a></li>
+</ol>
+</section>
+<section id="balanced-accuracy" class="level2">
+<h2 class="anchored" data-anchor-id="balanced-accuracy">Balanced Accuracy</h2>
+<p>Balanced Accuracy is metric used to deal with Imbalanced dataset. It is the average of Sensitivity and Specificity . In more generic term averaging recall of all classes.</p>
+<p>Sensitivity covers the True Positive part and Specificity covers True Negative Part.</p>
+<p><span class="math display">\[
+Balanced\ Accuracy = \frac{sensitivity + specificity}{2}
+\]</span></p>
+</section>
+<section id="concordance-and-discordance" class="level2">
+<h2 class="anchored" data-anchor-id="concordance-and-discordance">Concordance and Discordance</h2>
+<p>In an ideal model, the probability scores of all true 1’s should be greater than the probability scores of ALL true 0’s. Such a model is said to be perfectly concordant and this phenomenon can be measured by Concordance and Discordance.</p>
+<p>So how to calculate Concordance?</p>
+<p>Let’s consider the following 4 observation’s actual class and predicted probability scores.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Patient No</th>
+<th>True Class</th>
+<th>Probability Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>P1</td>
+<td>1</td>
+<td>0.9</td>
+</tr>
+<tr class="even">
+<td>P2</td>
+<td>0</td>
+<td>0.42</td>
+</tr>
+<tr class="odd">
+<td>P3</td>
+<td>1</td>
+<td>0.30</td>
+</tr>
+<tr class="even">
+<td>P4</td>
+<td>1</td>
+<td>0.80</td>
+</tr>
+</tbody>
+</table>
+<p>From the above 4 observations, there are 3 possible pairs of 1’s and 0’s. That is, P1-P2, P3-P2 and P4-P2.</p>
+<p>A pair is said to be concordant if the probability score of True 1 is greater than the probability score of True 0.</p>
+<p>P1-P2 =&gt; 0.9 &gt; 0.42 =&gt; Concordant! P3-P2 =&gt; 0.3 &lt; 0.42 =&gt; Discordant! P4-P2 =&gt; 0.8 &gt; 0.42 =&gt; Concordant!</p>
+<p>Out of the 3 pairs, only 2 are concordant. So, the concordance is 2/3 = 0.66 and discordance is 1 - 0.66 = 0.33.</p>
+<p>In simpler words, we take all possible combinations of true events and non-events. Concordance is the percentage of pairs, where true event’s probability scores are greater than the scores of true non-events.</p>
+<p>For a perfect model, this will be 100%. So, the higher the concordance, the better is the quality of the model.</p>
+</section>
+</section>
+<section id="references" class="level1">
+<h1>References</h1>
+<ol type="1">
+<li>https://stackoverflow.com/questions/26355942/why-is-the-f-measure-a-harmonic-mean-and-not-an-arithmetic-mean-of-the-precision</li>
+<li>https://neptune.ai/blog/evaluation-metrics-binary-classification</li>
+<li>https://stanford.edu/~shervine/teaching/cs-229/cheatsheet-machine-learning-tips-and-tricks</li>
+<li>https://datascience.stackexchange.com/questions/15989/micro-average-vs-macro-average-performance-in-a-multiclass-classification-settin</li>
+<li>https://scikit-learn.org/0.22/modules/model_evaluation.html#classification-metrics</li>
+<li>https://www.quora.com/How-do-I-interpret-concordance-in-Logistic-Regression#</li>
+<li>https://scikit-learn.org/stable/auto_examples/model_selection/plot_roc.html</li>
+<li>https://scikit-learn.org/stable/auto_examples/model_selection/plot_precision_recall.html#sphx-glr-auto-examples-model-selection-plot-precision-recall-py</li>
+</ol>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

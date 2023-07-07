@@ -1,0 +1,34 @@
+project:
+  type: website
+  output-dir: docs
+  
+
+website:
+  back-to-top-navigation: true
+  reader-mode: true
+  page-navigation: true
+  title: "MyBlog"
+  navbar:
+    right:
+      - about.qmd
+      - non_job.qmd
+      - job.qmd
+      - icon: github
+        href: https://github.com/
+      - icon: twitter
+        href: https://twitter.com
+
+  comments: 
+    hypothesis:
+      theme: clean
+      openSidebar: false
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+
+freeze: auto
+toc: true
+
+editor: visual
+
