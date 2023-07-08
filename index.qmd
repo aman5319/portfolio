@@ -1,5 +1,6 @@
 ---
 title: "My Blogs"
+subtitle: 'Sharing My Journey and Learning'
 listing:
   contents: posts
   sort: "date desc"

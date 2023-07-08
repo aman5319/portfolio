@@ -87,6 +87,12 @@ Data Scientist with expertise in **Natural Language Processing** and **Recommend
 
 **Bronze Medal — Honorable Distinction Award** | 15th International Kangaroo Linguistic Contest 2018 | Islamabad, Pakistan
 
+# Learning
+&check; **Metric Learning**
+</br></br>
+&check; **Bayesian Active Learning**
+</br></br>
+&#9746; **Reinforcement Learning**
 :::
 
 
