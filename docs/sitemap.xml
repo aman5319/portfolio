@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://mine-cetinkaya-rundel.github.io/quarto-tip-a-day/index.html</loc>
-    <lastmod>2023-07-08T08:42:04.969Z</lastmod>
+    <loc>https://aman5319.github.io/portfolio/about.html</loc>
+    <lastmod>2023-07-08T10:20:01.602Z</lastmod>
   </url>
   <url>
-    <loc>https://aman5319.github.io/portfolio/about.html</loc>
-    <lastmod>2023-07-08T09:57:14.710Z</lastmod>
+    <loc>https://aman5319.github.io/portfolio/posts/Python/Advance-python.html</loc>
+    <lastmod>2023-07-08T10:19:59.273Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aman5319.github.io/portfolio/non_job.html</loc>
+    <lastmod>2023-07-08T10:19:57.727Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aman5319.github.io/portfolio/posts/Python/profiling.html</loc>
+    <lastmod>2023-07-08T10:19:58.438Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aman5319.github.io/portfolio/posts/ML-metrics/metrics.html</loc>
+    <lastmod>2023-07-08T10:20:00.286Z</lastmod>
   </url>
   <url>
     <loc>https://aman5319.github.io/portfolio/index.html</loc>
-    <lastmod>2023-07-08T09:57:15.735Z</lastmod>
-  </url>
-  <url>
-    <loc>https://aman5319.github.io/portfolio/posts/Python/2020-11-04-Advance-python.html</loc>
-    <lastmod>2023-07-08T09:13:22.739Z</lastmod>
-  </url>
-  <url>
-    <loc>https://aman5319.github.io/portfolio/posts/Python/2020-06-01-profiling.html</loc>
-    <lastmod>2023-07-08T09:48:12.405Z</lastmod>
-  </url>
-  <url>
-    <loc>https://aman5319.github.io/portfolio/posts/ml-metrics/2020-05-06-metrics-blog.html</loc>
-    <lastmod>2023-07-08T09:42:00.157Z</lastmod>
+    <lastmod>2023-07-08T10:20:01.234Z</lastmod>
   </url>
 </urlset>

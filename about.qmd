@@ -6,10 +6,10 @@ about:
   links:
     - icon: envelope
       text: Email
-      href: mailto:milz.bea@gmail.com
+      href: mailto:amanpandey@mailfence.com
     - icon: file-pdf
       text: Resume
-      href: https://beatrizmilz.github.io/resume/index.pdf  
+      href: https://drive.google.com/drive/folders/1pTPR0vPX1UoQYfyvQLu8Pn-Wc6hqrjGf?usp=sharing
     - icon: stack-overflow
       text: StackOverflow
       href: https://stackoverflow.com/users/7447124/aman5319
