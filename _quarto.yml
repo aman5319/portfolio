@@ -30,10 +30,22 @@ website:
       - non_job.qmd
       - text: Resume
         href: https://drive.google.com/drive/folders/1pTPR0vPX1UoQYfyvQLu8Pn-Wc6hqrjGf?usp=sharing
+        target: _blank
       - icon: github
         href: https://github.com/aman5319
+        target: _blank
       - icon: linkedin
         href: https://www.linkedin.com/in/aman5319/
+        target: _blank
+  comments: 
+    giscus:
+      repo: aman5319/portfolio
+      category: Q&A
+      repo-id: R_kgDOJ44pkw
+      category-id: DIC_kwDOJ44pk84CXwVt
+      mapping: title
+      reactions-enabled: true
+      loading: lazy
     
 format:
   html:

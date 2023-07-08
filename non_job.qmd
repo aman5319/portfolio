@@ -1,5 +1,6 @@
 ---
 title: "Non Job Pursuits"
+comments: false
 ---
 
 This non-job pursuits
