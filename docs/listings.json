@@ -2,10 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/post-with-code/index.html",
-      "/posts/welcome/index.html",
-      "/posts/markdown-example/2020-05-06-metrics-blog.html",
-      "/posts/jupyter-example/2020-06-01-profiling.html"
+      "/posts/ml-metrics/2020-05-06-metrics-blog.html",
+      "/posts/profiling/2020-06-01-profiling.html"
     ]
   }
 ]

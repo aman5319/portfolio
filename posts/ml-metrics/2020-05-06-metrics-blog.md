@@ -1,10 +1,13 @@
 ---
-title: "Markdown Demo"
-author: "Norah Smith"
+title: "Metrics for Machine Learning"
+author: "Aman Pandey"
 date: "5/22/2022"
 editor: visual
+categories: [ml, dl, metrics]
 ---
 # Metrics
+
+A deep dive into different types of Metrics for evaluating Machine Learning Models.
 
 ## Example
 
@@ -15,7 +18,7 @@ So in an Image if model predicts Dog that's a positive class if it predicts no D
 
 A confusion matrix is a table that is used to describe the performance of a classification model.
 
-![]({{ site.baseurl }}/images/confusionmatrix.png "confusion matrix")
+![](confusionmatrix.png "confusion matrix")
 
 Let's consider this example table where N denotes the total number of images our model will predict upon. 
 

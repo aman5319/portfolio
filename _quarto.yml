@@ -7,21 +7,16 @@ website:
   back-to-top-navigation: true
   reader-mode: true
   page-navigation: true
-  title: "MyBlog"
+  title: "Aman Pandey | Data Scientist"
   navbar:
     right:
       - about.qmd
       - non_job.qmd
       - job.qmd
       - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
-
-  comments: 
-    hypothesis:
-      theme: clean
-      openSidebar: false
+        href: https://github.com/aman5319
+      - icon: linkedin
+        href: https://www.linkedin.com/in/aman5319/
 format:
   html:
     theme: cosmo

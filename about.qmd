@@ -1,18 +1,18 @@
 ---
-title: "About"
+title: "About My Self"
 image: profile.jpg
 about:
   template: jolla
   links:
-    - icon: twitter
-      text: Twitter
-      href: https://twitter.com
+    - icon: stack-overflow
+      text: StackOverflow
+      href: https://stackoverflow.com/users/7447124/aman5319
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com
+      href: https://www.linkedin.com/in/aman5319/
     - icon: github
       text: Github
-      href: https://github.com
+      href: https://github.com/aman5319
 
 ---
 
