@@ -4,26 +4,52 @@ project:
   
 
 website:
+  site-url: https://aman5319.github.io/portfolio/
+  description: 'Sharing My Journey and Learning'
+
+  repo-url: https://github.com/aman5319/portfolio
+  repo-actions: [edit, issue]
+
   back-to-top-navigation: true
   reader-mode: true
   page-navigation: true
+  open-graph: true
+  page-footer:
+    left: "Blog made with 💜 and [Quarto](https://quarto.org/), by Aman Pandey. License: [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/)."
+    right:
+      - icon: envelope
+        href: mailto:amanpandey@mailfence.com
+  sidebar: 
+    contents: posts
+    style: "docked"
   title: "Aman Pandey | Data Scientist"
   navbar:
+
     right:
       - about.qmd
       - non_job.qmd
-      - job.qmd
       - icon: github
         href: https://github.com/aman5319
       - icon: linkedin
         href: https://www.linkedin.com/in/aman5319/
+    
 format:
   html:
-    theme: cosmo
+    theme: 
+      light: flatly
+      dark: darkly
     css: styles.css
+    code-copy: true
+    code-overflow: wrap
+    smooth-scroll: true
+    link-external-icon: false
+    link-external-newwindow: true
+    citations-hover: true
+    footnotes-hover: true
+    toc: true
+    code-link: true
 
 freeze: auto
 toc: true
 
 editor: visual
-

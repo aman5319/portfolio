@@ -3,8 +3,8 @@
     "listing": "/index.html",
     "items": [
       "/posts/ml-metrics/2020-05-06-metrics-blog.html",
-      "/posts/profiling/2020-06-01-profiling.html",
-      "/posts/advance-python/2020-11-04-Advance-python.html"
+      "/posts/Python/2020-06-01-profiling.html",
+      "/posts/Python/2020-11-04-Advance-python.html"
     ]
   }
 ]

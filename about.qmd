@@ -1,9 +1,15 @@
 ---
-title: "About My Self"
+title: "About Me"
 image: profile.jpg
 about:
   template: jolla
   links:
+    - icon: envelope
+      text: Email
+      href: mailto:milz.bea@gmail.com
+    - icon: file-pdf
+      text: Resume
+      href: https://beatrizmilz.github.io/resume/index.pdf  
     - icon: stack-overflow
       text: StackOverflow
       href: https://stackoverflow.com/users/7447124/aman5319
