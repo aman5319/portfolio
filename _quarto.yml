@@ -25,12 +25,15 @@ website:
   title: "Aman Pandey | Data Scientist"
   navbar:
 
-    right:
-      - about.qmd
-      - non_job.qmd
-      - text: Resume
-        href: https://drive.google.com/drive/folders/1pTPR0vPX1UoQYfyvQLu8Pn-Wc6hqrjGf?usp=sharing
+    left:
+      - icon: file-person
+        text: About
+        href: about.qmd
+      - icon: file-pdf
+        text: Resume
+        href: https://drive.google.com/drive/folders/1pTPR0vPX1UoQYfyvQLu8Pn-Wc6hqrjGf?usp=sharing        
         target: _blank
+    right:
       - icon: github
         href: https://github.com/aman5319
         target: _blank
