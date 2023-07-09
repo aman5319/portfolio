@@ -29,7 +29,7 @@ about:
         target: _blank
       - icon: instagram
         text: Instagram
-        href: ds
+        href: https://www.instagram.com/aman_on_palebluedot
       - icon: pin-map
         text: Bangalore, India
 comments: false
@@ -66,33 +66,24 @@ Data Scientist with expertise in **Natural Language Processing** and **Recommend
 
 # Skills
 
-**Programming** | Python | Jupyter | nbdev | Quarto | fastai | PyTorch | Scikit Learn | Pandas | NumPy
+**Computer Programming** | Python | Java | C++ | PyTorch | GNU/Linux | Distributed Programming | Parallel Programming.
 
-**3D Computer Graphics** | Blender
+**Deep Learning** | Machine Learning | Bayesian Active Learning | Metric Learning | Multi-Task Learning | Transfer Learning 
 
-**Teaching** | Can teach in a logical manner that fosters understanding and the solidification of concepts.
-
-**English** | Can use the language to a very high degree of complexity.
+**AI Specalities** | NLP | NLG | NLU | Recommendation Systems | Computational Linguistics | Information Extraction
 
 # Non Job Pursuits
-**Placed in Top 12% of Contestants of Data Science Competition** | Playground Series Season 3, Episode 2 | Tabular Classification with a Stroke Prediction Dataset | 17 January 2023 | Kaggle
+**Member in Free Software Movement Karnataka(FSMK)** | Android Teacher for 7 days Bootcamp | Organized bootcamps in multiple colleges | Bringing Awarness and knowledge about the Open Eco-System to the society | Events and Conferences representing FSMK | 2015 - 2020
 
-**1100+ AI Community Administrator** | The Dataspace | November 2022 – Current | Discord
+**President of College GNU/Linux group(Toggle)** | Organizing Events and Workshops in college | 2018-2019
 
-**Physics Teaching Assistant** | Beaconhouse College Program Potohar Campus | September 2020 — May 2021 | Islamabad, Pakistan
+**Entirety.ai(Feb 2019 - Mar 2021)** | Discuss on current trend and Hands on Experience in Deep Learning | Event Ambassador for Pie and AI Meetup Bangalore | Talks and Meetups in Bangalore | collaborating with other meetup group and companies like Nvidia and Amazon
 
-**Mathematics Teaching Assistant** | Beaconhouse College Program Potohar Campus | September 2020 — May 2021 | Islamabad, Pakistan
+**Adjunct faculty at Praxis Buisness School** | Teaching Deep learning and Model Deployment to PG students | June 2019 - July 2021
 
-**Concert Marketing — Raised \$8,400** | Beaconhouse College Program Potohar Campus | January 2020 | Islamabad, Pakistan
+**Haskell Study Group (2022)** | Organized study group consisting of 50 members from world wide.| Learned Haskell and FP together 
 
-**Bronze Medal — Honorable Distinction Award** | 15th International Kangaroo Linguistic Contest 2018 | Islamabad, Pakistan
-
-# Learning
-&check; **Metric Learning**
-</br></br>
-&check; **Bayesian Active Learning**
-</br></br>
-&#9746; **Reinforcement Learning**
+**Pycon** | Poster presentation | CFP Reviewer
 :::
 
 
