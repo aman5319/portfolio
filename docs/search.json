@@ -200,6 +200,62 @@
     "href": "index.html",
     "title": "My Blogs",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nMetrics for Machine Learning\n\n\n\n\n\n\n\nml\n\n\ndl\n\n\nmetrics\n\n\n\n\nA deep dive into different types of Metrics for evaluating Machine Learning Models.\n\n\n\n\n\n\nMay 22, 2022\n\n\nAman Pandey\n\n\n17 min\n\n\n\n\n\n\n  \n\n\n\n\nMemory and Time Profiling\n\n\n\n\n\n\n\nprofiling\n\n\npython\n\n\n\n\nLet’s save some time and memory, coz both are expensive.\n\n\n\n\n\n\nMay 22, 2021\n\n\nAman Pandey\n\n\n8 min\n\n\n\n\n\n\n  \n\n\n\n\nAdvance Pythonic Stuff\n\n\n\n\n\n\n\npython\n\n\nadvance-python\n\n\ndecorator\n\n\ncontext-manager\n\n\ngenerator\n\n\n\n\nAdvance python and some sweet python tips and tricks.\n\n\n\n\n\n\nNov 4, 2020\n\n\nAman Pandey\n\n\n6 min\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nOptimizers in - Deep Learning\n\n\n\n\n\n\n\ndeep-learning\n\n\noptimization\n\n\n\n\n3D visualization of different optimizers.\n\n\n\n\n\n\nNov 4, 2022\n\n\nAman Pandey\n\n\n9 min\n\n\n\n\n\n\n  \n\n\n\n\nMetrics for Machine Learning\n\n\n\n\n\n\n\nml\n\n\ndl\n\n\nmetrics\n\n\n\n\nA deep dive into different types of Metrics for evaluating Machine Learning Models.\n\n\n\n\n\n\nMay 22, 2022\n\n\nAman Pandey\n\n\n17 min\n\n\n\n\n\n\n  \n\n\n\n\nMemory and Time Profiling\n\n\n\n\n\n\n\nprofiling\n\n\npython\n\n\n\n\nLet’s save some time and memory, coz both are expensive.\n\n\n\n\n\n\nMay 22, 2021\n\n\nAman Pandey\n\n\n8 min\n\n\n\n\n\n\n  \n\n\n\n\nAdvance Pythonic Stuff\n\n\n\n\n\n\n\npython\n\n\nadvance-python\n\n\ndecorator\n\n\ncontext-manager\n\n\ngenerator\n\n\n\n\nAdvance python and some sweet python tips and tricks.\n\n\n\n\n\n\nNov 4, 2020\n\n\nAman Pandey\n\n\n6 min\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+  },
+  {
+    "objectID": "posts/Optimization/optimisers_in_dl.html",
+    "href": "posts/Optimization/optimisers_in_dl.html",
+    "title": "Optimizers in - Deep Learning",
+    "section": "",
+    "text": "Code\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom mpl_toolkits.mplot3d import Axes3D\nfrom IPython.display import Image\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport torch \nimport torch.nn as nn\nimport torch.optim as optim\nfrom sklearn.datasets import make_circles\nfrom sklearn.model_selection import train_test_split\nfrom torch.utils.data import dataset ,dataloader\nfrom termcolor import colored\nimport matplotlib.pyplot as plt\nfrom mpl_toolkits.mplot3d import Axes3D\nimport matplotlib.animation as animation\nfrom matplotlib import colors as mcolors\n\nfrom IPython.display import HTML\n\ndevice = (\"cuda\" if torch.cuda.is_available() else \"cpu\")\nSEED=1\nnp.random.seed(SEED)\ntorch.manual_seed(SEED)\ntorch.backends.cudnn.deterministic = True"
+  },
+  {
+    "objectID": "posts/Optimization/optimisers_in_dl.html#sgd",
+    "href": "posts/Optimization/optimisers_in_dl.html#sgd",
+    "title": "Optimizers in - Deep Learning",
+    "section": "SGD",
+    "text": "SGD\n\\[\ndata = data - lr* grad\n\\]\n\n\nCode\ndef SGD(vector):\n    vectors = [vector.squeeze(0).tolist()]\n    for i in range(EPOCHS):\n        z = LOSS_FUNC(vector)\n        z.backward()\n        with torch.no_grad():\n            vector.data = vector.data - LR *  vector.grad\n            vector.grad.zero_()\n            vectors.append(vector.squeeze(0).tolist())\n    return np.array(vectors)\n\n\n\n\nCode\nanim = Animation(SGD)(VECTOR)\nHTML(anim)\n\n\n\n  \n  Your browser does not support the video tag."
+  },
+  {
+    "objectID": "posts/Optimization/optimisers_in_dl.html#sgd-with-momentum",
+    "href": "posts/Optimization/optimisers_in_dl.html#sgd-with-momentum",
+    "title": "Optimizers in - Deep Learning",
+    "section": "SGD with Momentum",
+    "text": "SGD with Momentum\nThe real momentum update looks like\n\\[\nvelocity = viscosity * velocity - lr* grad \\\\\ndata = data - velocity\n\\]\nBut In pytorch they do the other way\n\\[\nvelocity = viscosity * velocity + grad \\\\\ndata = data - lr * velocity\n\\]\n\n\nCode\ndef SGD_Momentum(vector):\n    viscosity = 0.9\n    velocity = torch.zeros_like(vector)\n    vectors = [vector.squeeze(0).tolist()]\n\n    for i in range(EPOCHS):\n        z = LOSS_FUNC(vector)\n        z.backward()\n        with torch.no_grad():\n            velocity = viscosity * velocity + vector.grad\n            vector.data = vector.data - LR *  velocity\n            vector.grad.zero_()\n            vectors.append(vector.squeeze(0).tolist())\n    return np.array(vectors)\n\n\n\n\nCode\nanim = Animation(SGD,SGD_Momentum)(VECTOR)\nHTML(anim)\n\n\n\n  \n  Your browser does not support the video tag."
+  },
+  {
+    "objectID": "posts/Optimization/optimisers_in_dl.html#sgd-with-nestrov-momentum",
+    "href": "posts/Optimization/optimisers_in_dl.html#sgd-with-nestrov-momentum",
+    "title": "Optimizers in - Deep Learning",
+    "section": "SGD with Nestrov Momentum",
+    "text": "SGD with Nestrov Momentum\n\nNesterov momentum. Instead of evaluating gradient at the current position (red circle), we know that our momentum is about to carry us to the tip of the green arrow. With Nesterov momentum we therefore instead evaluate the gradient at this “looked-ahead” position."
+  },
+  {
+    "objectID": "posts/Optimization/optimisers_in_dl.html#adagrad",
+    "href": "posts/Optimization/optimisers_in_dl.html#adagrad",
+    "title": "Optimizers in - Deep Learning",
+    "section": "AdaGrad",
+    "text": "AdaGrad\n\\[\ncache = cache + (grad^2) \\\\\ndata = data - \\frac {(lr * grad)}{( \\sqrt {cache} + eps)}\n\\]\nIt is a adaptive learning method where we are constantly annealing the lr.\nThe eps is a extremely small value to smoothen the denominator.\n\n\nCode\n\ndef adaGrad(vector):\n    lr=0.5\n    cache = torch.zeros_like(vector)\n    vectors = [vector.squeeze(0).tolist()]\n    eps = 1e-10 # can be any small value\n\n    for i in range(EPOCHS):\n        z = LOSS_FUNC(vector)\n        z.backward()\n        with torch.no_grad():\n\n            cache +=  (vector.grad ** 2)  \n            vector.data = vector.data - (lr *  vector.grad / (torch.sqrt(cache) + eps)) \n            vector.grad.zero_()\n            vectors.append(vector.squeeze(0).tolist())\n    \n    return np.array(vectors)\n\n\n\n\nCode\nanim = Animation(SGD,SGD_Momentum,adaGrad)(VECTOR)\nHTML(anim)\n\n\n\n  \n  Your browser does not support the video tag."
+  },
+  {
+    "objectID": "posts/Optimization/optimisers_in_dl.html#rmsprop",
+    "href": "posts/Optimization/optimisers_in_dl.html#rmsprop",
+    "title": "Optimizers in - Deep Learning",
+    "section": "RMSProp",
+    "text": "RMSProp\nIt solved AdaGrad problem of deminishing gradient. \\[\ncache = alpha *cache + (1-alpha) * grad^2 \\\\\ndata = data - \\frac {(lr * grad)} {(\\sqrt{cache} + eps)}\n\\]\n\n\nCode\ndef RMSprop(vector):\n    lr=0.5\n    alpha=0.99\n    cache = torch.zeros_like(vector)\n    vectors = [vector.squeeze(0).tolist()]\n    eps = 1e-10 # can be any small value\n\n    for i in range(EPOCHS):\n        z = LOSS_FUNC(vector)\n        z.backward()\n        with torch.no_grad():\n\n            cache = alpha * cache + ((1-alpha) * (vector.grad ** 2))  \n            vector.data = vector.data - (lr *  vector.grad / (torch.sqrt(cache) + eps)) \n            vector.grad.zero_()\n            vectors.append(vector.squeeze(0).tolist())\n    return np.array(vectors)\n\n\n\n\nCode\nanim = Animation(RMSprop,adaGrad)(VECTOR)\nHTML(anim)\n\n\n\n  \n  Your browser does not support the video tag."
+  },
+  {
+    "objectID": "posts/Optimization/optimisers_in_dl.html#adadelta",
+    "href": "posts/Optimization/optimisers_in_dl.html#adadelta",
+    "title": "Optimizers in - Deep Learning",
+    "section": "AdaDelta",
+    "text": "AdaDelta\nIt is all similar to RMSProp with an additional delta attribute which just eliminates the use of lr away from the update parameter.\nThe authors note that the units in this update (as well as in SGD, Momentum, or Adagrad) do not match, i.e. the update should have the same hypothetical units as the parameter. To realize this, they first define another exponentially decaying average, this time not of squared gradients but of squared parameter updates:\n\\[\ncache = alpha *cache + (1-alpha) * grad^2 \\\\\ndelta = \\frac {\\sqrt {acc\\_delta + eps}*grad}{\\sqrt{cache+eps}}\\\\\ndata = data - delta\\\\\nacc\\_delta = alpha * acc\\_delta + (1-alpha) * delta^2 \\\\\n\\]\n\n\nCode\ndef AdaDelta(vector):\n    rho = 0.9\n    lr=1.0\n    cache = torch.zeros_like(vector)\n    acc_delta = torch.zeros_like(vector)\n    vectors = [vector.squeeze(0).tolist()]\n    eps = 1e-6 # can be any small value\n\n    for i in range(EPOCHS):\n        z = LOSS_FUNC(vector)\n        z.backward()\n        with torch.no_grad():\n            cache = rho * cache + ((1-rho) * (vector.grad ** 2))  \n            delta = torch.sqrt(acc_delta+eps) *vector.grad / torch.sqrt(cache+eps)\n            vector.data = vector.data - lr * delta\n            acc_delta = acc_delta * rho + ((1-rho) * (delta**2))\n            vector.grad.zero_()\n            vectors.append(vector.squeeze(0).tolist())\n    return np.array(vectors)\n\n\n\n\nCode\nanim = Animation(adaGrad,RMSprop,AdaDelta)(VECTOR)\nHTML(anim)\n\n\n\n  \n  Your browser does not support the video tag."
+  },
+  {
+    "objectID": "posts/Optimization/optimisers_in_dl.html#adam",
+    "href": "posts/Optimization/optimisers_in_dl.html#adam",
+    "title": "Optimizers in - Deep Learning",
+    "section": "Adam",
+    "text": "Adam\nIt is basically RMSProp with Momentum\n\\[\nm = beta1*m + (1-beta1)*dx \\\\\nmt = \\frac{m} {(1-beta1^t)} \\\\\nv = beta2*v + (1-beta2)* dx^2 \\\\\nvt = \\frac{v} {(1-beta2^t)} \\\\\nx = x - \\frac{lr * mt}{np.sqrt(vt) + eps}\n\\]\nNotice that the update looks exactly as RMSProp update, except the “smooth” version of the gradient m is used instead of the raw (and perhaps noisy) gradient vector dx. Recommended values in the paper are eps = 1e-8, beta1 = 0.9, beta2 = 0.999. In practice Adam is currently recommended as the default algorithm to use, and often works slightly better than RMSProp. However, it is often also worth trying SGD+Nesterov Momentum as an alternative. The full Adam update also includes a bias correction mechanism, which compensates for the fact that in the first few time steps the vectors m,v are both initialized and therefore biased at zero, before they fully “warm up”. With the bias correction mechanism, the update looks as follows:\n\n\nCode\nimport math\ndef Adam(vector):\n    m = torch.zeros_like(vector)\n    v = torch.zeros_like(vector)\n    beta1 = 0.9\n    beta2 = 0.99\n    eps = 1e-8\n    lr=0.2\n    vectors = [vector.squeeze(0).tolist()]\n    for i in range(1 , EPOCHS+1):\n        z = LOSS_FUNC(vector)\n        z.backward()\n        with torch.no_grad():\n            m = m * beta1 + (1-beta1)*vector.grad\n            v = v * beta2 + (1-beta2)*(vector.grad**2)\n            denom = torch.sqrt(v)+eps\n            bias_correction_m = 1 - beta1**i\n            bias_correction_v = 1 - beta2**i\n            \n            step_size = lr * math.sqrt(bias_correction_v)/bias_correction_m\n            \n            \n            vector.data = vector.data - step_size*m/denom\n            vector.grad.zero_()\n            vectors.append(vector.squeeze(0).tolist())\n    return np.array(vectors)\n\n\n\n\nCode\nanim = Animation(adaGrad,RMSprop,Adam)(VECTOR)\nHTML(anim)\n\n\n\n  \n  Your browser does not support the video tag."
   }
 ]
