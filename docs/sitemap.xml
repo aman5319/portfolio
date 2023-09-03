@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://aman5319.github.io/portfolio/about.html</loc>
-    <lastmod>2023-07-09T07:16:22.877Z</lastmod>
+    <lastmod>2023-09-03T14:31:43.714Z</lastmod>
   </url>
   <url>
     <loc>https://aman5319.github.io/portfolio/posts/Python/Advance-python.html</loc>
@@ -18,10 +18,14 @@
   </url>
   <url>
     <loc>https://aman5319.github.io/portfolio/index.html</loc>
-    <lastmod>2023-09-03T14:00:10.473Z</lastmod>
+    <lastmod>2023-09-03T14:31:42.853Z</lastmod>
   </url>
   <url>
     <loc>https://aman5319.github.io/portfolio/posts/Optimization/optimisers_in_dl.html</loc>
     <lastmod>2023-09-03T14:00:09.777Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aman5319.github.io/portfolio/posts/Convolutions/convolution.html</loc>
+    <lastmod>2023-09-03T14:31:42.088Z</lastmod>
   </url>
 </urlset>

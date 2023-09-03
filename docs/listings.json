@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Convolutions/convolution.html",
       "/posts/Optimization/optimisers_in_dl.html",
       "/posts/ML Metrics/metrics.html",
       "/posts/Python/profiling.html",
