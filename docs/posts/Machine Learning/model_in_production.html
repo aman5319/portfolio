@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Aman Pandey">
+<meta name="dcterms.date" content="2023-09-16">
+<meta name="description" content="In this post, we discuss ways of managing different versions of Data and Model artificats. Configuration Management and Data Validation. Monitoring the model using TIG stack. Logging and Alert.">
 
-<title>Aman Pandey | Data Scientist - My Blogs</title>
+<title>Aman Pandey | Data Scientist - Data and Model Management | Model Monitoring and Logging.</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +26,26 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../posts/Optimization/optimisers_in_dl.html" rel="next">
+<link href="../../posts/Machine Learning/metrics.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -63,44 +66,16 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-description','listing-categories','listing-author','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Aman Pandey | Data Scientist - My Blogs">
-<meta property="og:description" content="Sharing My Journey and Learning">
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Aman Pandey | Data Scientist - Data and Model Management | Model Monitoring and Logging.">
+<meta property="og:description" content="In this post, we discuss ways of managing different versions of Data and Model artificats. Configuration Management and Data Validation. Monitoring the model using TIG stack. Logging and Alert.">
+<meta property="og:image" content="https://aman5319.github.io/portfolio/posts/Machine Learning/images/data-registry.png">
 <meta property="og:site-name" content="Aman Pandey | Data Scientist">
+<meta property="og:image:height" content="1122">
+<meta property="og:image:width" content="1381">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -110,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Aman Pandey | Data Scientist</span>
     </a>
   </div>
@@ -121,7 +96,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target=""><i class="bi bi-file-person" role="img">
+    <a class="nav-link" href="../../about.html" rel="" target=""><i class="bi bi-file-person" role="img">
 </i> 
  <span class="menu-text">About</span></a>
   </li>  
@@ -159,14 +134,51 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">My Blogs</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../posts/Machine Learning/experimentation_management.html">Machine Learning</a></li><li class="breadcrumb-item"><a href="../../posts/Machine Learning/model_in_production.html">Data and Model Management | Model Monitoring and Logging.</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Data and Model Management | Model Monitoring and Logging.</h1>
+                  <div>
+        <div class="description">
+          In this post, we discuss ways of managing different versions of Data and Model artificats. Configuration Management and Data Validation. Monitoring the model using TIG stack. Logging and Alert.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">ml</div>
+                <div class="quarto-category">dl</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Aman Pandey </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 16, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
@@ -191,7 +203,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/Convolutions/convolution.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/Convolutions/convolution.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Convolution and Common architectures</span></a>
   </div>
 </li>
@@ -199,22 +211,28 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
  <span class="menu-text">Machine Learning</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/Machine Learning/metrics.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/Machine Learning/experimentation_management.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Experimentation Tracking, Visualization and Hyper-Parameter Optimization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/Machine Learning/metrics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Metrics for Machine Learning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/Machine Learning/model_in_production.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/Machine Learning/model_in_production.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Data and Model Management | Model Monitoring and Logging.</span></a>
   </div>
 </li>
@@ -231,7 +249,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/Optimization/optimisers_in_dl.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/Optimization/optimisers_in_dl.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Optimizers in - Deep Learning</span></a>
   </div>
 </li>
@@ -248,13 +266,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/Python/Advance-python.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/Python/Advance-python.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Advance Pythonic Stuff</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./posts/Python/profiling.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/Python/profiling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Memory and Time Profiling</span></a>
   </div>
 </li>
@@ -268,323 +286,139 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(6)</span></div><div class="category" data-category="advance-python">advance-python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="context-manager">context-manager <span class="quarto-category-count">(1)</span></div><div class="category" data-category="convolution">convolution <span class="quarto-category-count">(1)</span></div><div class="category" data-category="decorator">decorator <span class="quarto-category-count">(1)</span></div><div class="category" data-category="deep-learning">deep-learning <span class="quarto-category-count">(2)</span></div><div class="category" data-category="dl">dl <span class="quarto-category-count">(2)</span></div><div class="category" data-category="generator">generator <span class="quarto-category-count">(1)</span></div><div class="category" data-category="metrics">metrics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ml">ml <span class="quarto-category-count">(2)</span></div><div class="category" data-category="optimization">optimization <span class="quarto-category-count">(1)</span></div><div class="category" data-category="profiling">profiling <span class="quarto-category-count">(1)</span></div><div class="category" data-category="python">python <span class="quarto-category-count">(2)</span></div></div></div>
-<!-- main -->
-<main class="content column-body" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">My Blogs</h1>
-<p class="subtitle lead">Sharing My Journey and Learning</p>
-</div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title" data-direction="asc">
-          Title
-        </option>
-         <option value="listing-date-sort" data-direction="asc">
-          Date - Oldest
-        </option>
-         <option value="listing-date-sort" data-direction="desc">
-          Date - Newest
-        </option>
-         <option value="listing-author" data-direction="asc">
-          Author
-        </option>
-     </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#code" id="toc-code" class="nav-link active" data-scroll-target="#code">Code</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#configuration-management-and-validation" id="toc-configuration-management-and-validation" class="nav-link" data-scroll-target="#configuration-management-and-validation">Configuration Management and Validation</a></li>
+  <li><a href="#model-monitoring" id="toc-model-monitoring" class="nav-link" data-scroll-target="#model-monitoring">Model Monitoring</a></li>
+  <li><a href="#logging-and-alerts" id="toc-logging-and-alerts" class="nav-link" data-scroll-target="#logging-and-alerts">Logging and Alerts</a></li>
+  <li><a href="#thank-you" id="toc-thank-you" class="nav-link" data-scroll-target="#thank-you">Thank you</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/aman5319/portfolio/edit/main/posts/Machine Learning/model_in_production.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/aman5319/portfolio/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
-</div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="ml,dl" data-listing-date-sort="1694802600000" data-listing-file-modified-sort="1694968196594" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8">
-<div class="thumbnail">
-<p><a href="./posts/Machine Learning/model_in_production.html"> <p class="card-img-top"><img src="posts/Machine Learning/images/data-registry.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Machine Learning/model_in_production.html">
-<h3 class="no-anchor listing-title">
-Data and Model Management | Model Monitoring and Logging.
-</h3>
-<div class="listing-subtitle">
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('ml'); return false;">
-ml
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('dl'); return false;">
-dl
-</div>
-</div>
-<a href="./posts/Machine Learning/model_in_production.html">
-<div class="listing-description">
-<p>In this post, we discuss ways of managing different versions of Data and Model artificats. Configuration Management and Data Validation. Monitoring the model using TIG stack. Logging and Alert.</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Machine Learning/model_in_production.html">
-<div class="listing-date">
-Sep 16, 2023
-</div>
-<div class="listing-author">
-Aman Pandey
-</div>
-<div class="listing-reading-time">
-8 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="deep-learning,convolution" data-listing-date-sort="1667845800000" data-listing-file-modified-sort="1693751471088" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17">
-<div class="thumbnail">
-<p><a href="./posts/Convolutions/convolution.html"> <p class="card-img-top"><img src="posts/Convolutions/images/ffnvscnn.PNG"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Convolutions/convolution.html">
-<h3 class="no-anchor listing-title">
-Convolution and Common architectures
-</h3>
-<div class="listing-subtitle">
 
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('deep-learning'); return false;">
-deep-learning
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('convolution'); return false;">
-convolution
-</div>
-</div>
-<a href="./posts/Convolutions/convolution.html">
-<div class="listing-description">
-<p>Understanding different types of CNN layers and some common architectures</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Convolutions/convolution.html">
-<div class="listing-date">
-Nov 8, 2022
-</div>
-<div class="listing-author">
-Aman Pandey
-</div>
-<div class="listing-reading-time">
-17 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="deep-learning,optimization" data-listing-date-sort="1667500200000" data-listing-file-modified-sort="1693749575595" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9">
-<div class="thumbnail">
-<p><a href="./posts/Optimization/optimisers_in_dl.html"> <p class="card-img-top"><img src="posts/Optimization/optimisers_in_dl_files/figure-html/cell-3-output-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Optimization/optimisers_in_dl.html">
-<h3 class="no-anchor listing-title">
-Optimizers in - Deep Learning
-</h3>
-<div class="listing-subtitle">
 
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('deep-learning'); return false;">
-deep-learning
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('optimization'); return false;">
-optimization
-</div>
-</div>
-<a href="./posts/Optimization/optimisers_in_dl.html">
-<div class="listing-description">
-<p>3D visualization of different optimizers.</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Optimization/optimisers_in_dl.html">
-<div class="listing-date">
-Nov 4, 2022
-</div>
-<div class="listing-author">
-Aman Pandey
-</div>
-<div class="listing-reading-time">
-9 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="ml,dl,metrics" data-listing-date-sort="1653157800000" data-listing-file-modified-sort="1688807659435" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17">
-<div class="thumbnail">
-<p><a href="./posts/Machine Learning/metrics.html"> <p class="card-img-top"><img src="posts/Machine Learning/confusionmatrix.png" title="confusion matrix" class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Machine Learning/metrics.html">
-<h3 class="no-anchor listing-title">
-Metrics for Machine Learning
-</h3>
-<div class="listing-subtitle">
 
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('ml'); return false;">
-ml
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('dl'); return false;">
-dl
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('metrics'); return false;">
-metrics
-</div>
-</div>
-<a href="./posts/Machine Learning/metrics.html">
-<div class="listing-description">
-<p>A deep dive into different types of Metrics for evaluating Machine Learning Models.</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Machine Learning/metrics.html">
-<div class="listing-date">
-May 22, 2022
-</div>
-<div class="listing-author">
-Aman Pandey
-</div>
-<div class="listing-reading-time">
-17 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="profiling,python" data-listing-date-sort="1621621800000" data-listing-file-modified-sort="1688809267442" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8">
-<div class="thumbnail">
-<p><a href="./posts/Python/profiling.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Python/profiling.html">
-<h3 class="no-anchor listing-title">
-Memory and Time Profiling
-</h3>
-<div class="listing-subtitle">
+<p>Whenever a ML model goes to production there are lot many things which has to be take care starting from,</p>
+<ol type="1">
+<li>Code</li>
+<li>Data</li>
+<li>ML models</li>
+<li>Config Management</li>
+<li>Model Monitoring</li>
+<li>Logging and Alert</li>
+</ol>
+<p>Here we assume that the model is already in production using some sort of deployment strategy, except how to deploy we talk about every other thing. For Deployment a seperate blog has to be written.</p>
+<section id="code" class="level2">
+<h2 class="anchored" data-anchor-id="code">Code</h2>
+<p>Without a single doubt every programmer knows why we should track our code and to be very precise , <code>Tracking</code> means having knowledge of what changed in the code at what time and by which person and how can we retrieve those changes. The hero of the code tracking is <code>git</code>. and various places where we can keep those changes on the cloud can be <code>Github</code>, <code>Gitlab</code> etc.</p>
+</section>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<p>In the ML world we are dealing with lots and lots of data where the nature of the received data also sometime it is a streaming data sometimes new data is received in batches and other time may be like a single blob, In the context of ML experiements where with every new experiments we might be generating new data columns doing some different feature processing or with time in the same experiment adding new features.</p>
+<p>Also when were are putting our models to production we keep updating our models and corresponding Data and feature from one version to another.</p>
+<p>All of these different scenario asks for some way of tracking the changes in the data.</p>
+<p>Worst way of doing it is put it in git which is okay if data is of small size couple of MBs how about couple of GBs or TBs we need a sophisticated library for this.</p>
+<p>Let me introduce <a href="https://dvc.org/"><code>DVC (Data Version Control)</code></a> dvc integrates very nicely with git and works in tandem and will be used to track changes in the data and storing in some sort of file server it can Amazon s3, Azure storage, GCP, or any self hosted place.</p>
+<p>DVC makes Data Management simplified and helps us maintain a Data Registry.</p>
+<p><img src="images/data-registry.png" class="img-fluid"></p>
+<p>In general we see DVC can help us track any type of file or folder, it a generic tool for tracking everything apart from code, so using DVC we can not only track data but also our saved model and can maintain a Model Registry.</p>
+<p>Working of DVC is quite simple also.</p>
+<ol type="1">
+<li>It uses similar flow as git and is a completely command line tool like git.</li>
+<li>Whenever we ask dvc to track a particular file it tracks it and creates a .dvc metafile. For example 20gb_finance_data.csv when tracked using dvc it will generate 20gb_finance_data.dvc</li>
+<li>Now this .dvc file has to be tracked using git.</li>
+<li>When ever at any point of time we checkout a git commit, with code this metafile will also come out and then using dvc we checkout the corresponding data for the .dvc file.</li>
+</ol>
+<p><img src="images/project-versions.png" class="img-fluid"></p>
+<p>so if we see we have not only versioned and tracked our data but also our models, from tracking models I mean tracking weights of a particular model</p>
+</section>
+<section id="configuration-management-and-validation" class="level2">
+<h2 class="anchored" data-anchor-id="configuration-management-and-validation">Configuration Management and Validation</h2>
+<p>In a production environment lot of values to program comes from the run time and these key value pair has to be stored some where various ways people store it are</p>
+<ol type="1">
+<li>Put it in a regular file</li>
+<li>Store it in some database</li>
+<li>Store it in on cloud behind firewalls</li>
+<li>use tools like Consul, Apache Zookeeper etc</li>
+</ol>
+<p>and every choice comes with its on pros and cons.</p>
+<p>Usually JSON or YAML is used for storing config files, YAML being more feature rich.</p>
+<p>Python comes with <a href="https://docs.python.org/3/library/configparser.html">ConfigParser</a> class which implements a basic configuration language which provides a structure similar to what’s found in Microsoft Windows INI files. You can use this to write Python programs which can be customized by end users easily.</p>
+<p>One of the most feature rich config management though not much needed in production setting more useful when doing HyperParameter search or Experimenting with different configuration is <a href="https://github.com/omry/omegaconf">OmegaConf</a>. It is a hierarchical configuration system, with support for merging configurations from multiple sources (YAML config files, dataclasses/objects and CLI arguments) providing a consistent API regardless of how the configuration was created.</p>
+<p>An important need of config management is config value validation in run time and there is no better library than <a href="https://github.com/omry/omegaconf">Pydantic</a> that is the most widely used data validation library for Python.</p>
+</section>
+<section id="model-monitoring" class="level2">
+<h2 class="anchored" data-anchor-id="model-monitoring">Model Monitoring</h2>
+<p>In terms of Model monitoring there are three aspects which needs to be measured all the time, and special emphasis has to be given to create a Feedback loop to collect user feedback and use it for model improvement.</p>
+<ol type="1">
+<li>Measuring the Resource Cosumption.
+<ol type="1">
+<li>Amount of resource consumption (CPU, GPU, Storage)</li>
+<li>Spike in model usage that leads to increase in nodes a.k.a Auto Scaling</li>
+<li>Latency and Throughput</li>
+</ol></li>
+<li>Measuring the Models Prediction quality
+<ol type="1">
+<li>Data Drift</li>
+<li>Model Prediction Quality</li>
+</ol></li>
+<li>Measuring Model Meta Data
+<ol type="1">
+<li>Frequency of the training</li>
+<li>Model Versioning</li>
+</ol></li>
+</ol>
+<p>Data points described in 1 and 3 is of time series nature hence we need a mechanism to store the data in a DB and then show it in a dashboard.</p>
+<p>TIG (Telegraf-InfluxDb-Grafana) comes to the resuce.</p>
+<p><img src="images/tig.png" class="img-fluid"></p>
+<p>Telegraf -&gt; Mechanism to send data to influxdb on specific time intervals. In python we can use <a href="https://statsd.readthedocs.io/en/stable/index.html">Statsd</a> library to send data.</p>
+<p>Influx DB -&gt; Stores the data.</p>
+<p>Grafana -&gt; Helps to visualize data stored in Influx DB.</p>
+<p>The same can be done with Prometheus and Grafana</p>
+<p><img src="images/Prometheus.png" class="img-fluid"></p>
+<p>Prometheus Server has exporters which pull metrics from different sources and stores it locally which can be then queried using PromQL. Grafana uses PromQL to show the data.</p>
+<p>Telegraf with InfluxDB provides flexibility in data collection and storage, making it well-suited for scalable, long-term retention of metrics data.</p>
+<p>When it comes to measuring Data Drift and Model prediction Quality, it is bit different.</p>
+<p>Based on the nature of the problem, Data Drift models that can captures Outliers, Anomalies has to be placed. Model selection is highly dependent on the business, here TIG can be used to measure things.</p>
+<p>In terms Model predictive quality there is needs to be some ground truth against which we can measure those changes but it unlikely that there will be something like that present, given there is also problem of data drift. What we can do is measure the drop i.e drop in engagment, user count, purchase etc. These events can be measured by paid tools like Amplitude, Google Analytics, Firebase or with some custom solution.</p>
+</section>
+<section id="logging-and-alerts" class="level2">
+<h2 class="anchored" data-anchor-id="logging-and-alerts">Logging and Alerts</h2>
+<p>Logging is a necessity of production.</p>
+<p>Python comes with a feature rich way of generating logs in <a href="https://docs.python.org/3/library/logging.html">Logging Module</a> and only in depth tutorial to know everything <a href="https://docs.python.org/3/howto/logging.html#logging-howto">Logging How To</a> and <a href="https://docs.python.org/3/howto/logging-cookbook.html">Logging Cookbook</a>.</p>
+<p>When there are multiple services from where logs get generated, There needs to be way to efficiently collecting, aggregating and analyse that data.</p>
+<p>There are multiple ways of doing it. I am listing a few here</p>
+<ol type="1">
+<li>ELK stack with an extra Filebeat</li>
+<li>AWS Cloudwatch</li>
+<li>Apache Flume</li>
+<li>Fluentd</li>
+</ol>
+<p>ELK stack (Elastic Search , Log Stash, Kibana) -&gt; When the web servers generate logs those logs will get read by Log Stash and we can read those logs from Log Stash directly, but to take a step further we can filter and process those logs using Log Stash Grok and make the unstructed generate log into a structured Log which can be then stored in Elastic Search and visualize on Kibana.</p>
+<p>Filebeat uses a backpressure-sensitive protocol when sending data to Logstash or Elasticsearch to account for higher volumes of data. If Logstash is busy crunching data, it lets Filebeat know to slow down its read. Once the congestion is resolved, Filebeat will build back up to its original pace and keep on shippin’.</p>
+<p>It is very common to using Elastic search for this purpose apart from using search tool.</p>
+<p><img src="images/elk.webp" class="img-fluid"></p>
+<p><img src="images/kibana.png" class="img-fluid"></p>
+<p>Same can be done using AWS Cloudwatch, if you entire infrastructure is on AWS. Amazon CloudWatch collects and visualizes real-time logs, metrics, and event data in automated dashboards to streamline your infrastructure and application maintenance.</p>
+<p><img src="images/cloudwatch.png" class="img-fluid"></p>
+<p>Now whether to go with ELK stack or fluentd or Cloudwatch or any other tool depends completely on the scale the logs will be generated, infrastructure needs, affordability, value generated out of those logs.</p>
+<p>As an important measure it is not advised to delete old logs instantly rather archive it on Amazon S3 and then delete after certain amount of time pases.</p>
+<p>Whether we are logging or monitoring every other tools has a built in support for alerts and these alerts has to be generated based on certain criteria the frequency or time till the alerts has to be checked all of them can be customized. Grafana, Kibana, Cloudwatch, Fluentd all of them supports it. We can send alerts to email, slack, discord, sms there are tons of plugin which gives out of the box support for every other communication channel.</p>
+</section>
+<section id="thank-you" class="level2">
+<h2 class="anchored" data-anchor-id="thank-you">Thank you</h2>
 
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('profiling'); return false;">
-profiling
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('python'); return false;">
-python
-</div>
-</div>
-<a href="./posts/Python/profiling.html">
-<div class="listing-description">
-<p>Let’s save some time and memory, coz both are expensive.</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Python/profiling.html">
-<div class="listing-date">
-May 22, 2021
-</div>
-<div class="listing-author">
-Aman Pandey
-</div>
-<div class="listing-reading-time">
-8 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="python,advance-python,decorator,context-manager,generator" data-listing-date-sort="1604428200000" data-listing-file-modified-sort="1688807593673" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
-<div class="thumbnail">
-<p><a href="./posts/Python/Advance-python.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Python/Advance-python.html">
-<h3 class="no-anchor listing-title">
-Advance Pythonic Stuff
-</h3>
-<div class="listing-subtitle">
 
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('python'); return false;">
-python
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('advance-python'); return false;">
-advance-python
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('decorator'); return false;">
-decorator
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('context-manager'); return false;">
-context-manager
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('generator'); return false;">
-generator
-</div>
-</div>
-<a href="./posts/Python/Advance-python.html">
-<div class="listing-description">
-<p>Advance python and some sweet python tips and tricks.</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Python/Advance-python.html">
-<div class="listing-date">
-Nov 4, 2020
-</div>
-<div class="listing-author">
-Aman Pandey
-</div>
-<div class="listing-reading-time">
-6 min
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -947,13 +781,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
 });
 </script>
+<script src="https://giscus.app/client.js" data-repo="aman5319/portfolio" data-repo-id="R_kgDOJ44pkw" data-category="Q&amp;A" data-category-id="DIC_kwDOJ44pk84CXwVt" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../posts/Machine Learning/metrics.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Metrics for Machine Learning</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../posts/Optimization/optimisers_in_dl.html" class="pagination-link">
+        <span class="nav-page-text">Optimizers in - Deep Learning</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">Blog made with 💜 and <a href="https://quarto.org/">Quarto</a>, by Aman Pandey. License: <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>.</div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/aman5319/portfolio/edit/main/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/aman5319/portfolio/issues/new" class="toc-action">Report an issue</a></p></div></div></div>
+    </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
@@ -969,5 +817,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

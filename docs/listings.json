@@ -2,9 +2,10 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Machine Learning/model_in_production.html",
       "/posts/Convolutions/convolution.html",
       "/posts/Optimization/optimisers_in_dl.html",
-      "/posts/ML Metrics/metrics.html",
+      "/posts/Machine Learning/metrics.html",
       "/posts/Python/profiling.html",
       "/posts/Python/Advance-python.html"
     ]
