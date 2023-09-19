@@ -3,6 +3,7 @@
     "listing": "/index.html",
     "items": [
       "/posts/Machine Learning/model_in_production.html",
+      "/posts/Machine Learning/Regularization.html",
       "/posts/Convolutions/convolution.html",
       "/posts/Optimization/optimisers_in_dl.html",
       "/posts/Machine Learning/metrics.html",
