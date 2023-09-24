@@ -3,7 +3,7 @@ title: "Metrics for Machine Learning"
 author: "Aman Pandey"
 date: "5/22/2022"
 editor: visual
-categories: [ml, dl, metrics]
+categories: [machine-learning, deep-learning, metrics]
 description: "A deep dive into different types of Metrics for evaluating Machine Learning Models."
 ---
 # Metrics
@@ -17,7 +17,7 @@ So in an Image if model predicts Dog that's a positive class if it predicts no D
 
 A confusion matrix is a table that is used to describe the performance of a classification model.
 
-![](confusionmatrix.png "confusion matrix")
+![](images/confusionmatrix.png "confusion matrix")
 
 Let's consider this example table where N denotes the total number of images our model will predict upon.
 
@@ -87,18 +87,18 @@ Let's consider two example where
 
 1. Spam detection -> Classify whether an email is Spam or Not Spam.
 
-       Here the goal is to accurately classify spam emails. It's okay to classify a Spam mail as Not Spam mail as it will come in our inbox it does no harm to use. But if we classify as Not Spam Mail as Spam mail then there is a problem because we generally do not open our Spam Box.
+   Here the goal is to accurately classify spam emails. It's okay to classify a Spam mail as Not Spam mail as it will come in our inbox it does no harm to use. But if we classify as Not Spam Mail as Spam mail then there is a problem because we generally do not open our Spam Box.
 
-       If you think about it the first case is False Negative and Second case is False Positive and we are okay with False Negative's but we are not okay with False Positives and our goal is to reduce False Positive.
+   If you think about it the first case is False Negative and Second case is False Positive and we are okay with False Negative's but we are not okay with False Positives and our goal is to reduce False Positive.
 
-       So in Spam detection task precision is a good metric. since it is inversely proportionate to False Positives.
+   So in Spam detection task precision is a good metric. since it is inversely proportionate to False Positives.
 2. Cancer detection -> Classify whether a person has a cancer or not.
 
-       Here the goal is to accurately classify whether a person has a cancer or Not. It's okay to classify a person Not having cancer as cancer. But it's not okay to predict a person having cancer as Not cancer.
+   Here the goal is to accurately classify whether a person has a cancer or Not. It's okay to classify a person Not having cancer as cancer. But it's not okay to predict a person having cancer as Not cancer.
 
-       If you think the first case is False Positive and Second case is False Negative and we are okay with False Positive but not okay with False Negative.
+   If you think the first case is False Positive and Second case is False Negative and we are okay with False Positive but not okay with False Negative.
 
-       Hence in this particular task Precision plays no role.
+   Hence in this particular task Precision plays no role.
 
 Hence to reduce False Positives Precision is used. Precision can easily be effected by class Imbalance.
 

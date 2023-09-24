@@ -3,7 +3,7 @@ title: "Data and Model Management | Model Monitoring and Logging."
 author: "Aman Pandey"
 date: "09/16/2023"
 editor: visual
-categories: [ml, dl]
+categories: [machine-learning, deep-learning]
 description: "In this post, we discuss ways of managing different versions of Data and Model artificats. Configuration Management and Data Validation.
 Monitoring the model using TIG stack. Logging and Alert."
 ---
@@ -50,7 +50,6 @@ Working of DVC is quite simple also.
 ![](images/project-versions.png)
 
 so if we see we have not only versioned and tracked our data but also our models, from tracking models I mean tracking weights of a particular model
-
 
 ## Configuration Management and Validation
 
@@ -120,7 +119,6 @@ Logging is a necessity of production.
 
 Python comes with a feature rich way of generating logs in [Logging Module](https://docs.python.org/3/library/logging.html) and only in depth tutorial to know everything [Logging How To](https://docs.python.org/3/howto/logging.html#logging-howto) and [Logging Cookbook](https://docs.python.org/3/howto/logging-cookbook.html).
 
-
 When there are multiple services from where logs get generated, There needs to be way to efficiently collecting, aggregating and analyse that data.
 
 There are multiple ways of doing it. I am listing a few here
@@ -132,17 +130,13 @@ There are multiple ways of doing it. I am listing a few here
 
 ELK stack (Elastic Search , Log Stash, Kibana) -> When the web servers generate logs those logs will get read by Log Stash and we can read those logs from Log Stash directly, but to take a step further we can filter and process those logs using Log Stash Grok and make the unstructed generate log into a structured Log which can be then stored in Elastic Search and visualize on Kibana.
 
-Filebeat uses a backpressure-sensitive protocol when sending data to Logstash or Elasticsearch to account for higher volumes of data. If Logstash is busy crunching data, it lets Filebeat know to slow down its read. Once the congestion is resolved, Filebeat will build back up to its original pace and keep on shippin'. 
-
+Filebeat uses a backpressure-sensitive protocol when sending data to Logstash or Elasticsearch to account for higher volumes of data. If Logstash is busy crunching data, it lets Filebeat know to slow down its read. Once the congestion is resolved, Filebeat will build back up to its original pace and keep on shippin'.
 
 It is very common to using Elastic search for this purpose apart from using search tool.
-
-
 
 ![](images/elk.webp)
 
 ![](images/kibana.png)
-
 
 Same can be done using AWS Cloudwatch, if you entire infrastructure is on AWS.
 Amazon CloudWatch collects and visualizes real-time logs, metrics, and event data in automated dashboards to streamline your infrastructure and application maintenance.
@@ -153,9 +147,6 @@ Now whether to go with ELK stack or fluentd or Cloudwatch or any other tool depe
 
 As an important measure it is not advised to delete old logs instantly rather archive it on Amazon S3 and then delete after certain amount of time pases.
 
-
 Whether we are logging or monitoring every other tools has a built in support for alerts and these alerts has to be generated based on certain criteria the frequency or time till the alerts has to be checked all of them can be customized. Grafana, Kibana, Cloudwatch, Fluentd all of them supports it. We can send alerts to email, slack, discord, sms there are tons of plugin which gives out of the box support for every other communication channel.
 
 ## Thank you
-
-

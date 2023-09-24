@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://aman5319.github.io/portfolio/about.html</loc>
-    <lastmod>2023-09-19T21:14:42.072Z</lastmod>
+    <lastmod>2023-09-24T11:51:10.255Z</lastmod>
   </url>
   <url>
     <loc>https://aman5319.github.io/portfolio/posts/Python/Advance-python.html</loc>
@@ -18,7 +18,7 @@
   </url>
   <url>
     <loc>https://aman5319.github.io/portfolio/index.html</loc>
-    <lastmod>2023-09-19T21:14:41.141Z</lastmod>
+    <lastmod>2023-09-24T11:57:42.973Z</lastmod>
   </url>
   <url>
     <loc>https://aman5319.github.io/portfolio/posts/Optimization/optimisers_in_dl.html</loc>
@@ -30,7 +30,7 @@
   </url>
   <url>
     <loc>https://aman5319.github.io/portfolio/posts/Machine Learning/metrics.html</loc>
-    <lastmod>2023-09-17T06:18:54.257Z</lastmod>
+    <lastmod>2023-09-24T11:51:11.667Z</lastmod>
   </url>
   <url>
     <loc>https://aman5319.github.io/portfolio/posts/Machine Learning/model_logging.html</loc>
@@ -46,10 +46,14 @@
   </url>
   <url>
     <loc>https://aman5319.github.io/portfolio/posts/Machine Learning/model_in_production.html</loc>
-    <lastmod>2023-09-17T16:29:58.304Z</lastmod>
+    <lastmod>2023-09-24T11:50:19.355Z</lastmod>
   </url>
   <url>
     <loc>https://aman5319.github.io/portfolio/posts/Machine Learning/Regularization.html</loc>
-    <lastmod>2023-09-19T21:14:40.220Z</lastmod>
+    <lastmod>2023-09-24T11:50:18.598Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aman5319.github.io/portfolio/posts/Machine Learning/Attention.html</loc>
+    <lastmod>2023-09-24T11:50:17.424Z</lastmod>
   </url>
 </urlset>
