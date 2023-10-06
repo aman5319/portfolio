@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aman Pandey">
-<meta name="dcterms.date" content="2021-05-22">
-<meta name="description" content="Let’s save some time and memory, coz both are expensive.">
+<meta name="dcterms.date" content="2023-10-06">
+<meta name="description" content="Exploring different tools and technologies to store, intergrate, analyse, process, visualize data at large scale in a batch and stream fashion both with custom tools and AWS managed services">
 
-<title>Aman Pandey | Data Scientist - Memory and Time Profiling</title>
+<title>Aman Pandey | Data Scientist - Big Data Processing</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,40 +23,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -67,7 +33,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../posts/Python/functional_programming.html" rel="prev">
+<link href="../../posts/Python/functional_programming.html" rel="next">
+<link href="../../posts/Optimization/optimisers_in_dl.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -103,8 +70,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Aman Pandey | Data Scientist - Memory and Time Profiling">
-<meta property="og:description" content="Let’s save some time and memory, coz both are expensive.">
+<meta property="og:title" content="Aman Pandey | Data Scientist - Big Data Processing">
+<meta property="og:description" content="Exploring different tools and technologies to store, intergrate, analyse, process, visualize data at large scale in a batch and stream fashion both with custom tools and AWS managed services">
+<meta property="og:image" content="https://aman5319.github.io/portfolio/posts/Python/images/kafka_keyword_diagram.svg">
 <meta property="og:site-name" content="Aman Pandey | Data Scientist">
 </head>
 
@@ -164,7 +132,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../posts/Python/big_data_processing.html">Python</a></li><li class="breadcrumb-item"><a href="../../posts/Python/profiling.html">Memory and Time Profiling</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../posts/Python/big_data_processing.html">Python</a></li><li class="breadcrumb-item"><a href="../../posts/Python/big_data_processing.html">Big Data Processing</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -174,14 +142,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Memory and Time Profiling</h1>
+      <h1 class="title">Big Data Processing</h1>
                   <div>
         <div class="description">
-          Let’s save some time and memory, coz both are expensive.
+          Exploring different tools and technologies to store, intergrate, analyse, process, visualize data at large scale in a batch and stream fashion both with custom tools and AWS managed services
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">python</div>
+                <div class="quarto-category">big-data</div>
+                <div class="quarto-category">aws</div>
               </div>
                   </div>
   </div>
@@ -199,7 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 22, 2021</p>
+        <p class="date">October 6, 2023</p>
       </div>
     </div>
     
@@ -307,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/Python/big_data_processing.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/Python/big_data_processing.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Big Data Processing</span></a>
   </div>
 </li>
@@ -319,7 +288,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/Python/profiling.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../posts/Python/profiling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Memory and Time Profiling</span></a>
   </div>
 </li>
@@ -337,16 +306,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#premature-optimization-is-evil." id="toc-premature-optimization-is-evil." class="nav-link" data-scroll-target="#premature-optimization-is-evil.">Premature Optimization is evil.</a></li>
-  <li><a href="#magic-functions-and-tools" id="toc-magic-functions-and-tools" class="nav-link" data-scroll-target="#magic-functions-and-tools">Magic functions and tools</a></li>
-  <li><a href="#timeit" id="toc-timeit" class="nav-link" data-scroll-target="#timeit">Timeit</a></li>
-  <li><a href="#timing-profiling-with-lprun" id="toc-timing-profiling-with-lprun" class="nav-link" data-scroll-target="#timing-profiling-with-lprun">Timing Profiling with Lprun</a></li>
-  <li><a href="#memory-profiling-with-mprun" id="toc-memory-profiling-with-mprun" class="nav-link" data-scroll-target="#memory-profiling-with-mprun">Memory Profiling with mprun</a></li>
-  <li><a href="#memory-leakage-using-pympler" id="toc-memory-leakage-using-pympler" class="nav-link" data-scroll-target="#memory-leakage-using-pympler">Memory Leakage using pympler</a></li>
-  <li><a href="#read-more" id="toc-read-more" class="nav-link" data-scroll-target="#read-more">Read More</a></li>
+  <li><a href="#basic-terminologies" id="toc-basic-terminologies" class="nav-link active" data-scroll-target="#basic-terminologies">Basic Terminologies</a></li>
+  <li><a href="#data-streaming-ingestion-and-processing." id="toc-data-streaming-ingestion-and-processing." class="nav-link" data-scroll-target="#data-streaming-ingestion-and-processing.">Data Streaming, Ingestion and Processing.</a></li>
+  <li><a href="#data-storage-and-querying" id="toc-data-storage-and-querying" class="nav-link" data-scroll-target="#data-storage-and-querying">Data Storage and Querying</a></li>
+  <li><a href="#batch-processing" id="toc-batch-processing" class="nav-link" data-scroll-target="#batch-processing">Batch Processing</a></li>
+  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data visualization</a></li>
+  <li><a href="#job-scheduling" id="toc-job-scheduling" class="nav-link" data-scroll-target="#job-scheduling">Job Scheduling</a></li>
+  <li><a href="#bakup-and-archival-of-data" id="toc-bakup-and-archival-of-data" class="nav-link" data-scroll-target="#bakup-and-archival-of-data">Bakup and Archival of Data</a></li>
+  <li><a href="#thank-you." id="toc-thank-you." class="nav-link" data-scroll-target="#thank-you.">Thank you.</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/aman5319/portfolio/blob/main/posts/Python/profiling.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/aman5319/portfolio/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/aman5319/portfolio/edit/main/posts/Python/big_data_processing.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/aman5319/portfolio/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -354,191 +323,141 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>Every Developer desires to make their code optimzied and efficient. A dream where the developers want that their code to execute faster, with no memory leakage on the production system.</p>
-<p>Let’s make this dream true…</p>
-<p>Creating Data-processing pipeline, writing new algorithms, Deploying Machine Learning models to server million users, Scientific calculation in astropyhsics, these are few areas where when we write code we want to profile every single line of code for two things 1. The amount of time it is taking to execute where our goal is to reduce the time taken a.k.a Time Complexity. 2. The memory consumption for execution of that code where our goal is to reduce the memory usage a.k.a Space complexity.</p>
-<p>There always a trade-off between both of them some time we are fine with memory consumption but not with the time it takes and vice-versa based on the needs we check for the trade-off, but the best system is where we can reduce both space and time complexity.</p>
-</section>
-<section id="premature-optimization-is-evil." class="level1">
-<h1>Premature Optimization is evil.</h1>
-<p>Early in developing Algorithms we should think less about these things because it can be counter-productive which can lead to premature optimization and its the root cause of all evil.</p>
-<p>So first make it work then optimize it.</p>
-</section>
-<section id="magic-functions-and-tools" class="level1">
-<h1>Magic functions and tools</h1>
-<p>While most of the data science experiments starts in Ipython Notebook. The Ipython enviroment gives us some magic functions which can be utilized to profile our code.</p>
+<p>My day to day work revolves around understanding the data, analysis, Visualization and eventually Training model on it.</p>
+<p>Most of the time the data which I am dealing with is huge in size and one of characteristics of any kind of data is</p>
 <ol type="1">
-<li><a href="https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit">%%timeit</a>: Measuring time taken for the codeblock to run</li>
-<li><a href="https://github.com/pyutils/line_profiler">%lprun</a>: Run code with the line-by-line profiler</li>
-<li><a href="https://github.com/pythonprofilers/memory_profiler">%mprun</a>: Run code with the line-by-line memory profiler</li>
+<li>old data gets updated and refreshed</li>
+<li>New data gets added</li>
 </ol>
-<p>For Tracing Memory Leakage we can use <a href="https://pythonhosted.org/Pympler/index.html">Pympler</a>.</p>
-<div class="cell" data-execution_count="1">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
+<p>Now the frequency part can be from couple of seconds to days to weeks.</p>
+<p>As a Data Scientist I never have to be bothered about how exactly the data that is getting generated on the client side is to be stored, updated, processed and it comes to me a ready, for me to train my model upon.</p>
+<p>So in the Blog we will talking about some data engineering stuff.</p>
+<section id="basic-terminologies" class="level2">
+<h2 class="anchored" data-anchor-id="basic-terminologies">Basic Terminologies</h2>
+<p>Before we get into the core part there are some terminologies which are important to understand also I will using AWS services to give my examples.</p>
+<ol type="1">
+<li><p><code>Data Lake</code> -&gt; Any place where you can dump any type of data, video dump to s3(simple storage service), text dump to s3, files dump to s3, images dump to s3, blobs. Anything type data that can be stored at a place that place is called data lake.</p></li>
+<li><p><code>Data Warehouse</code> -&gt; The Data which is stored in data lake has to be processed for some purpose may be training model, reporting, analysis it could be anything. Processing the unstructured data from data lake and storing it in a structured way at a particular place that place is Data Warehouse.</p></li>
+</ol>
+<p>Now keen observers can say can’t we store the process data to data lake rather than in data warehouse in that case you are absolutely correct, we can store it there.</p>
+<p>For ex - Taking bunch of user queries stored in S3 process it create a single csv file and again store it in s3.</p>
+<p>Also sometimes we want to store that processed data in Database which is absolutely fine.</p>
+<ol start="3" type="1">
+<li><code>Batch Processing</code> -&gt; When data processing happens in batches or in scheduled interval for example If we take all the user queries for a particular day and on night if we process all of it that is called batch processing.</li>
+<li><code>Stream Processing</code> -&gt; When data gets generated at that same time or near real time we try to process it. for example the moment user submits a query we do some processing.</li>
+<li><code>Event</code> -&gt; when a user clicks a button, when a user writes a query, when a user scrolls , everything is an event and it depends completely on business on fundamental level what do they want to call an event.</li>
+</ol>
 </section>
-<section id="timeit" class="level1">
-<h1>Timeit</h1>
-<p>The usage of timeit is very simple just put the magic method on the top of the cell and it will calculate the time taken to execute the cell.</p>
-<p>Let’s compare vectorized vs non-vectorized version of numpy code.</p>
-<div class="cell" data-execution_count="2">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>number <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell" data-execution_count="3">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>timeit</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> number:</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    total<span class="op">+=</span>i</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>3.11 ms ± 86.9 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="4">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>timeit</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>number.<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>14.9 µs ± 74.3 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)</code></pre>
-</div>
-</div>
-<p>The difference in the execution time is evident one.</p>
-<p>Non-vectorized code in Milliseconds, 10<sup>-3</sup>.<br> Vectorized code in Microseconds, 10<sup>-6</sup>.</p>
-<p>Vectorized code is the winner here.</p>
+<section id="data-streaming-ingestion-and-processing." class="level2">
+<h2 class="anchored" data-anchor-id="data-streaming-ingestion-and-processing.">Data Streaming, Ingestion and Processing.</h2>
+<p>When a event happens how to process that event for example - when on instagram we do share, like and comment, couple of things need to be done, first the UI has to be updated with an increement, and the data has to stored in some type of database.</p>
+<p>so when a event happens there can be n things which needs to be updated on the same time.</p>
+<p>Here comes <code>Apache Kafka</code> to Rescue</p>
+<p>Apache Kafka is a open-source distributed event streaming platform. i.e in simple terms when you million of users sending different types of queries now how exactly are suppose to handle each query which dashboard, database, UI component has to be update all is handled by Apache Kafka. It helps integrate data from a variety of sources and sinks</p>
+<p>Kafka follows a publish-subscribe model, where data producers (publishers) send messages to Kafka topics, and data consumers (subscribers) can subscribe to those topics to receive and process the messages.</p>
+<p><img src="images/kafka_keyword_diagram.svg" class="img-fluid"></p>
+<p>To draw an analogy we can take example of google map as we enter source and drop location map shows us the way but we have to go by ourself by driving or walking.</p>
+<p>So, Kafka is often used in conjunction with stream processing frameworks like Apache Flink, Apache Beam, Kafka Streams etc to perform real-time data processing and store the processed data for something.</p>
+<p>Now either we deploy apache kafka and manage by our own self our use <code>AWS Kinesis</code>. They both serve the same purpose.</p>
+<p><code>Apache Flink</code> - It is a framework and distributed processing engine for stateful computations over unbounded and bounded data streams. Flink has been designed to run in all common cluster environments, perform computations at in-memory speed and at any scale.</p>
+<p><img src="images/flink.png" class="img-fluid"></p>
+<p>For example -</p>
+<ol type="1">
+<li>Take example of any Algo Trading bot for every news and fluctuation that happens inside the market the data has to be quickly processed and understand, flink would be a suitable candidate.</li>
+<li>Calculate metrics like click-through rates (CTR) for products.</li>
+<li>Detect patterns, such as identifying when users abandon their shopping carts.</li>
+<li>Perform sessionization to group user interactions into sessions for personalized recommendations.</li>
+<li>Detect anomalies or fraud in real-time, such as unusual purchase patterns.</li>
+</ol>
+<p>To draw a similarity <code>Kinesis Data Streams</code> does the exact same thing.</p>
+<p>Note:- Neither Flink nor Kafka provide its own data-storage system, but provides data-source and sink connectors to systems.</p>
+<p>If the data needs to stored some where directly may be Data Lake, Database, files.we can use <code>Kafka Connect</code> which connects Kafka with external data sources and sinks. It helps to ingest data.</p>
+<p><img src="images/inside-kafka-connect.jpg" class="img-fluid"></p>
+<p>To draw a similarity <code>Amazon Kinesis Firehose</code> provides the same functionality.</p>
+<p>Amazon Kinesis Firehose is a fully managed AWS service that simplifies the process of ingesting, transforming, and delivering real-time streaming data to other AWS services, such as Amazon S3, Amazon Redshift, or Amazon Elasticsearch. Kinesis Firehose is primarily used for data ingestion and data loading into AWS services. It’s particularly useful for situations where you want to move data from a streaming source to AWS data storage or analytics services without complex processing.</p>
+<p><code>Debezium</code> - It is an open-source platform for change data capture (CDC) that captures and streams database changes in real-time. It allows you to monitor and react to changes in your databases as they occur, making it a valuable tool for building real-time data pipelines, event-driven microservices, and other applications that require access to fresh, up-to-date data.</p>
+<p>Just to sum it up we have seen how to stream events using kafka store it using kafka connect, some stream processing using Flink and react to certain changes in the database using debezium.</p>
+<p>Now when it comes selection of the Database we have plathora of option with pros and cons of each and we will look the pros and cons of each one of them some other day.</p>
 </section>
-<section id="timing-profiling-with-lprun" class="level1">
-<h1>Timing Profiling with Lprun</h1>
-<p>line_profiler is a package for doing line-by-line timing profiling of functions.</p>
-<p>Install using</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install line_profiler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Python provides a builtin profiler, but we will be using Line profiler for reasons stated below.</p>
-<p>The current profiling tools supported in Python 2.7 and later only time function calls. This is a good first step for locating hotspots in one’s program and is frequently all one needs to do to optimize the program. However, sometimes the cause of the hotspot is actually a single line in the function, and that line may not be obvious from just reading the source code. These cases are particularly frequent in scientific computing. Functions tend to be larger (sometimes because of legitimate algorithmic complexity, sometimes because the programmer is still trying to write FORTRAN code), and a single statement without function calls can trigger lots of computation when using libraries like numpy. cProfile only times explicit function calls, not special methods called because of syntax. Consequently, a relatively slow numpy operation on large arrays like this,</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>a[large_index_array] <span class="op">=</span> some_other_large_array</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>is a hotspot that never gets broken out by cProfile because there is no explicit function call in that statement.</p>
-<p>LineProfiler can be given functions to profile, and it will time the execution of each individual line inside those functions. In a typical workflow, one only cares about line timings of a few functions because wading through the results of timing every single line of code would be overwhelming. However, LineProfiler does need to be explicitly told what functions to profile.</p>
-<div class="cell" data-execution_count="5">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># once installed we have load the extension</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext line_profiler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell" data-execution_count="6">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> some_operation(x):</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> x <span class="op">**</span><span class="dv">2</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> x <span class="op">+</span><span class="dv">2</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.concatenate([x,x,x],axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Now the <code>%lprun</code> command will do a line-by-line profiling of any function–in this case, we need to tell it explicitly which functions we’re interested in profiling:</p>
-<div class="cell" data-execution_count="7">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>lprun <span class="op">-</span>f some_operation some_operation(np.random.randn(<span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<pre><code>Timer unit: 1e-06 s
-
-Total time: 7.7e-05 s
-File: &lt;ipython-input-30-80aca4fcfa96&gt;
-Function: some_operation at line 1
-
-Line #      Hits         Time  Per Hit   % Time  Line Contents
-==============================================================
-     1                                           def some_operation(x):
-     2         1         24.0     24.0     31.2      x = x **2
-     3         1         22.0     22.0     28.6      x = x +2
-     4         1         30.0     30.0     39.0      x = np.concatenate([x,x,x],axis=0)
-     5         1          1.0      1.0      1.3      return x
-</code></pre>
-<p>The source code of the function is printed with the timing information for each line. There are six columns of information.</p>
-<ul>
-<li>Line : The line number in the file.</li>
-<li>Hits: The number of times that line was executed.</li>
-<li>Time: The total amount of time spent executing the line in the timer’s units. In the header information before the tables, you will see a line “Timer unit:” giving the conversion factor to seconds. It may be different on different systems.</li>
-<li>Per Hit: The average amount of time spent executing the line once in the timer’s units.</li>
-<li>% Time: The percentage of time spent on that line relative to the total amount of recorded time spent in the function.</li>
-<li>Line Contents: The actual source code. Note that this is always read from disk when the formatted results are viewed, not when the code was executed. If you have edited the file in the meantime, the lines will not match up, and the formatter may not even be able to locate the function for display.</li>
-</ul>
+<section id="data-storage-and-querying" class="level2">
+<h2 class="anchored" data-anchor-id="data-storage-and-querying">Data Storage and Querying</h2>
+<p>Storing the processed data in Data Lake vs.&nbsp;Data Warehouse, often depends on factors like data volume, query performance requirements, and cost considerations.</p>
+<p>Now let suppose their is an example scenario where some data from data lake is processed</p>
+<ol type="1">
+<li>Either we can store the processed data back to data lake.</li>
+<li>Store the processed data onto some Database.</li>
+</ol>
+<p>For case 1 - we can have a big csv file or parquet file which has all the processed data, now what all things we can do</p>
+<ol type="1">
+<li>Use directly in model training, analysis.</li>
+<li>Or there is need to query that particular data which is stored in the data lake may be run a SQL query to fetch a subset of the data in that case use <code>Presto</code> a distributed SQL query engine.</li>
+</ol>
+<p><img src="images/presto.svg" class="img-fluid"></p>
+<p>Presto acts a single query engine for data engineers who struggle with managing multiple query languages and interfaces to siloed databases and storage, Presto is the fast and reliable engine that provides one simple ANSI SQL interface for all your data analytics and your open lakehouse.</p>
+<p>on AWS <code>Athena</code> gives the same functionality, actually <code>Athena</code> is built on top of presto.</p>
+<p>Example - let suppose we store some processed data into TB scale into S3 now what we can do is use Athena to query that data using SQL syntax.</p>
+<p>For case 2- It is simple that we directly dump the data on to a Database which is designed for business use case some one is looking for. <code>Amazon RedShift</code> is a good option.</p>
+<p>Also many times we just need data integration service where we just want to move data from different sources to one single source for different application. for example we want to perform some ETL on data stored in 5 different DBs to one single source in that AWS provide <code>Glue</code></p>
+<p><img src="images/glue.png" class="img-fluid"> We now know how to store the processed data and query it.</p>
 </section>
-<section id="memory-profiling-with-mprun" class="level1">
-<h1>Memory Profiling with mprun</h1>
-<p>This is a python module for monitoring memory consumption of a process as well as line-by-line analysis of memory consumption for python programs.</p>
-<p>Install</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> memory_profiler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The only issue mprun doesn’t work on notebook rather on a python file so we will write the code in notebook <code>%%file</code> magic function we will write that into a file and execute mprun on it</p>
-<div class="cell" data-execution_count="8">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext memory_profiler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell" data-execution_count="9">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span><span class="bu">file</span> mprun.py</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> some_operation(x):</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> x <span class="op">**</span><span class="dv">2</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> y <span class="op">+</span><span class="dv">2</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> np.concatenate([x,y,z],axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Overwriting mprun.py</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="10">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mprun <span class="im">import</span> some_operation</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>mprun <span class="op">-</span>f some_operation some_operation(np.random.randn(<span class="dv">100000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code></code></pre>
-</div>
-</div>
-<pre><code>Line #    Mem usage    Increment   Line Contents
-================================================
-     2     62.5 MiB     62.5 MiB   def some_operation(x):
-     3     63.3 MiB      0.8 MiB       y = x **2
-     4     64.0 MiB      0.8 MiB       z = y +2
-     5     66.3 MiB      2.3 MiB       result = np.concatenate([x,y,z],axis=0)
-     6     66.3 MiB      0.0 MiB       return result</code></pre>
-<ul>
-<li>The first column represents the line number of the code that has been profiled.</li>
-<li>The second column (Mem usage) the memory usage of the Python interpreter after that line has been executed.</li>
-<li>The third column (Increment) represents the difference in memory of the current line with respect to the last one.</li>
-<li>The last column (Line Contents) prints the code that has been profiled.</li>
-</ul>
+<section id="batch-processing" class="level2">
+<h2 class="anchored" data-anchor-id="batch-processing">Batch Processing</h2>
+<p>We looked that we can use Flink to do stream processing now when it comes to batch processing of data we can use all time fav tool <code>Apache Spark</code>.</p>
+<p>Based on the data size you might need processing power from 1 node to multiples clusters.</p>
+<p>In case we have a single computer with lot of computer power we can do parallel processing by our selves, without requiring any special library but when it comes to distributed processing using a matured library is always recommended.</p>
+<p>Now most of the distributed system works in a Master-Slave configuration where there is one master node and multiple slave nodes. the master schedules and monitors the job and slave nodes actually perform the job.</p>
+<p>Since the work is distributed across cluster we need a cluster manager also, Apache Mesos or Kubernetes is used to manage the allocation of resources (CPU and memory) for Spark applications.</p>
+<p><img src="images/spark.png" class="img-fluid"></p>
+<p>On AWS we can run spark jobs on <code>Amazon EMR(Elastic Map Reduce)</code></p>
+<p><img src="images/s.png" class="img-fluid"></p>
 </section>
-<section id="memory-leakage-using-pympler" class="level1">
-<h1>Memory Leakage using pympler</h1>
-<p>Pympler is a development tool to measure, monitor and analyze the memory behavior of Python objects in a running Python application.</p>
-<p>By pympling a Python application, detailed insight in the size and the lifetime of Python objects can be obtained. Undesirable or unexpected runtime behavior like memory bloat and other “pymples” can easily be identified.</p>
-<p>Pympler integrates three previously separate modules into a single, comprehensive profiling tool. The asizeof module provides basic size information for one or several Python objects, module muppy is used for on-line monitoring of a Python application and module Class Tracker provides off-line analysis of the lifetime of selected Python objects.</p>
-<p>A web profiling frontend exposes process statistics, garbage visualisation and class tracker statistics.</p>
-<p><a href="https://pythonhosted.org/Pympler/index.html#table-of-content">Hit table of content for tutorial</a></p>
+<section id="data-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="data-visualization">Data visualization</h2>
+<p>The data is processed now stored in some place now there is need to visualize now before visualizing there is we need to query the data and the most important part of querying is 1. how quickly we need the data. 2. how many people are querying it at a given moment. 3. what is the size of the database we are querying.</p>
+<p>Take a step back on to data processing system, when a database is designed either it is designed for heavy read operation OLAP or Write operation OLTP</p>
+<p>OLTP (Online Transaction Processing):</p>
+<ol type="1">
+<li>OLTP databases are designed for transactional processing and day-to-day operations.</li>
+<li>They handle tasks like order processing, inventory management, and customer record updates.</li>
+<li>OLTP systems are optimized for write-heavy operations and maintaining data integrity.</li>
+<li>Data consistency is critical in OLTP databases, and transactions are ACID-compliant (Atomicity, Consistency, Isolation, Durability).</li>
+<li>OLTP queries are relatively simple and involve tasks like INSERT, UPDATE, DELETE, and SELECT of individual records. Response times are typically low to ensure efficient transaction processing.</li>
+<li>So banks, atms, ecommerce websites are using OLTP for many write operations.</li>
+</ol>
+<p>OLAP (Online Analytical Processing): 1. OLAP databases are designed for complex queries and reporting. 2. They are used for business intelligence, data analysis, and decision support systems. 3. OLAP systems are optimized for read-heavy operations and are well-suited for data analysis tasks. 4. The data is denormalized, meaning redundant data is stored to optimize query performance.</p>
+<p>Now that we know about data processing databases Let’s take two OLAP scenario- 1. Every morning some manager at linkedin wants to tracks some numbers may be Active users, interaction etc. 2. Uber Eats wants to show real time analytics to the restaurant owner, for the owner to take quick decision.</p>
+<p>The difference in both the use case is given a query how much time it has before it returns a result.</p>
+<p>In case 1 - query take 5hrs, 6hrs hell even 10hrs we don’t care because it once everyday, here we can use any query engine or database we have Athena, Redshift, Postgres, MongoDb it doesn’t matter.</p>
+<p>In case 2 - query has to execute within milliseconds. Here something different is needed we can’t rely on let say redshift to quickly query PB scale data and give result in milliseconds.</p>
+<p>Let me introduce <code>Apache Pinot</code> - Realtime distributed OLAP datastore, designed to answer OLAP queries with low latency</p>
+<p><img src="images/pinot.png" class="img-fluid"></p>
+<p>How do they do it to make any read operation fast we have to index the data, if we slice and dice the data to maintain 100’s of indexes across different dimension we can make the read of different queries faster.</p>
+<p>Apache Pinot allows RealTime user facing analytics.</p>
+<p>Once the query is executed use any data visualization tool to visualize the data we have many options Apache SuperSet, Amazon QuickSight, Tableau</p>
+<p><img src="images/superset.jpg" class="img-fluid"></p>
 </section>
-<section id="read-more" class="level1">
-<h1>Read More</h1>
-<p><a href="https://rushter.com/blog/python-memory-managment/">Understanding Python Memory Managment</a></p>
-<p><a href="https://rushter.com/blog/python-garbage-collector/">Python Garbage Collector</a></p>
+<section id="job-scheduling" class="level2">
+<h2 class="anchored" data-anchor-id="job-scheduling">Job Scheduling</h2>
+<p>How do we schedule our ETL(Extract Transform Load) jobs, we saw how spark can do batch processing, superset can do visualization for us but the question now is how do we schedule the job based on conditions, triggers and at particular time.</p>
+<p><code>Apache Airflow</code> is a full blown platform for orchestrating, scheduling, and monitoring complex workflows of data pipelines, ETL (Extract, Transform, Load) processes, and other data-related tasks. It provides a framework for defining, scheduling, and executing workflows as a directed acyclic graph (DAG), making it a powerful tool for automating and managing data workflows.</p>
+<p>It also comes with parallel and distributed execution engine, error handling capabilites, monitoring and logging.</p>
+<p>Apache Airflow can be said as Cron on steroids.</p>
+<p><img src="images/airflow.png" class="img-fluid"></p>
+</section>
+<section id="bakup-and-archival-of-data" class="level2">
+<h2 class="anchored" data-anchor-id="bakup-and-archival-of-data">Bakup and Archival of Data</h2>
+<p>Backup and Archival are also important parts of Data Management</p>
+<p><code>AWS Backup</code> is a centralized, fully managed backup service that streamlines the process of protecting your data across various AWS resources, including EC2 instances, RDS databases, EBS volumes, and more.</p>
+<p><code>AWS S3 Glacier</code> complements AWS Backup by offering a cost-effective solution for long-term data archiving. Here are the key features of AWS S3 Glacier:</p>
+<p>Low-Cost Storage: S3 Glacier offers significantly lower storage costs compared to standard AWS S3 storage classes. It’s ideal for archiving data that is rarely accessed but needs to be retained for compliance or historical purposes.</p>
+<p>Tiered Storage Options: Glacier provides different storage tiers to meet specific retrieval time requirements. You can choose between three retrieval options: Expedited, Standard, and Bulk, depending on the urgency of accessing archived data.</p>
+<p>Data Lifecycle Policies: Automate data lifecycle management with policies that transition data from frequently accessed S3 storage classes to Glacier after a certain period. This helps optimize storage costs without manual intervention.</p>
+<p>Vaults and Archives: S3 Glacier organizes data into “vaults,” and each vault can contain multiple “archives.” Archives are individual objects or files that can be stored, retrieved, and managed as needed.</p>
+<p>This below picture can give insights on to how different tools interact with each other.</p>
+<p><img src="images/overall.jpg" class="img-fluid"></p>
+</section>
+<section id="thank-you." class="level2">
+<h2 class="anchored" data-anchor-id="thank-you.">Thank you.</h2>
 
 
 </section>
@@ -910,11 +829,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../posts/Python/functional_programming.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Functional Programming capabilites of python</span>
+      <a href="../../posts/Optimization/optimisers_in_dl.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Optimizers in - Deep Learning</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../posts/Python/functional_programming.html" class="pagination-link">
+        <span class="nav-page-text">Functional Programming capabilites of python</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

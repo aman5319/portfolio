@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Python/big_data_processing.html",
       "/posts/Machine Learning/model_in_production.html",
       "/posts/Machine Learning/Attention.html",
       "/posts/Machine Learning/Regularization.html",
@@ -10,7 +11,7 @@
       "/posts/Machine Learning/metrics.html",
       "/posts/Machine Learning/Weight_Initializer.html",
       "/posts/Python/profiling.html",
-      "/posts/Python/Advance-python.html"
+      "/posts/Python/functional_programming.html"
     ]
   }
 ]
