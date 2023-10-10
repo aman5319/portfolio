@@ -48,31 +48,22 @@ Data Scientist with expertise in **Natural Language Processing** and **Recommend
 :::{.panel-tabset}
 
 # Bio
-  I am **Data Scientist**, **Computer Programmer** and **Mathematician**.
-  
-  I have worked majorly in **Natual Language Processing**, **Natural Language Generation** and 
-  **Recommendation Engines** in different Buisness domain.
+  I have worked majorly in **Natual Language Processing**, and **Applied AI research** across different industry domains with a global perspective. I've collaborated with international teams under cross-functional environments both in industry and academia.
 
-  Over the years in companies I have worked all of them demanded 
-  innovations and ingenuity to be added to solve the complex problems in hand
-  which has kept me ahead in this fast moving AI Research Landscape.
-
-  My love for human speaking languages lead me to dwell deeper into the world of NLP.
-
-  On a side note - I **can speak 5 Languages** and at one point I even learned American Sign Language as well which i don't remember very well these days.
-
-  Something I believe so deeply is **Free software**, and **Free Education** for everyone which lead me conduct multiple meetups, workshop, events. What I learned from the community I gave back to the community.
+  Something I believe so deeply is **Free software**, and **Free Education** for everyone which lead me conduct multiple meetups, workshop, events. What I learned from the community I give back to the community.
 
   **I advocate for open research.**
   These days I am fueled by **enthusiasm to do mathematics** from completely different perspective.
 
+  
+
 # Skills
 
-**Computer Programming** | Python | Java | C++ | PyTorch | GNU/Linux | Distributed Programming | Parallel Programming.
+**Computer Programming** | Python | Java | C++ | PyTorch | GNU/Linux | Distributed and Parallel Programming | Large Scale Data Processing | AWS | Model Monitoring
 
 **Deep Learning** | Machine Learning | Bayesian Active Learning | Metric Learning | Multi-Task Learning | Transfer Learning 
 
-**AI Specalities** | NLP | NLG | NLU | Recommendation Systems | Computational Linguistics | Information Extraction
+**AI Specalities** | NLP | NLG | NLU | Recommendation Systems | Explainable AI 
 
 # Non Job Pursuits
 **Member in Free Software Movement Karnataka(FSMK 2015 - 2020)** | Android Teacher for 7 days Bootcamp | Organized bootcamps in multiple colleges | Bringing Awarness and knowledge about the Open Eco-System to the society | Events and Conferences representing FSMK | 
@@ -81,7 +72,7 @@ Data Scientist with expertise in **Natural Language Processing** and **Recommend
 
 **Entirety.ai(Feb 2019 - Mar 2021)** | Discuss on current trend and Hands on Experience in Deep Learning | Event Ambassador for Pie and AI Meetup Bangalore | Talks and Meetups in Bangalore | collaborating with other meetup group and companies like Nvidia and Amazon
 
-**Adjunct faculty at Praxis Buisness School (June 2019 - July 2021)** | Teaching Deep learning and Model Deployment to PG students | 
+**Adjunct faculty at Praxis Buisness School (July 2019 - July 2020)** | Teaching Deep learning and Model Deployment to PG students | 
 
 **Haskell Study Group (2022)** | Organized study group consisting of 50 members from world wide.| Learned Haskell and FP together 
 
