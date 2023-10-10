@@ -8,7 +8,7 @@
 
 <meta name="author" content="Aman Pandey">
 <meta name="dcterms.date" content="2023-10-06">
-<meta name="description" content="Exploring different tools and technologies to store, intergrate, analyse, process, visualize data at large scale in a batch and stream fashion both with custom tools and AWS managed services">
+<meta name="description" content="Exploring different tools and technologies to store, integrate, analyze, process, visualize data at large scale in a batch and stream fashion both with custom tools and AWS managed services">
 
 <title>Aman Pandey | Data Scientist - Big Data Processing</title>
 <style>
@@ -71,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
 
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="Aman Pandey | Data Scientist - Big Data Processing">
-<meta property="og:description" content="Exploring different tools and technologies to store, intergrate, analyse, process, visualize data at large scale in a batch and stream fashion both with custom tools and AWS managed services">
+<meta property="og:description" content="Exploring different tools and technologies to store, integrate, analyze, process, visualize data at large scale in a batch and stream fashion both with custom tools and AWS managed services">
 <meta property="og:image" content="https://aman5319.github.io/portfolio/posts/Python/images/kafka_keyword_diagram.svg">
 <meta property="og:site-name" content="Aman Pandey | Data Scientist">
 </head>
@@ -145,12 +145,12 @@ ul.task-list li input[type="checkbox"] {
       <h1 class="title">Big Data Processing</h1>
                   <div>
         <div class="description">
-          Exploring different tools and technologies to store, intergrate, analyse, process, visualize data at large scale in a batch and stream fashion both with custom tools and AWS managed services
+          Exploring different tools and technologies to store, integrate, analyze, process, visualize data at large scale in a batch and stream fashion both with custom tools and AWS managed services
         </div>
       </div>
                           <div class="quarto-categories">
                 <div class="quarto-category">big-data</div>
-                <div class="quarto-category">aws</div>
+                <div class="quarto-category">AWS</div>
               </div>
                   </div>
   </div>
@@ -312,7 +312,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#batch-processing" id="toc-batch-processing" class="nav-link" data-scroll-target="#batch-processing">Batch Processing</a></li>
   <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data visualization</a></li>
   <li><a href="#job-scheduling" id="toc-job-scheduling" class="nav-link" data-scroll-target="#job-scheduling">Job Scheduling</a></li>
-  <li><a href="#bakup-and-archival-of-data" id="toc-bakup-and-archival-of-data" class="nav-link" data-scroll-target="#bakup-and-archival-of-data">Bakup and Archival of Data</a></li>
+  <li><a href="#backup-and-archival-of-data" id="toc-backup-and-archival-of-data" class="nav-link" data-scroll-target="#backup-and-archival-of-data">Backup and Archival of Data</a></li>
   <li><a href="#thank-you." id="toc-thank-you." class="nav-link" data-scroll-target="#thank-you.">Thank you.</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/aman5319/portfolio/edit/main/posts/Python/big_data_processing.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/aman5319/portfolio/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -323,47 +323,50 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>My day to day work revolves around understanding the data, analysis, Visualization and eventually Training model on it.</p>
-<p>Most of the time the data which I am dealing with is huge in size and one of characteristics of any kind of data is</p>
+<p>My day-to-day work revolves around understanding the data, analysis, visualisation, and training models.</p>
+<p>Most of the time, I am dealing with huge datasets. One of the characteristics of any data is</p>
 <ol type="1">
-<li>old data gets updated and refreshed</li>
-<li>New data gets added</li>
+<li>Old data gets updated and refreshed.</li>
+<li>New data gets added.</li>
 </ol>
-<p>Now the frequency part can be from couple of seconds to days to weeks.</p>
-<p>As a Data Scientist I never have to be bothered about how exactly the data that is getting generated on the client side is to be stored, updated, processed and it comes to me a ready, for me to train my model upon.</p>
-<p>So in the Blog we will talking about some data engineering stuff.</p>
+<p>The frequency can range from a couple of seconds to days to weeks, etc.</p>
+<p>As a data scientist, I never have to be bothered about how exactly the data getting generated on the client side is to be stored, updated, and processed.</p>
+<p>It comes to me ready for my models to train.</p>
+<p>In this blog, we will talk about some data engineering stuff.</p>
 <section id="basic-terminologies" class="level2">
 <h2 class="anchored" data-anchor-id="basic-terminologies">Basic Terminologies</h2>
-<p>Before we get into the core part there are some terminologies which are important to understand also I will using AWS services to give my examples.</p>
+<p>Before we get into the core part, we will discuss some important terminologies. I will use AWS services to give my examples.</p>
 <ol type="1">
-<li><p><code>Data Lake</code> -&gt; Any place where you can dump any type of data, video dump to s3(simple storage service), text dump to s3, files dump to s3, images dump to s3, blobs. Anything type data that can be stored at a place that place is called data lake.</p></li>
-<li><p><code>Data Warehouse</code> -&gt; The Data which is stored in data lake has to be processed for some purpose may be training model, reporting, analysis it could be anything. Processing the unstructured data from data lake and storing it in a structured way at a particular place that place is Data Warehouse.</p></li>
+<li><p><code>Data Lake</code> -&gt; Any place where you can dump any type of data, i.e., video, text, files, images, or binary blobs, is a data lake. In the AWS context, S3 (simple storage service) is the tool for the purpose.</p></li>
+<li><p><code>Data Warehouse</code> -&gt; The data that is stored in the data lake has to be processed for some purpose, such as training models, reporting, or analysis; it could be anything. Processing the unstructured data from the data lake and storing it in a structured way at a particular place—that place is a data warehouse.</p></li>
 </ol>
-<p>Now keen observers can say can’t we store the process data to data lake rather than in data warehouse in that case you are absolutely correct, we can store it there.</p>
-<p>For ex - Taking bunch of user queries stored in S3 process it create a single csv file and again store it in s3.</p>
-<p>Also sometimes we want to store that processed data in Database which is absolutely fine.</p>
+<p>Now keen observers can say, Can’t we store the process data in a data lake instead of a data warehouse? In that case, you are correct; we can store it.</p>
+<p>For example, take a bunch of user queries stored in S3, process them, create a single CSV file, and again store it in S3.</p>
+<p>Also, sometimes we want to store that processed data in a database, which is fine.</p>
+<ol type="1">
+<li><code>Batch Processing</code> -&gt; When data processing happens in batches or at scheduled intervals, for example, if we take all the user queries for a particular day and on night if we process all of them that is called batch processing.</li>
+</ol>
+<p>&nbsp; &nbsp; 2. <code>Stream Processing</code> -&gt; Processing of data in real-time the moment it is generated. For example, the moment a user submits a query we do some processing,&nbsp;that is called stream processing.</p>
 <ol start="3" type="1">
-<li><code>Batch Processing</code> -&gt; When data processing happens in batches or in scheduled interval for example If we take all the user queries for a particular day and on night if we process all of it that is called batch processing.</li>
-<li><code>Stream Processing</code> -&gt; When data gets generated at that same time or near real time we try to process it. for example the moment user submits a query we do some processing.</li>
-<li><code>Event</code> -&gt; when a user clicks a button, when a user writes a query, when a user scrolls , everything is an event and it depends completely on business on fundamental level what do they want to call an event.</li>
+<li><code>Event</code> -&gt; When a user clicks a button, writes a query, or scrolls, everything is an event, and it depends completely on the business on a fundamental level what they want to call an event.</li>
 </ol>
 </section>
 <section id="data-streaming-ingestion-and-processing." class="level2">
 <h2 class="anchored" data-anchor-id="data-streaming-ingestion-and-processing.">Data Streaming, Ingestion and Processing.</h2>
-<p>When a event happens how to process that event for example - when on instagram we do share, like and comment, couple of things need to be done, first the UI has to be updated with an increement, and the data has to stored in some type of database.</p>
-<p>so when a event happens there can be n things which needs to be updated on the same time.</p>
+<p>When a event happens how to process that event for example - when on instagram we do share, like and comment, couple of things need to be done, first the UI has to be updated, and the data has to stored in some type of database, then may be some real time metric has to be shown to the user if they have a business account.</p>
+<p>so when a event happens there can be <code>n</code> things which needs to be updated on the same time.</p>
 <p>Here comes <code>Apache Kafka</code> to Rescue</p>
-<p>Apache Kafka is a open-source distributed event streaming platform. i.e in simple terms when you million of users sending different types of queries now how exactly are suppose to handle each query which dashboard, database, UI component has to be update all is handled by Apache Kafka. It helps integrate data from a variety of sources and sinks</p>
+<p>Apache Kafka is an open-source distributed event streaming platform. i.e in simple terms when millions of users are sending different types of queries, that has to be handled by different components and update different service, all of this can be done by Apache Kafka. It helps integrate data from a variety of sources and sinks</p>
 <p>Kafka follows a publish-subscribe model, where data producers (publishers) send messages to Kafka topics, and data consumers (subscribers) can subscribe to those topics to receive and process the messages.</p>
 <p><img src="images/kafka_keyword_diagram.svg" class="img-fluid"></p>
 <p>To draw an analogy we can take example of google map as we enter source and drop location map shows us the way but we have to go by ourself by driving or walking.</p>
-<p>So, Kafka is often used in conjunction with stream processing frameworks like Apache Flink, Apache Beam, Kafka Streams etc to perform real-time data processing and store the processed data for something.</p>
+<p>So, Kafka is often used in conjunction with stream processing frameworks like Apache Flink, Apache Beam, Kafka Streams etc to perform real-time data processing and store the processed data for future use.</p>
 <p>Now either we deploy apache kafka and manage by our own self our use <code>AWS Kinesis</code>. They both serve the same purpose.</p>
 <p><code>Apache Flink</code> - It is a framework and distributed processing engine for stateful computations over unbounded and bounded data streams. Flink has been designed to run in all common cluster environments, perform computations at in-memory speed and at any scale.</p>
 <p><img src="images/flink.png" class="img-fluid"></p>
 <p>For example -</p>
 <ol type="1">
-<li>Take example of any Algo Trading bot for every news and fluctuation that happens inside the market the data has to be quickly processed and understand, flink would be a suitable candidate.</li>
+<li>Take example of any Algo Trading bot for every news and fluctuation that happens inside the market the data has to be quickly processed and understood, flink would be a suitable candidate.</li>
 <li>Calculate metrics like click-through rates (CTR) for products.</li>
 <li>Detect patterns, such as identifying when users abandon their shopping carts.</li>
 <li>Perform sessionization to group user interactions into sessions for personalized recommendations.</li>
@@ -371,13 +374,13 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <p>To draw a similarity <code>Kinesis Data Streams</code> does the exact same thing.</p>
 <p>Note:- Neither Flink nor Kafka provide its own data-storage system, but provides data-source and sink connectors to systems.</p>
-<p>If the data needs to stored some where directly may be Data Lake, Database, files.we can use <code>Kafka Connect</code> which connects Kafka with external data sources and sinks. It helps to ingest data.</p>
+<p>If the data needs to stored some where directly may be Data Lake, Database, files. We can use <code>Kafka Connect</code> which connects Kafka with external data sources and sinks. It helps to ingest data.</p>
 <p><img src="images/inside-kafka-connect.jpg" class="img-fluid"></p>
 <p>To draw a similarity <code>Amazon Kinesis Firehose</code> provides the same functionality.</p>
-<p>Amazon Kinesis Firehose is a fully managed AWS service that simplifies the process of ingesting, transforming, and delivering real-time streaming data to other AWS services, such as Amazon S3, Amazon Redshift, or Amazon Elasticsearch. Kinesis Firehose is primarily used for data ingestion and data loading into AWS services. It’s particularly useful for situations where you want to move data from a streaming source to AWS data storage or analytics services without complex processing.</p>
-<p><code>Debezium</code> - It is an open-source platform for change data capture (CDC) that captures and streams database changes in real-time. It allows you to monitor and react to changes in your databases as they occur, making it a valuable tool for building real-time data pipelines, event-driven microservices, and other applications that require access to fresh, up-to-date data.</p>
+<p>Amazon Kinesis Firehose is a fully managed AWS service that simplifies the process of ingesting, transforming, and delivering real-time streaming data to other AWS services, such as Amazon S3, Amazon Redshift, or Amazon Elastic-search. Kinesis Firehose is primarily used for data ingestion and data loading into AWS services. It’s particularly useful for situations where you want to move data from a streaming source to AWS data storage or analytics services without complex processing.</p>
+<p><code>Debezium</code> - It is an open-source platform for change data capture (CDC) that captures and streams database changes in real-time. It allows you to monitor and react to changes in your databases as they occur, making it a valuable tool for building real-time data pipelines, event-driven micro-services, and other applications that require access to fresh, up-to-date data.</p>
 <p>Just to sum it up we have seen how to stream events using kafka store it using kafka connect, some stream processing using Flink and react to certain changes in the database using debezium.</p>
-<p>Now when it comes selection of the Database we have plathora of option with pros and cons of each and we will look the pros and cons of each one of them some other day.</p>
+<p>When it comes selection of the Database we have plethora of option with pros and cons of each one.</p>
 </section>
 <section id="data-storage-and-querying" class="level2">
 <h2 class="anchored" data-anchor-id="data-storage-and-querying">Data Storage and Querying</h2>
@@ -387,25 +390,26 @@ ul.task-list li input[type="checkbox"] {
 <li>Either we can store the processed data back to data lake.</li>
 <li>Store the processed data onto some Database.</li>
 </ol>
-<p>For case 1 - we can have a big csv file or parquet file which has all the processed data, now what all things we can do</p>
+<p>For case 1 - we can have a big CSV or parquet file that has all the processed data, what are the use cases of the data</p>
 <ol type="1">
 <li>Use directly in model training, analysis.</li>
 <li>Or there is need to query that particular data which is stored in the data lake may be run a SQL query to fetch a subset of the data in that case use <code>Presto</code> a distributed SQL query engine.</li>
 </ol>
 <p><img src="images/presto.svg" class="img-fluid"></p>
 <p>Presto acts a single query engine for data engineers who struggle with managing multiple query languages and interfaces to siloed databases and storage, Presto is the fast and reliable engine that provides one simple ANSI SQL interface for all your data analytics and your open lakehouse.</p>
-<p>on AWS <code>Athena</code> gives the same functionality, actually <code>Athena</code> is built on top of presto.</p>
-<p>Example - let suppose we store some processed data into TB scale into S3 now what we can do is use Athena to query that data using SQL syntax.</p>
-<p>For case 2- It is simple that we directly dump the data on to a Database which is designed for business use case some one is looking for. <code>Amazon RedShift</code> is a good option.</p>
-<p>Also many times we just need data integration service where we just want to move data from different sources to one single source for different application. for example we want to perform some ETL on data stored in 5 different DBs to one single source in that AWS provide <code>Glue</code></p>
-<p><img src="images/glue.png" class="img-fluid"> We now know how to store the processed data and query it.</p>
+<p>on AWS- <code>Athena</code> gives the same functionality, actually <code>Athena</code> is built on top of presto.</p>
+<p>Example - let suppose we store some processed data into GB scale into S3 now what we can do is use Athena to query that data using SQL syntax.</p>
+<p>For case 2- It is simple that we directly dump the data on to a Database which is designed for business use case some one is looking for. <code>Amazon RedShift</code> is a good option. Also it is a good for PB scale.</p>
+<p>Many times we just need data integration service where we just want to move data from different sources to one single source for different application. For example we want to perform some ETL on data stored in 5 different DBs to one single source, in that situation AWS provide <code>Glue</code></p>
+<p><img src="images/glue.png" class="img-fluid"></p>
+<p>We now know how to store the processed data and query it.</p>
 </section>
 <section id="batch-processing" class="level2">
 <h2 class="anchored" data-anchor-id="batch-processing">Batch Processing</h2>
 <p>We looked that we can use Flink to do stream processing now when it comes to batch processing of data we can use all time fav tool <code>Apache Spark</code>.</p>
 <p>Based on the data size you might need processing power from 1 node to multiples clusters.</p>
-<p>In case we have a single computer with lot of computer power we can do parallel processing by our selves, without requiring any special library but when it comes to distributed processing using a matured library is always recommended.</p>
-<p>Now most of the distributed system works in a Master-Slave configuration where there is one master node and multiple slave nodes. the master schedules and monitors the job and slave nodes actually perform the job.</p>
+<p>In case we have a single computer with lot of compute power we can do parallel processing by our selves, without requiring any special library but when it comes to distributed processing using a matured library is always recommended.</p>
+<p>Most of the distributed system works in a Master-Slave configuration where there is one master node and multiple slave nodes. the master schedules and monitors the job and slave nodes actually perform the job.</p>
 <p>Since the work is distributed across cluster we need a cluster manager also, Apache Mesos or Kubernetes is used to manage the allocation of resources (CPU and memory) for Spark applications.</p>
 <p><img src="images/spark.png" class="img-fluid"></p>
 <p>On AWS we can run spark jobs on <code>Amazon EMR(Elastic Map Reduce)</code></p>
@@ -413,8 +417,13 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="data-visualization" class="level2">
 <h2 class="anchored" data-anchor-id="data-visualization">Data visualization</h2>
-<p>The data is processed now stored in some place now there is need to visualize now before visualizing there is we need to query the data and the most important part of querying is 1. how quickly we need the data. 2. how many people are querying it at a given moment. 3. what is the size of the database we are querying.</p>
-<p>Take a step back on to data processing system, when a database is designed either it is designed for heavy read operation OLAP or Write operation OLTP</p>
+<p>The data is processed and stored in some place. There is need to visualize but before visualizing, we need to query the data. Querying depends on multiple points</p>
+<ol type="1">
+<li>how quickly we need the data.</li>
+<li>how many people are querying it at a given moment.</li>
+<li>what is the size of the database we are querying.</li>
+</ol>
+<p>We Take a step back on to data processing system, when a database is designed either it is designed for heavy read operation OLAP or Write operation OLTP</p>
 <p>OLTP (Online Transaction Processing):</p>
 <ol type="1">
 <li>OLTP databases are designed for transactional processing and day-to-day operations.</li>
@@ -425,27 +434,27 @@ ul.task-list li input[type="checkbox"] {
 <li>So banks, atms, ecommerce websites are using OLTP for many write operations.</li>
 </ol>
 <p>OLAP (Online Analytical Processing): 1. OLAP databases are designed for complex queries and reporting. 2. They are used for business intelligence, data analysis, and decision support systems. 3. OLAP systems are optimized for read-heavy operations and are well-suited for data analysis tasks. 4. The data is denormalized, meaning redundant data is stored to optimize query performance.</p>
-<p>Now that we know about data processing databases Let’s take two OLAP scenario- 1. Every morning some manager at linkedin wants to tracks some numbers may be Active users, interaction etc. 2. Uber Eats wants to show real time analytics to the restaurant owner, for the owner to take quick decision.</p>
+<p>Now that we know about data processing databases Let’s take two OLAP scenario- 1. Every morning some manager at linkedin wants to tracks some numbers may be Active users, interaction etc. 2. Uber Eats wants to show real time analytics to the restaurant owners for taking quick decisions.</p>
 <p>The difference in both the use case is given a query how much time it has before it returns a result.</p>
-<p>In case 1 - query take 5hrs, 6hrs hell even 10hrs we don’t care because it once everyday, here we can use any query engine or database we have Athena, Redshift, Postgres, MongoDb it doesn’t matter.</p>
+<p>In case 1 - query take 5hrs, 6hrs hell even 10hrs we don’t care because it runs once everyday, here we can use any query engine or database we have Athena, Redshift, Postgres, MongoDb it doesn’t matter.</p>
 <p>In case 2 - query has to execute within milliseconds. Here something different is needed we can’t rely on let say redshift to quickly query PB scale data and give result in milliseconds.</p>
-<p>Let me introduce <code>Apache Pinot</code> - Realtime distributed OLAP datastore, designed to answer OLAP queries with low latency</p>
-<p><img src="images/pinot.png" class="img-fluid"></p>
-<p>How do they do it to make any read operation fast we have to index the data, if we slice and dice the data to maintain 100’s of indexes across different dimension we can make the read of different queries faster.</p>
+<p>Let me introduce <code>Apache Pinot</code> - Realtime distributed OLAP datastore, designed to answer OLAP queries with low latency.</p>
 <p>Apache Pinot allows RealTime user facing analytics.</p>
-<p>Once the query is executed use any data visualization tool to visualize the data we have many options Apache SuperSet, Amazon QuickSight, Tableau</p>
+<p><img src="images/pinot.png" class="img-fluid"></p>
+<p>How do they do it? To make any read operation fast we have to index the data, if we slice and dice the data to maintain 100’s of indexes across different dimension we can make the read of different queries faster.</p>
+<p>Once the query is executed use any data visualization tool to visualize the data we have many options Apache SuperSet, Amazon QuickSight, Tableau.</p>
 <p><img src="images/superset.jpg" class="img-fluid"></p>
 </section>
 <section id="job-scheduling" class="level2">
 <h2 class="anchored" data-anchor-id="job-scheduling">Job Scheduling</h2>
-<p>How do we schedule our ETL(Extract Transform Load) jobs, we saw how spark can do batch processing, superset can do visualization for us but the question now is how do we schedule the job based on conditions, triggers and at particular time.</p>
+<p>How do we schedule our ETL(Extract Transform Load) jobs, we saw how spark can do batch processing, superset can do visualization for us. Last piece of the puzzle is how do we schedule the job based on conditions, triggers and at a particular time.</p>
 <p><code>Apache Airflow</code> is a full blown platform for orchestrating, scheduling, and monitoring complex workflows of data pipelines, ETL (Extract, Transform, Load) processes, and other data-related tasks. It provides a framework for defining, scheduling, and executing workflows as a directed acyclic graph (DAG), making it a powerful tool for automating and managing data workflows.</p>
-<p>It also comes with parallel and distributed execution engine, error handling capabilites, monitoring and logging.</p>
+<p>It also comes with parallel and distributed execution engine, error handling capabilities, monitoring and logging.</p>
 <p>Apache Airflow can be said as Cron on steroids.</p>
 <p><img src="images/airflow.png" class="img-fluid"></p>
 </section>
-<section id="bakup-and-archival-of-data" class="level2">
-<h2 class="anchored" data-anchor-id="bakup-and-archival-of-data">Bakup and Archival of Data</h2>
+<section id="backup-and-archival-of-data" class="level2">
+<h2 class="anchored" data-anchor-id="backup-and-archival-of-data">Backup and Archival of Data</h2>
 <p>Backup and Archival are also important parts of Data Management</p>
 <p><code>AWS Backup</code> is a centralized, fully managed backup service that streamlines the process of protecting your data across various AWS resources, including EC2 instances, RDS databases, EBS volumes, and more.</p>
 <p><code>AWS S3 Glacier</code> complements AWS Backup by offering a cost-effective solution for long-term data archiving. Here are the key features of AWS S3 Glacier:</p>

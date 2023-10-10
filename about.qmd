@@ -2,6 +2,8 @@
 title: Aman Pandey
 #subtitle:
 # description:  
+
+back-to-top-navigation: false
 about:
   id: about-section
   image: profile.jpg
@@ -73,17 +75,19 @@ Data Scientist with expertise in **Natural Language Processing** and **Recommend
 **AI Specalities** | NLP | NLG | NLU | Recommendation Systems | Computational Linguistics | Information Extraction
 
 # Non Job Pursuits
-**Member in Free Software Movement Karnataka(FSMK)** | Android Teacher for 7 days Bootcamp | Organized bootcamps in multiple colleges | Bringing Awarness and knowledge about the Open Eco-System to the society | Events and Conferences representing FSMK | 2015 - 2020
+**Member in Free Software Movement Karnataka(FSMK 2015 - 2020)** | Android Teacher for 7 days Bootcamp | Organized bootcamps in multiple colleges | Bringing Awarness and knowledge about the Open Eco-System to the society | Events and Conferences representing FSMK | 
 
-**President of College GNU/Linux group(Toggle)** | Organizing Events and Workshops in college | 2018-2019
+**President of College GNU/Linux group(Toggle 2018-2019)** | Organizing Events and Workshops in college | 
 
 **Entirety.ai(Feb 2019 - Mar 2021)** | Discuss on current trend and Hands on Experience in Deep Learning | Event Ambassador for Pie and AI Meetup Bangalore | Talks and Meetups in Bangalore | collaborating with other meetup group and companies like Nvidia and Amazon
 
-**Adjunct faculty at Praxis Buisness School** | Teaching Deep learning and Model Deployment to PG students | June 2019 - July 2021
+**Adjunct faculty at Praxis Buisness School (June 2019 - July 2021)** | Teaching Deep learning and Model Deployment to PG students | 
 
 **Haskell Study Group (2022)** | Organized study group consisting of 50 members from world wide.| Learned Haskell and FP together 
 
-**Pycon** | Poster presentation | CFP Reviewer
+**Pycon** | Poster presentation(2019) | CFP Reviewer (2023) | CFP Mentorship (2023)
+
+**100 Hour Certification Course in Astronomy and Astrophysics (2023 - Present)** | M.P Birla Institute of Fundamental Research
 :::
 
 
