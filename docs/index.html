@@ -74,7 +74,8 @@ ul.task-list li input[type="checkbox"] {
 
     const options = {
       valueNames: ['listing-image','listing-date','listing-title','listing-description','listing-categories','listing-author','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
+      page: 10,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
       searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
@@ -278,6 +279,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./posts/Python/parallel_processing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Parallelism and Concurrency</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./posts/Python/profiling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Memory and Time Profiling</span></a>
   </div>
@@ -293,7 +300,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(10)</span></div><div class="category" data-category="AWS">AWS <span class="quarto-category-count">(1)</span></div><div class="category" data-category="attention">attention <span class="quarto-category-count">(1)</span></div><div class="category" data-category="big-data">big-data <span class="quarto-category-count">(1)</span></div><div class="category" data-category="convolution">convolution <span class="quarto-category-count">(1)</span></div><div class="category" data-category="deep-learning">deep-learning <span class="quarto-category-count">(7)</span></div><div class="category" data-category="machine-learning">machine-learning <span class="quarto-category-count">(2)</span></div><div class="category" data-category="metrics">metrics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="optimization">optimization <span class="quarto-category-count">(1)</span></div><div class="category" data-category="python">python <span class="quarto-category-count">(2)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(11)</span></div><div class="category" data-category="AWS">AWS <span class="quarto-category-count">(1)</span></div><div class="category" data-category="attention">attention <span class="quarto-category-count">(1)</span></div><div class="category" data-category="big-data">big-data <span class="quarto-category-count">(1)</span></div><div class="category" data-category="convolution">convolution <span class="quarto-category-count">(1)</span></div><div class="category" data-category="deep-learning">deep-learning <span class="quarto-category-count">(7)</span></div><div class="category" data-category="machine-learning">machine-learning <span class="quarto-category-count">(2)</span></div><div class="category" data-category="metrics">metrics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="optimization">optimization <span class="quarto-category-count">(1)</span></div><div class="category" data-category="python">python <span class="quarto-category-count">(3)</span></div></div></div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
@@ -346,7 +353,45 @@ ul.task-list li input[type="checkbox"] {
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-left" data-index="0" data-categories="big-data,AWS" data-listing-date-sort="1696530600000" data-listing-file-modified-sort="1696966185071" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12">
+<div class="quarto-post image-left" data-index="0" data-categories="python" data-listing-date-sort="1697308200000" data-listing-file-modified-sort="1697384075393" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12">
+<div class="thumbnail">
+<p><a href="./posts/Python/parallel_processing.html"> <p class="card-img-top"><img src="posts/Python/images/core_socket.gif"  class="thumbnail-image card-img"/></p> </a></p>
+</div>
+<div class="body">
+<a href="./posts/Python/parallel_processing.html">
+<h3 class="no-anchor listing-title">
+Parallelism and Concurrency
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('python'); return false;">
+python
+</div>
+</div>
+<a href="./posts/Python/parallel_processing.html">
+<div class="listing-description">
+<p>We discuss the Theoretical Foundation of Parallelism and Concurrency and some low level primitives. Discuss how it is done on Python and compare it with other programming language.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/Python/parallel_processing.html">
+<div class="listing-date">
+Oct 15, 2023
+</div>
+<div class="listing-author">
+Aman Pandey
+</div>
+<div class="listing-reading-time">
+12 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-left" data-index="1" data-categories="big-data,AWS" data-listing-date-sort="1696530600000" data-listing-file-modified-sort="1696966185071" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12">
 <div class="thumbnail">
 <p><a href="./posts/Python/big_data_processing.html"> <p class="card-img-top"><img src="posts/Python/images/kafka_keyword_diagram.svg"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -387,7 +432,7 @@ Aman Pandey
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="1" data-categories="machine-learning,deep-learning" data-listing-date-sort="1694802600000" data-listing-file-modified-sort="1695555599526" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8">
+<div class="quarto-post image-left" data-index="2" data-categories="machine-learning,deep-learning" data-listing-date-sort="1694802600000" data-listing-file-modified-sort="1695555599526" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8">
 <div class="thumbnail">
 <p><a href="./posts/Machine Learning/model_in_production.html"> <p class="card-img-top"><img src="posts/Machine Learning/images/data-registry.png"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -428,7 +473,7 @@ Aman Pandey
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="2" data-categories="deep-learning,attention" data-listing-date-sort="1687372200000" data-listing-file-modified-sort="1695556202518" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11">
+<div class="quarto-post image-left" data-index="3" data-categories="deep-learning,attention" data-listing-date-sort="1687372200000" data-listing-file-modified-sort="1695556202518" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11">
 <div class="thumbnail">
 <p><a href="./posts/Machine Learning/Attention.html"> <p class="card-img-top"><img src="https://lilianweng.github.io/lil-log/assets/images/encoder-decoder-attention.png"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -469,7 +514,7 @@ Aman Pandey
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="3" data-categories="deep-learning" data-listing-date-sort="1679250600000" data-listing-file-modified-sort="1695580971171" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16">
+<div class="quarto-post image-left" data-index="4" data-categories="deep-learning" data-listing-date-sort="1679250600000" data-listing-file-modified-sort="1695580971171" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16">
 <div class="thumbnail">
 <p><a href="./posts/Machine Learning/Regularization.html"> <p class="card-img-top"><img src="posts/Machine Learning/images/dropout.gif"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -507,7 +552,7 @@ Aman Pandey
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="4" data-categories="deep-learning,convolution" data-listing-date-sort="1667845800000" data-listing-file-modified-sort="1695909748778" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17">
+<div class="quarto-post image-left" data-index="5" data-categories="deep-learning,convolution" data-listing-date-sort="1667845800000" data-listing-file-modified-sort="1695909748778" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17">
 <div class="thumbnail">
 <p><a href="./posts/Convolutions/convolution.html"> <p class="card-img-top"><img src="posts/Convolutions/images/ffnvscnn.PNG"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -548,7 +593,7 @@ Aman Pandey
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="5" data-categories="deep-learning,optimization" data-listing-date-sort="1667500200000" data-listing-file-modified-sort="1695909730367" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9">
+<div class="quarto-post image-left" data-index="6" data-categories="deep-learning,optimization" data-listing-date-sort="1667500200000" data-listing-file-modified-sort="1695909730367" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9">
 <div class="thumbnail">
 <p><a href="./posts/Optimization/optimisers_in_dl.html"> <p class="card-img-top"><img src="posts/Optimization/optimisers_in_dl_files/figure-html/cell-3-output-1.png"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -589,7 +634,7 @@ Aman Pandey
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="6" data-categories="machine-learning,deep-learning,metrics" data-listing-date-sort="1653157800000" data-listing-file-modified-sort="1695556258855" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17">
+<div class="quarto-post image-left" data-index="7" data-categories="machine-learning,deep-learning,metrics" data-listing-date-sort="1653157800000" data-listing-file-modified-sort="1695556258855" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17">
 <div class="thumbnail">
 <p><a href="./posts/Machine Learning/metrics.html"> <p class="card-img-top"><img src="posts/Machine Learning/images/confusionmatrix.png" title="confusion matrix" class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -633,7 +678,7 @@ Aman Pandey
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="7" data-categories="deep-learning" data-listing-date-sort="1624473000000" data-listing-file-modified-sort="1695581638310" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16">
+<div class="quarto-post image-left" data-index="8" data-categories="deep-learning" data-listing-date-sort="1624473000000" data-listing-file-modified-sort="1695581638310" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16">
 <div class="thumbnail">
 <p><a href="./posts/Machine Learning/Weight_Initializer.html"> <p class="card-img-top"><img src="posts/Machine Learning/images/neuron_weights.png"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -671,7 +716,7 @@ Aman Pandey
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="8" data-categories="python" data-listing-date-sort="1621621800000" data-listing-file-modified-sort="1695909712568" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8">
+<div class="quarto-post image-left" data-index="9" data-categories="python" data-listing-date-sort="1621621800000" data-listing-file-modified-sort="1695909712568" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8">
 <div class="thumbnail">
 <p><a href="./posts/Python/profiling.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -709,7 +754,7 @@ Aman Pandey
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="9" data-categories="python" data-listing-date-sort="1604428200000" data-listing-file-modified-sort="1696528551730" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
+<div class="quarto-post image-left" data-index="10" data-categories="python" data-listing-date-sort="1604428200000" data-listing-file-modified-sort="1696528551730" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
 <div class="thumbnail">
 <p><a href="./posts/Python/functional_programming.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -751,6 +796,9 @@ Aman Pandey
 <div class="listing-no-matching d-none">
 No matching items
 </div>
+<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
 </div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aman Pandey">
-<meta name="dcterms.date" content="2021-05-22">
-<meta name="description" content="Let’s save some time and memory, coz both are expensive.">
+<meta name="dcterms.date" content="2023-10-15">
+<meta name="description" content="We discuss the Theoretical Foundation of Parallelism and Concurrency and some low level primitives. Discuss how it is done on Python and compare it with other programming language.">
 
-<title>Aman Pandey | Data Scientist - Memory and Time Profiling</title>
+<title>Aman Pandey | Data Scientist - Parallelism and Concurrency</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,40 +23,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -67,7 +33,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../posts/Python/parallel_processing.html" rel="prev">
+<link href="../../posts/Python/profiling.html" rel="next">
+<link href="../../posts/Python/functional_programming.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -103,8 +70,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Aman Pandey | Data Scientist - Memory and Time Profiling">
-<meta property="og:description" content="Let’s save some time and memory, coz both are expensive.">
+<meta property="og:title" content="Aman Pandey | Data Scientist - Parallelism and Concurrency">
+<meta property="og:description" content="We discuss the Theoretical Foundation of Parallelism and Concurrency and some low level primitives. Discuss how it is done on Python and compare it with other programming language.">
+<meta property="og:image" content="https://aman5319.github.io/portfolio/posts/Python/images/core_socket.gif">
 <meta property="og:site-name" content="Aman Pandey | Data Scientist">
 </head>
 
@@ -164,7 +132,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../posts/Python/big_data_processing.html">Python</a></li><li class="breadcrumb-item"><a href="../../posts/Python/profiling.html">Memory and Time Profiling</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../posts/Python/big_data_processing.html">Python</a></li><li class="breadcrumb-item"><a href="../../posts/Python/parallel_processing.html">Parallelism and Concurrency</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -174,10 +142,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Memory and Time Profiling</h1>
+      <h1 class="title">Parallelism and Concurrency</h1>
                   <div>
         <div class="description">
-          Let’s save some time and memory, coz both are expensive.
+          We discuss the Theoretical Foundation of Parallelism and Concurrency and some low level primitives. Discuss how it is done on Python and compare it with other programming language.
         </div>
       </div>
                           <div class="quarto-categories">
@@ -199,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 22, 2021</p>
+        <p class="date">October 15, 2023</p>
       </div>
     </div>
     
@@ -319,13 +287,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/Python/parallel_processing.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/Python/parallel_processing.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Parallelism and Concurrency</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/Python/profiling.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../posts/Python/profiling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Memory and Time Profiling</span></a>
   </div>
 </li>
@@ -343,16 +311,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#premature-optimization-is-evil." id="toc-premature-optimization-is-evil." class="nav-link" data-scroll-target="#premature-optimization-is-evil.">Premature Optimization is evil.</a></li>
-  <li><a href="#magic-functions-and-tools" id="toc-magic-functions-and-tools" class="nav-link" data-scroll-target="#magic-functions-and-tools">Magic functions and tools</a></li>
-  <li><a href="#timeit" id="toc-timeit" class="nav-link" data-scroll-target="#timeit">Timeit</a></li>
-  <li><a href="#timing-profiling-with-lprun" id="toc-timing-profiling-with-lprun" class="nav-link" data-scroll-target="#timing-profiling-with-lprun">Timing Profiling with Lprun</a></li>
-  <li><a href="#memory-profiling-with-mprun" id="toc-memory-profiling-with-mprun" class="nav-link" data-scroll-target="#memory-profiling-with-mprun">Memory Profiling with mprun</a></li>
-  <li><a href="#memory-leakage-using-pympler" id="toc-memory-leakage-using-pympler" class="nav-link" data-scroll-target="#memory-leakage-using-pympler">Memory Leakage using pympler</a></li>
-  <li><a href="#read-more" id="toc-read-more" class="nav-link" data-scroll-target="#read-more">Read More</a></li>
+  <li><a href="#socket-processor-and-core" id="toc-socket-processor-and-core" class="nav-link active" data-scroll-target="#socket-processor-and-core">Socket, Processor and Core</a></li>
+  <li><a href="#run-type-and-task-type" id="toc-run-type-and-task-type" class="nav-link" data-scroll-target="#run-type-and-task-type">Run Type and Task Type</a>
+  <ul class="collapse">
+  <li><a href="#run-type" id="toc-run-type" class="nav-link" data-scroll-target="#run-type">Run Type</a></li>
+  <li><a href="#task-type" id="toc-task-type" class="nav-link" data-scroll-target="#task-type">Task Type</a></li>
+  <li><a href="#execution-type" id="toc-execution-type" class="nav-link" data-scroll-target="#execution-type">Execution Type</a></li>
+  </ul></li>
+  <li><a href="#process-and-threads" id="toc-process-and-threads" class="nav-link" data-scroll-target="#process-and-threads">Process and Threads</a></li>
+  <li><a href="#parallel-processing" id="toc-parallel-processing" class="nav-link" data-scroll-target="#parallel-processing">Parallel Processing</a></li>
+  <li><a href="#concurrency" id="toc-concurrency" class="nav-link" data-scroll-target="#concurrency">Concurrency</a></li>
+  <li><a href="#thank-you." id="toc-thank-you." class="nav-link" data-scroll-target="#thank-you.">Thank you.</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/aman5319/portfolio/blob/main/posts/Python/profiling.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/aman5319/portfolio/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/aman5319/portfolio/edit/main/posts/Python/parallel_processing.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/aman5319/portfolio/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -360,191 +331,129 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>Every Developer desires to make their code optimzied and efficient. A dream where the developers want that their code to execute faster, with no memory leakage on the production system.</p>
-<p>Let’s make this dream true…</p>
-<p>Creating Data-processing pipeline, writing new algorithms, Deploying Machine Learning models to server million users, Scientific calculation in astropyhsics, these are few areas where when we write code we want to profile every single line of code for two things 1. The amount of time it is taking to execute where our goal is to reduce the time taken a.k.a Time Complexity. 2. The memory consumption for execution of that code where our goal is to reduce the memory usage a.k.a Space complexity.</p>
-<p>There always a trade-off between both of them some time we are fine with memory consumption but not with the time it takes and vice-versa based on the needs we check for the trade-off, but the best system is where we can reduce both space and time complexity.</p>
+<section id="socket-processor-and-core" class="level2">
+<h2 class="anchored" data-anchor-id="socket-processor-and-core">Socket, Processor and Core</h2>
+<p>Let’s start from the bottom we have 3 things <code>Socket</code>, <code>Processor</code>, <code>Core</code>.</p>
+<p>Each socket holds 1 or more Processor and each processor can hold 1 or more cores.</p>
+<p><img src="images/core_socket.gif" class="img-fluid"></p>
+<p>Run command <code>lscpu</code> on a Linux machine to see these values for your own system.</p>
+<p>Socket -&gt; It Connects processor to motherboard.</p>
+<p>Processor -&gt; As a whole we generally refer it as place where all calculation happens. Just to be specific we are talking about Micro-Processors and here we use both the terms interchangeably.</p>
+<p>Cores -&gt; They are units which do all the processing. Each one of them has their own set of registers, instruction set and operate individually.</p>
+<p><br></p>
+<p><strong>A very important point to note here is at one give point of time t one and only 1 task can be executed.</strong></p>
+<p><br></p>
+<p>So when there are n cores only n tasks can be executed all together.</p>
+<p>For an analogy in Sprint event if there are 5 lanes on the track then only 5 people can run together.</p>
 </section>
-<section id="premature-optimization-is-evil." class="level1">
-<h1>Premature Optimization is evil.</h1>
-<p>Early in developing Algorithms we should think less about these things because it can be counter-productive which can lead to premature optimization and its the root cause of all evil.</p>
-<p>So first make it work then optimize it.</p>
-</section>
-<section id="magic-functions-and-tools" class="level1">
-<h1>Magic functions and tools</h1>
-<p>While most of the data science experiments starts in Ipython Notebook. The Ipython enviroment gives us some magic functions which can be utilized to profile our code.</p>
+<section id="run-type-and-task-type" class="level2">
+<h2 class="anchored" data-anchor-id="run-type-and-task-type">Run Type and Task Type</h2>
+<p>Let’s go a little deeper and inspect what is inside core but before there are few terminologies to understand.</p>
+<section id="run-type" class="level3">
+<h3 class="anchored" data-anchor-id="run-type">Run Type</h3>
 <ol type="1">
-<li><a href="https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit">%%timeit</a>: Measuring time taken for the codeblock to run</li>
-<li><a href="https://github.com/pyutils/line_profiler">%lprun</a>: Run code with the line-by-line profiler</li>
-<li><a href="https://github.com/pythonprofilers/memory_profiler">%mprun</a>: Run code with the line-by-line memory profiler</li>
+<li><code>Parallelism</code> - A given point of time t, n tasks are getting executed simultaneously by n processing units i.e 10 people are painting 10 walls independently.</li>
+<li><code>Concurrency</code>- A given point of time t 1 task is getting executing by 1 processing unit from a pool of tasks p.&nbsp;i.e a person cooking 5 dish at a time in a way that while his attention is on dish1, progress is happening on other dishes in background and when the person look at dish3 still work is going on on other four dishes.</li>
 </ol>
-<p>For Tracing Memory Leakage we can use <a href="https://pythonhosted.org/Pympler/index.html">Pympler</a>.</p>
-<div class="cell" data-execution_count="1">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
 </section>
-<section id="timeit" class="level1">
-<h1>Timeit</h1>
-<p>The usage of timeit is very simple just put the magic method on the top of the cell and it will calculate the time taken to execute the cell.</p>
-<p>Let’s compare vectorized vs non-vectorized version of numpy code.</p>
-<div class="cell" data-execution_count="2">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>number <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell" data-execution_count="3">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>timeit</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> number:</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    total<span class="op">+=</span>i</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>3.11 ms ± 86.9 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="4">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>timeit</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>number.<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>14.9 µs ± 74.3 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)</code></pre>
-</div>
-</div>
-<p>The difference in the execution time is evident one.</p>
-<p>Non-vectorized code in Milliseconds, 10<sup>-3</sup>.<br> Vectorized code in Microseconds, 10<sup>-6</sup>.</p>
-<p>Vectorized code is the winner here.</p>
+<section id="task-type" class="level3">
+<h3 class="anchored" data-anchor-id="task-type">Task Type</h3>
+<ol type="1">
+<li><code>Compute Bound</code> - Any type of task where we have to do lot mathematical computation, that is compute bound task, i.e if we do matrix multiplication of 2 big matrixes, the processing unit is doing multiplication and addition one after another without waiting, to pull out an analogy imagine water coming out of a tap, non stop.</li>
+<li><code>IO Bound</code> - Input/Output tasks these kinds of tasks are where computer is waiting to either receive an input or an output. for example when we are downloading some file, doing database call, writing data to a file. Internally computer waiting for the result to come to further process and while it is waiting for the database to give a response it is not sitting idle and simply waiting, it prefers to go do something else. To pull out an analogy rather than waiting for the bucket to fill up from the tap let’s go and do something else until it fills.</li>
+</ol>
+<p>Now let’s take an example of a system where we have 3 processing units</p>
+<p><img src="images/pvsc.png" class="img-fluid"></p>
+<p>If the task in hand is compute based and if can break it in 3 independent sub-tasks then we can process them in parallel.</p>
+<p>If the task is IO Bound i.e I have to do 10 independent db calls then using just 1 processing unit I can process these concurrently. This is because the bottleneck in this scenario is typically the time it takes to wait for the database responses, not the processing power of the CPU.</p>
+<p>One question which can be raised here is 2 processing units are idle here why not execute parallel concurrent where 10 tasks are divided into 3 processing units in parallel and within each unit concurrent then I must say concurrency is way much powerful not only 10 but we can doing 100 or 1000 concurrent db calls. Parallel concurrent makes sense only in very specific use cases.</p>
+<p>So it is very clear now</p>
+<p>Compute Bound task -&gt; Parallelism <br> IO Bound Task -&gt; Concurrency</p>
 </section>
-<section id="timing-profiling-with-lprun" class="level1">
-<h1>Timing Profiling with Lprun</h1>
-<p>line_profiler is a package for doing line-by-line timing profiling of functions.</p>
-<p>Install using</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install line_profiler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Python provides a builtin profiler, but we will be using Line profiler for reasons stated below.</p>
-<p>The current profiling tools supported in Python 2.7 and later only time function calls. This is a good first step for locating hotspots in one’s program and is frequently all one needs to do to optimize the program. However, sometimes the cause of the hotspot is actually a single line in the function, and that line may not be obvious from just reading the source code. These cases are particularly frequent in scientific computing. Functions tend to be larger (sometimes because of legitimate algorithmic complexity, sometimes because the programmer is still trying to write FORTRAN code), and a single statement without function calls can trigger lots of computation when using libraries like numpy. cProfile only times explicit function calls, not special methods called because of syntax. Consequently, a relatively slow numpy operation on large arrays like this,</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>a[large_index_array] <span class="op">=</span> some_other_large_array</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>is a hotspot that never gets broken out by cProfile because there is no explicit function call in that statement.</p>
-<p>LineProfiler can be given functions to profile, and it will time the execution of each individual line inside those functions. In a typical workflow, one only cares about line timings of a few functions because wading through the results of timing every single line of code would be overwhelming. However, LineProfiler does need to be explicitly told what functions to profile.</p>
-<div class="cell" data-execution_count="5">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># once installed we have load the extension</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext line_profiler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell" data-execution_count="6">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> some_operation(x):</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> x <span class="op">**</span><span class="dv">2</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> x <span class="op">+</span><span class="dv">2</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.concatenate([x,x,x],axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Now the <code>%lprun</code> command will do a line-by-line profiling of any function–in this case, we need to tell it explicitly which functions we’re interested in profiling:</p>
-<div class="cell" data-execution_count="7">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>lprun <span class="op">-</span>f some_operation some_operation(np.random.randn(<span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<pre><code>Timer unit: 1e-06 s
-
-Total time: 7.7e-05 s
-File: &lt;ipython-input-30-80aca4fcfa96&gt;
-Function: some_operation at line 1
-
-Line #      Hits         Time  Per Hit   % Time  Line Contents
-==============================================================
-     1                                           def some_operation(x):
-     2         1         24.0     24.0     31.2      x = x **2
-     3         1         22.0     22.0     28.6      x = x +2
-     4         1         30.0     30.0     39.0      x = np.concatenate([x,x,x],axis=0)
-     5         1          1.0      1.0      1.3      return x
-</code></pre>
-<p>The source code of the function is printed with the timing information for each line. There are six columns of information.</p>
-<ul>
-<li>Line : The line number in the file.</li>
-<li>Hits: The number of times that line was executed.</li>
-<li>Time: The total amount of time spent executing the line in the timer’s units. In the header information before the tables, you will see a line “Timer unit:” giving the conversion factor to seconds. It may be different on different systems.</li>
-<li>Per Hit: The average amount of time spent executing the line once in the timer’s units.</li>
-<li>% Time: The percentage of time spent on that line relative to the total amount of recorded time spent in the function.</li>
-<li>Line Contents: The actual source code. Note that this is always read from disk when the formatted results are viewed, not when the code was executed. If you have edited the file in the meantime, the lines will not match up, and the formatter may not even be able to locate the function for display.</li>
-</ul>
+<section id="execution-type" class="level3">
+<h3 class="anchored" data-anchor-id="execution-type">Execution Type</h3>
+<p>Synchronous and asynchronous execution are two different ways of managing and controlling the flow of tasks or operations in a program or system:</p>
+<ol type="1">
+<li><code>Synchronous</code> - In synchronous execution, tasks are executed one after the other in a sequential manner. Each task must complete before the next one starts. Hence we call this type execution Blocking. it typically blocks the execution of the entire program or thread. In other words, the program waits for a task to finish before moving on to the next one. For Example- Consider a simple synchronous function that reads a file line by line and processes each line. It reads one line, processes it, and then moves on to the next line, blocking the program until the file processing is complete.</li>
+<li><code>Asynchronous</code> - In asynchronous execution, tasks can overlap and run concurrently. A task can start, and while it’s waiting for a resource (e.g., I/O operation, network request), the program can continue executing other tasks without waiting for the first task to complete. Hence we call this type execution Non-Blocking. When a task initiates an operation that might take time (e.g., waiting for a network response), it doesn’t block the entire program. Instead, it allows other tasks to proceed.</li>
+</ol>
 </section>
-<section id="memory-profiling-with-mprun" class="level1">
-<h1>Memory Profiling with mprun</h1>
-<p>This is a python module for monitoring memory consumption of a process as well as line-by-line analysis of memory consumption for python programs.</p>
-<p>Install</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> memory_profiler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The only issue mprun doesn’t work on notebook rather on a python file so we will write the code in notebook <code>%%file</code> magic function we will write that into a file and execute mprun on it</p>
-<div class="cell" data-execution_count="8">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext memory_profiler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell" data-execution_count="9">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span><span class="bu">file</span> mprun.py</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> some_operation(x):</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> x <span class="op">**</span><span class="dv">2</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> y <span class="op">+</span><span class="dv">2</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> np.concatenate([x,y,z],axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Overwriting mprun.py</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="10">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mprun <span class="im">import</span> some_operation</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>mprun <span class="op">-</span>f some_operation some_operation(np.random.randn(<span class="dv">100000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code></code></pre>
-</div>
-</div>
-<pre><code>Line #    Mem usage    Increment   Line Contents
-================================================
-     2     62.5 MiB     62.5 MiB   def some_operation(x):
-     3     63.3 MiB      0.8 MiB       y = x **2
-     4     64.0 MiB      0.8 MiB       z = y +2
-     5     66.3 MiB      2.3 MiB       result = np.concatenate([x,y,z],axis=0)
-     6     66.3 MiB      0.0 MiB       return result</code></pre>
-<ul>
-<li>The first column represents the line number of the code that has been profiled.</li>
-<li>The second column (Mem usage) the memory usage of the Python interpreter after that line has been executed.</li>
-<li>The third column (Increment) represents the difference in memory of the current line with respect to the last one.</li>
-<li>The last column (Line Contents) prints the code that has been profiled.</li>
-</ul>
 </section>
-<section id="memory-leakage-using-pympler" class="level1">
-<h1>Memory Leakage using pympler</h1>
-<p>Pympler is a development tool to measure, monitor and analyze the memory behavior of Python objects in a running Python application.</p>
-<p>By pympling a Python application, detailed insight in the size and the lifetime of Python objects can be obtained. Undesirable or unexpected runtime behavior like memory bloat and other “pymples” can easily be identified.</p>
-<p>Pympler integrates three previously separate modules into a single, comprehensive profiling tool. The asizeof module provides basic size information for one or several Python objects, module muppy is used for on-line monitoring of a Python application and module Class Tracker provides off-line analysis of the lifetime of selected Python objects.</p>
-<p>A web profiling frontend exposes process statistics, garbage visualisation and class tracker statistics.</p>
-<p><a href="https://pythonhosted.org/Pympler/index.html#table-of-content">Hit table of content for tutorial</a></p>
+<section id="process-and-threads" class="level2">
+<h2 class="anchored" data-anchor-id="process-and-threads">Process and Threads</h2>
+<p>Now what is inside a core answer is <code>Threads</code>. Generally each core has 2 threads and inside the core actual execution of a task happens by the thread.</p>
+<p>Now if till now everything has been crystal clear it should be an easy answer that even if there are two threads inside a core at a given point of time only 1 thread executes.</p>
+<p>So what these threads do to execute together they execute concurrently by doing a context switch.</p>
+<p><img src="images/context-switching.png" class="img-fluid"></p>
+<p>During the context switch the all the information about the threads has to be saved and reloaded and yes we spend cpu cycles doing that. Also the context switch depends on lot many things like the priority of the task, kernel scheduling policies. Often it happens in fixed interval of time of few milliseconds.</p>
+<p>When it comes to actual implementation of things there are many ways of doing execution, the current way of doing things is using Process - Thread Model</p>
+<p>Processes are often described as containers of threads because they provide a high-level organizational structure for managing multiple threads of execution within an operating system.</p>
+<p><img src="images/process_thread.jpg" class="img-fluid"></p>
+<ol type="1">
+<li><p><code>Process</code> -</p>
+<ol type="1">
+<li><strong>Independence:</strong> Processes are independent execution units. Each process has its own memory space, code, data, and system resources. This isolation ensures that one process cannot directly access or interfere with the memory of another process.</li>
+<li><strong>Communication:</strong> Inter-process communication (IPC) is more challenging and typically involves mechanisms like message passing or using shared resources (e.g., files, pipes, sockets). IPC can be more complex to implement.</li>
+<li><strong>Resource Overhead:</strong> Processes have a higher resource overhead compared to threads because they require separate memory and resources. Creating and managing processes is generally more resource-intensive.</li>
+<li><strong>Fault Isolation:</strong> Due to their independence, if one process crashes or experiences a fault, it doesn’t necessarily affect other processes. Processes are good for building robust systems.</li>
+</ol></li>
+<li><p><code>Threads</code> -</p>
+<ol type="1">
+<li><strong>Shared Resources:</strong> Threads within the same process share the same memory space, code, and data. They can communicate and exchange data more easily.</li>
+<li><strong>Communication:</strong> Threads can communicate using shared memory, making IPC simpler compared to processes. However, shared memory requires careful synchronization to avoid data conflicts.</li>
+<li><strong>Resource Overhead:</strong> Threads have lower resource overhead than processes since they share resources with other threads in the same process. Creating and managing threads is less resource-intensive.</li>
+<li><strong>Fault Tolerance:</strong> A crash or error in one thread can potentially affect other threads within the same process since they share resources. Careful programming and synchronization mechanisms are required to avoid issues like race conditions and deadlocks.</li>
+</ol></li>
+</ol>
+<p>In summary, processes provide stronger isolation but come with higher resource overhead, making them suitable for robustness and scalability across multiple processors or machines. Threads, on the other hand, share resources and memory, making them more lightweight and suitable for tasks that benefit from parallelism within a single process. The choice between processes and threads depends on the specific requirements of your application and the trade-offs you are willing to make in terms of resource usage and complexity.</p>
+<p>One important distinction that has to be made here is Physical Memory vs virtual Memory vs Logical Memory. Physical memory is the actual hardware where data resides, virtual memory is a technique used to extend the available memory beyond physical RAM, and logical memory is the addressing and organizational system used by programs to interact with memory, abstracting the underlying physical and virtual memory structures.</p>
+<p>Therefore, Process doesn’t exists in reality it is an abstraction created and managed using virtual memory. Threads are not.</p>
 </section>
-<section id="read-more" class="level1">
-<h1>Read More</h1>
-<p><a href="https://rushter.com/blog/python-memory-managment/">Understanding Python Memory Managment</a></p>
-<p><a href="https://rushter.com/blog/python-garbage-collector/">Python Garbage Collector</a></p>
+<section id="parallel-processing" class="level2">
+<h2 class="anchored" data-anchor-id="parallel-processing">Parallel Processing</h2>
+<p>Whenever we talk about parallel processing, how it is done is highly dependent on OS and programming language implementation. But the above explained core foundation remains same.</p>
+<p>Let’s take an example we have 4 cores with each core 2 threads hence total 8 threads.</p>
+<p>In Most of the programming languages like Java or C++ we have <code>Multi-Threading</code> model.</p>
+<p>So if we have 4 cores and 8 threads and we do multi-threading invoking 4 threads, ideally all should run parallel (Kernel does this scheduling hence ideally.)</p>
+<p>If we invoke 8 threads then only 4 can run in parallel other 4 we are doing context switch.</p>
+<p>what happens if we create 100 threads then also 4 will run in parallel other 96 will do context switch. Couple of points to not here</p>
+<ol type="1">
+<li>we would be wasting lot many cpu cycles in just doing context switch.</li>
+<li>CPU threads are not equivalent to threads we create in programming language.</li>
+<li>One benefit on doing multi-threading this way is all threads are controlled by single process hence they are light weight.</li>
+</ol>
+<p>Same in python if we see we have a <code>GIL</code> lock which doesn’t allow multiple threads to execute together in parallel. Only 1 threads executes and we just do context switch.</p>
+<p>One thing to note here is python threads are your cpu threads.</p>
+<p>Now question at hand is how to do Parallel Execution in python - <code>Multi-Processing</code> GIL works on thread level not on Process level.</p>
+<p>Now if we have 4 cores then we can invoke 4 processes which will run in parallel. why people don’t like multi-processing because of Resource Overhead.</p>
+<p>Hence we can see in Multi-Threading model single process controls multiple threads. In multi-Processing model we have multiple process running with in which threads are executing stuff.</p>
+<p>In python and in all other languages there is construct of Pool, when multi-threading or multiprocessing is involved, directly using those API are not recommended in most of the occasion we should be using it from the pool, <code>ProcessPoolExecutor</code> and <code>ThreadPoolExecutor</code> are two classes in python which facilitates this.</p>
+</section>
+<section id="concurrency" class="level2">
+<h2 class="anchored" data-anchor-id="concurrency">Concurrency</h2>
+<p>Till now we have seen for doing parallel programming, we use Multi-threading model in Other Language and Multi-processing in python. In python multi-threading model acts like concurrency because of GIL.</p>
+<p>Then a natural question is why to do concurrency using multi-threading model why not using single-thread model.</p>
+<p>In python we can see we have two ways of doing concurrency one using Multi-Threading Model other is <code>Async-Await</code> model.</p>
+<p>Now Async-Await does concurrent execution on a single thread. They perform Co-operative MultiTasking hence they are called co-routines.</p>
+<p><code>async</code> module in python let’s you do that. its working is quite simple and implementation is quite expressive and impressive in python.</p>
+<p><img src="images/event_loop.png" class="img-fluid"></p>
+<p>There are multiple components to the async module.</p>
+<ol type="1">
+<li><code>Task</code> - Tasks represent individual units of work that can be executed asynchronously.</li>
+<li><code>Event Loop</code> - The event loop schedules and coordinates the execution of these tasks, making it possible to run multiple tasks concurrently. So a event loop has a Queue where tasks are stored, a scheduler to schedule tasks according to their priority. The reason for calling it a loop because it is literally a infinite while loop which runs until there is no more task run.</li>
+<li><code>Event Handlers and Callbacks</code> - let’s pick a task t1 from the event loop we check whether we have the result if we have we process it otherwise we schedule the task t1 again to the event loop using callbacks to check again in the future. so we go to task t2 we do the same and keep repeating for all the tasks.</li>
+<li><code>selectors</code> : We are wasting lot of cpu cycles in just checking rather than checking one by one all the tasks in the event loop for result. we ask the OS which sockets are ready for reading and writing. Clearly, the OS has this information. When a new packet arrives on a network interface, the OS gets notified, decodes the packet, determines the socket to which the packet belongs and wakes up the processes that do a blocking read on that socket. But a process doesn’t need to read from the socket to get notified. It can use an I/O multiplexing mechanism such as select(), poll() or epoll() to tell the OS that it’s interested in reading from or writing to some socket. When the socket becomes ready, the OS will wake up such processes as well.</li>
+<li><code>Promises and Futures</code>: Promises in Javascript and futures in python are abstractions that represent the result of an asynchronous operation that may not be available immediately. They allow you to work with values that will be resolved in the future, and you can await them to retrieve the result when it’s ready.</li>
+</ol>
+<p>Two very python specific thing in asyncio are</p>
+<ol type="1">
+<li><code>Coroutines</code>: Coroutines are special types of functions that can be paused and resumed during their execution. They are defined using the async keyword and can be used to represent asynchronous tasks. Coroutines are a fundamental building block in async programming and allow for cooperative multitasking.</li>
+<li><code>async/await keyword</code> -&gt; A function with <code>def</code> is normal function a function with <code>async def</code> becomes a coroutine. await keyword can only be called inside an async function i.e coroutine. so whenever a co-routine encounters an await keyword it pauses the execution of the coroutine, and starts the executing asynchronous operations once all the operation is complete the coroutine execution resumes. Now here asynchronous operations are called awaitables and we are awaiting on an awaitable using await keyword.</li>
+</ol>
+<p>Hence we can conclude Threading is for working in parallel, and async is for waiting in parallel.</p>
+</section>
+<section id="thank-you." class="level2">
+<h2 class="anchored" data-anchor-id="thank-you.">Thank you.</h2>
 
 
 </section>
@@ -916,11 +825,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../posts/Python/parallel_processing.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Parallelism and Concurrency</span>
+      <a href="../../posts/Python/functional_programming.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Functional Programming capabilites of python</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../posts/Python/profiling.html" class="pagination-link">
+        <span class="nav-page-text">Memory and Time Profiling</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
