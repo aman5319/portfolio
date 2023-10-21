@@ -6,8 +6,6 @@ editor: visual
 categories: [deep-learning, attention]
 description: "A dive into different types of attention from it start with Bahdanau to Flash Attention."
 ---
-
-
 # Attention
 
 A way to selectively focus on important subset of input from the bigger set.
@@ -19,12 +17,15 @@ A way to selectively focus on important subset of input from the bigger set.
 $$
 (context\ Vector)\ c_t = \sum_{i=1}^{j} \alpha_{t,i}* h_i ;\ where\ \alpha\ is\ attention\ vector\ and\ h_i\ is\ RNN\ output\ at\ i\ time\ step
 $$
+
 $$
 \alpha_{t,i} = align(y_t,x_i)\ ;\ how\ well\ two\ words\ y_t\ and\ x_i\ are\ aligned
 $$
+
 $$
 E_t = v_t^T * tanh(W_a*S_{t-1} + U_a * h_i)\ ;\      W_a, U_a, v_t^T are\ all\ weight\ parameters
 $$
+
 $$
 \alpha_{t,i} = softmax(E_t)\ ;\ Location\ Based
 $$
@@ -329,21 +330,20 @@ Calculation of softmax over a large input.
 
 ![](images/flashattention.png)
 
-
 If we try to understand from this picture itself without looking the algo it says,
+
 1. HBM is storage is big. SRAM is smaller, hence the entire Q or K or V can't be loaded fully.
 2. Break it into smaller chunks of respectable size which can fit on SRAM. here d is no of heads and N is seq_len
 3. There is an outer loop which loads K,V in chunks to SRAM.
    1. There is an inner loop which loads Q in chunks to SRAM.
    2. The entire self-attention computation with softmax happens.
    3. The output block is written to HBM.
-   
+
 The IO complexity of flash attention -
 
 </br>
 
 ![](images/flashattention_complexity.png)
-
 
 They save softmax statistics over blocks which over many iteration approximates the correct softmax values which in their algo they call it tilling.
 
