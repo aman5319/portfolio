@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="Aman’s Blog - RNN Models">
 <meta property="og:description" content="We go through RNN, LSTM, GRU building intution and coding from scratch to understand forward and backward pass.">
-<meta property="og:image" content="https://aman5319.github.io/portfolio/posts/NLP/Images/rnn_arch.png">
+<meta property="og:image" content="https://aman5319.github.io/portfolio/posts/NLP/images/rnn_arch.png">
 <meta property="og:site-name" content="Aman's Blog">
 <meta property="og:image:height" content="478">
 <meta property="og:image:width" content="1026">
@@ -530,7 +530,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Many to Many</li>
 <li>Many to Many ( of different length)</li>
 </ol>
-<p><img src="Images/rnn_arch.png" class="img-fluid"></p>
+<p><img src="images/rnn_arch.png" class="img-fluid"></p>
 </section>
 <section id="recurrent-neural-network" class="level1">
 <h1>Recurrent Neural Network</h1>
@@ -541,8 +541,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Weight parameters (Waa) of hidden layers is shared at every time step.</li>
 <li>Weight parameters (Wya) of the output prediction is shared at every time step.</li>
 </ol>
-<p><img src="Images/rnn.png" class="img-fluid"></p>
-<p><img src="Images/rnn_computation_graph.PNG" class="img-fluid"></p>
+<p><img src="images/rnn.png" class="img-fluid"></p>
+<p><img src="images/rnn_computation_graph.PNG" class="img-fluid"></p>
 </section>
 <section id="time-to-code..--rnn-cell" class="level1">
 <h1>Time to Code.. -RNN Cell</h1>
@@ -591,7 +591,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a_next, yt_pred, cache</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p><img src="Images/rnn_2.PNG" class="img-fluid"></p>
+<p><img src="images/rnn_2.PNG" class="img-fluid"></p>
 <div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2019-06-17T14:18:20.668158Z&quot;,&quot;start_time&quot;:&quot;2019-06-17T14:18:20.656191Z&quot;}" data-execution_count="3">
 <details>
 <summary>Code</summary>
@@ -632,11 +632,11 @@ yt_pred.shape =  (10, 3)</code></pre>
 <section id="rnn-forward-pass" class="level1">
 <h1>RNN Forward Pass</h1>
 <p>You can see an RNN as the repetition of the cell you’ve just built. If your input sequence of data is carried over 10 time steps, then you will copy the RNN cell 10 times. Each cell takes as input the hidden state from the previous cell (<span class="math inline">\(a^{\langle t-1 \rangle}\)</span>) and the current time-step’s input data (<span class="math inline">\(x^{\langle t \rangle}\)</span>). It outputs a hidden state (<span class="math inline">\(a^{\langle t \rangle}\)</span>) and a prediction (<span class="math inline">\(y^{\langle t \rangle}\)</span>) for this time-step.</p>
-<p><img src="Images/rnn_forward.png" class="img-fluid"></p>
+<p><img src="images/rnn_forward.png" class="img-fluid"></p>
 </section>
 <section id="time-to-code-rnn-forward-pass" class="level1">
 <h1>Time to Code… RNN Forward Pass</h1>
-<p><img src="Images/rnn_fp.PNG" class="img-fluid"></p>
+<p><img src="images/rnn_fp.PNG" class="img-fluid"></p>
 <p><strong>What we will try to do:</strong> 1. Create a vector of zeros (<span class="math inline">\(a\)</span>) that will store all the hidden states computed by the RNN. 2. Initialize the “next” hidden state as <span class="math inline">\(a_0\)</span> (initial hidden state). 3. Start looping over each time step, your incremental index is <span class="math inline">\(t\)</span> : - Update the “next” hidden state and the cache by running <code>rnn_cell_forward</code> - Store the “next” hidden state in <span class="math inline">\(a\)</span> (<span class="math inline">\(t^{th}\)</span> position) - Store the prediction in y - Add the cache to the list of caches 4. Return <span class="math inline">\(a\)</span>, <span class="math inline">\(y\)</span> and caches</p>
 <div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2019-06-17T17:07:20.266731Z&quot;,&quot;start_time&quot;:&quot;2019-06-17T17:07:20.234314Z&quot;}" data-execution_count="18">
 <details>
@@ -790,7 +790,7 @@ len(caches) =  2</code></pre>
 </section>
 <section id="long-short-term-memory-lstm-network---generalized-version-of-gru" class="level1">
 <h1>Long Short-Term Memory (LSTM) network - Generalized version of GRU</h1>
-<p><img src="Images/lstm.png" class="img-fluid"></p>
+<p><img src="images/lstm.png" class="img-fluid"></p>
 <section id="forget-gate" class="level2">
 <h2 class="anchored" data-anchor-id="forget-gate">- Forget gate</h2>
 <p>For the sake of this illustration, lets assume we are reading words in a piece of text, and want use an LSTM to keep track of grammatical structures, such as whether the subject is singular or plural. If the subject changes from a singular word to a plural word, we need to find a way to get rid of our previously stored memory value of the singular/plural state. In an LSTM, the forget gate lets us do this:</p>
@@ -820,7 +820,7 @@ len(caches) =  2</code></pre>
 </section>
 <section id="time-to-code--lstm-cell" class="level1">
 <h1>Time to Code -LSTM Cell</h1>
-<p><img src="Images/lstm_cell.PNG" class="img-fluid"></p>
+<p><img src="images/lstm_cell.PNG" class="img-fluid"></p>
 <p><strong>What we will do</strong>: 1. Concatenate <span class="math inline">\(a^{\langle t-1 \rangle}\)</span> and <span class="math inline">\(x^{\langle t \rangle}\)</span> in a single matrix: <span class="math inline">\(concat = \begin{bmatrix} a^{\langle t-1 \rangle} \\ x^{\langle t \rangle} \end{bmatrix}\)</span> 2. Compute all the formulas 1-6. You can use <code>sigmoid()</code> (provided) and <code>np.tanh()</code>. 3. Compute the prediction <span class="math inline">\(y^{\langle t \rangle}\)</span>. You can use <code>softmax()</code> (provided).</p>
 <ol type="1">
 <li>A new variable C for memory cell</li>
@@ -954,7 +954,7 @@ len(cache) =  10</code></pre>
 </section>
 <section id="lstm-forward-pass" class="level1">
 <h1>LSTM Forward Pass</h1>
-<p>Now that we have implemented one step of an LSTM, we can now iterate this over this using a for-loop to process a sequence of <span class="math inline">\(T_x\)</span> inputs. <img src="Images/lstm_fp.PNG" class="img-fluid"></p>
+<p>Now that we have implemented one step of an LSTM, we can now iterate this over this using a for-loop to process a sequence of <span class="math inline">\(T_x\)</span> inputs. <img src="images/lstm_fp.PNG" class="img-fluid"></p>
 <div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2019-06-17T17:07:37.172701Z&quot;,&quot;start_time&quot;:&quot;2019-06-17T17:07:37.156451Z&quot;}" data-execution_count="12">
 <details>
 <summary>Code</summary>
@@ -1073,7 +1073,7 @@ len(caches) =  2</code></pre>
 <p>C<sup>t’ </sup> =tanh( W<sub>c</sub> [ C <sup>t-1 </sup> , X <sup>t </sup> ] + b<sup>c </sup>) <br></p>
 <p><span class="math inline">\(\Gamma (u)\)</span> = <span class="math inline">\(\sigma\)</span>(W<sub>u </sub>[C<sup>t-1 </sup> , X<sup>t </sup>] + b <sup>u </sup> <br></p>
 <p>C<sup>t </sup> = <span class="math inline">\(\Gamma\)</span> * C<sup>t’ </sup> + 1-<span class="math inline">\(\Gamma\)</span> * C<sup>t-1 </sup></p>
-<p><img src="Images/gru_cell.png" class="img-fluid"></p>
+<p><img src="images/gru_cell.png" class="img-fluid"></p>
 </section>
 <section id="gru-full" class="level1">
 <h1>GRU Full</h1>
