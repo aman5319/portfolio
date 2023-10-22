@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aman Pandey">
-<meta name="dcterms.date" content="2021-05-22">
-<meta name="description" content="Let’s save some time and memory, coz both are expensive.">
+<meta name="dcterms.date" content="2023-09-16">
+<meta name="description" content="In this post, we discuss ways of managing different versions of Data and Model artificats. Configuration Management and Data Validation. Monitoring the model using TIG stack. Logging and Alert.">
 
-<title>Aman’s Blog - Memory and Time Profiling</title>
+<title>Aman’s Blog - Data and Model Management | Model Monitoring and Logging.</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,40 +23,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -67,7 +33,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../posts/Python/parallel_processing.html" rel="prev">
+<link href="../../posts/Machine Learning/metrics.html" rel="next">
+<link href="../../posts/Machine Learning/Attention.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -103,12 +70,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Aman’s Blog - Memory and Time Profiling">
-<meta property="og:description" content="Let’s save some time and memory, coz both are expensive.">
-<meta property="og:image" content="https://aman5319.github.io/portfolio/posts/Python/images/profiler.png">
+<meta property="og:title" content="Aman’s Blog - Data and Model Management | Model Monitoring and Logging.">
+<meta property="og:description" content="In this post, we discuss ways of managing different versions of Data and Model artificats. Configuration Management and Data Validation. Monitoring the model using TIG stack. Logging and Alert.">
+<meta property="og:image" content="https://aman5319.github.io/portfolio/posts/Machine Learning/images/data-registry.png">
 <meta property="og:site-name" content="Aman's Blog">
-<meta property="og:image:height" content="418">
-<meta property="og:image:width" content="660">
+<meta property="og:image:height" content="1122">
+<meta property="og:image:width" content="1381">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -167,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../posts/Python/big_data_processing.html">Python</a></li><li class="breadcrumb-item"><a href="../../posts/Python/profiling.html">Memory and Time Profiling</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../posts/Machine Learning/Attention.html">Machine Learning</a></li><li class="breadcrumb-item"><a href="../../posts/Machine Learning/data_model_manage_prod.html">Data and Model Management | Model Monitoring and Logging.</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -177,14 +144,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Memory and Time Profiling</h1>
+      <h1 class="title">Data and Model Management | Model Monitoring and Logging.</h1>
                   <div>
         <div class="description">
-          Let’s save some time and memory, coz both are expensive.
+          In this post, we discuss ways of managing different versions of Data and Model artificats. Configuration Management and Data Validation. Monitoring the model using TIG stack. Logging and Alert.
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">python</div>
+                <div class="quarto-category">machine-learning</div>
+                <div class="quarto-category">deep-learning</div>
               </div>
                   </div>
   </div>
@@ -202,7 +170,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 22, 2021</p>
+        <p class="date">September 16, 2023</p>
       </div>
     </div>
     
@@ -249,13 +217,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
  <span class="menu-text">Machine Learning</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/Machine Learning/Attention.html" class="sidebar-item-text sidebar-link">
@@ -264,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/Machine Learning/data_model_manage_prod.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/Machine Learning/data_model_manage_prod.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Data and Model Management | Model Monitoring and Logging.</span></a>
   </div>
 </li>
@@ -342,13 +310,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
  <span class="menu-text">Python</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/Python/big_data_processing.html" class="sidebar-item-text sidebar-link">
@@ -369,7 +337,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/Python/profiling.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../posts/Python/profiling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Memory and Time Profiling</span></a>
   </div>
 </li>
@@ -387,16 +355,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#premature-optimization-is-evil." id="toc-premature-optimization-is-evil." class="nav-link" data-scroll-target="#premature-optimization-is-evil.">Premature Optimization is evil.</a></li>
-  <li><a href="#magic-functions-and-tools" id="toc-magic-functions-and-tools" class="nav-link" data-scroll-target="#magic-functions-and-tools">Magic functions and tools</a></li>
-  <li><a href="#timeit" id="toc-timeit" class="nav-link" data-scroll-target="#timeit">Timeit</a></li>
-  <li><a href="#timing-profiling-with-lprun" id="toc-timing-profiling-with-lprun" class="nav-link" data-scroll-target="#timing-profiling-with-lprun">Timing Profiling with Lprun</a></li>
-  <li><a href="#memory-profiling-with-mprun" id="toc-memory-profiling-with-mprun" class="nav-link" data-scroll-target="#memory-profiling-with-mprun">Memory Profiling with mprun</a></li>
-  <li><a href="#memory-leakage-using-pympler" id="toc-memory-leakage-using-pympler" class="nav-link" data-scroll-target="#memory-leakage-using-pympler">Memory Leakage using pympler</a></li>
-  <li><a href="#read-more" id="toc-read-more" class="nav-link" data-scroll-target="#read-more">Read More</a></li>
+  <li><a href="#code" id="toc-code" class="nav-link active" data-scroll-target="#code">Code</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#configuration-management-and-validation" id="toc-configuration-management-and-validation" class="nav-link" data-scroll-target="#configuration-management-and-validation">Configuration Management and Validation</a></li>
+  <li><a href="#model-monitoring" id="toc-model-monitoring" class="nav-link" data-scroll-target="#model-monitoring">Model Monitoring</a></li>
+  <li><a href="#logging-and-alerts" id="toc-logging-and-alerts" class="nav-link" data-scroll-target="#logging-and-alerts">Logging and Alerts</a></li>
+  <li><a href="#thank-you" id="toc-thank-you" class="nav-link" data-scroll-target="#thank-you">Thank you</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/aman5319/portfolio/blob/main/posts/Python/profiling.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/aman5319/portfolio/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/aman5319/portfolio/edit/main/posts/Machine Learning/data_model_manage_prod.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/aman5319/portfolio/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -404,191 +370,115 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>Every Developer desires to make their code optimzied and efficient. A dream where the developers want that their code to execute faster, with no memory leakage on the production system.</p>
-<p>Let’s make this dream true…</p>
-<p>Creating Data-processing pipeline, writing new algorithms, Deploying Machine Learning models to server million users, Scientific calculation in astropyhsics, these are few areas where when we write code we want to profile every single line of code for two things 1. The amount of time it is taking to execute where our goal is to reduce the time taken a.k.a Time Complexity. 2. The memory consumption for execution of that code where our goal is to reduce the memory usage a.k.a Space complexity.</p>
-<p>There always a trade-off between both of them some time we are fine with memory consumption but not with the time it takes and vice-versa based on the needs we check for the trade-off, but the best system is where we can reduce both space and time complexity.</p>
-</section>
-<section id="premature-optimization-is-evil." class="level1">
-<h1>Premature Optimization is evil.</h1>
-<p>Early in developing Algorithms we should think less about these things because it can be counter-productive which can lead to premature optimization and its the root cause of all evil.</p>
-<p>So first make it work then optimize it.</p>
-</section>
-<section id="magic-functions-and-tools" class="level1">
-<h1>Magic functions and tools</h1>
-<p>While most of the data science experiments starts in Ipython Notebook. The Ipython enviroment gives us some magic functions which can be utilized to profile our code.</p>
+<p>Whenever a ML model goes to production there are lot many things which has to be take care starting from,</p>
 <ol type="1">
-<li><a href="https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit">%%timeit</a>: Measuring time taken for the codeblock to run</li>
-<li><a href="https://github.com/pyutils/line_profiler">%lprun</a>: Run code with the line-by-line profiler</li>
-<li><a href="https://github.com/pythonprofilers/memory_profiler">%mprun</a>: Run code with the line-by-line memory profiler</li>
+<li>Code</li>
+<li>Data</li>
+<li>ML models</li>
+<li>Config Management</li>
+<li>Model Monitoring</li>
+<li>Logging and Alert</li>
 </ol>
-<p>For Tracing Memory Leakage we can use <a href="https://pythonhosted.org/Pympler/index.html">Pympler</a>.</p>
-<div class="cell" data-execution_count="1">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
+<p>Here we assume that the model is already in production using some sort of deployment strategy, except how to deploy we talk about every other thing. For Deployment a seperate blog has to be written.</p>
+<section id="code" class="level2">
+<h2 class="anchored" data-anchor-id="code">Code</h2>
+<p>Without a single doubt every programmer knows why we should track our code and to be very precise , <code>Tracking</code> means having knowledge of what changed in the code at what time and by which person and how can we retrieve those changes. The hero of the code tracking is <code>git</code>. and various places where we can keep those changes on the cloud can be <code>Github</code>, <code>Gitlab</code> etc.</p>
 </section>
-<section id="timeit" class="level1">
-<h1>Timeit</h1>
-<p>The usage of timeit is very simple just put the magic method on the top of the cell and it will calculate the time taken to execute the cell.</p>
-<p>Let’s compare vectorized vs non-vectorized version of numpy code.</p>
-<div class="cell" data-execution_count="2">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>number <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell" data-execution_count="3">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>timeit</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> number:</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    total<span class="op">+=</span>i</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>3.11 ms ± 86.9 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="4">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>timeit</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>number.<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>14.9 µs ± 74.3 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)</code></pre>
-</div>
-</div>
-<p>The difference in the execution time is evident one.</p>
-<p>Non-vectorized code in Milliseconds, 10<sup>-3</sup>.<br> Vectorized code in Microseconds, 10<sup>-6</sup>.</p>
-<p>Vectorized code is the winner here.</p>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<p>In the ML world we are dealing with lots and lots of data where the nature of the received data also sometime it is a streaming data sometimes new data is received in batches and other time may be like a single blob, In the context of ML experiements where with every new experiments we might be generating new data columns doing some different feature processing or with time in the same experiment adding new features.</p>
+<p>Also when were are putting our models to production we keep updating our models and corresponding Data and feature from one version to another.</p>
+<p>All of these different scenario asks for some way of tracking the changes in the data.</p>
+<p>Worst way of doing it is put it in git which is okay if data is of small size couple of MBs how about couple of GBs or TBs we need a sophisticated library for this.</p>
+<p>Let me introduce <a href="https://dvc.org/"><code>DVC (Data Version Control)</code></a> dvc integrates very nicely with git and works in tandem and will be used to track changes in the data and storing in some sort of file server it can Amazon s3, Azure storage, GCP, or any self hosted place.</p>
+<p>DVC makes Data Management simplified and helps us maintain a Data Registry.</p>
+<p><img src="images/data-registry.png" class="img-fluid"></p>
+<p>In general we see DVC can help us track any type of file or folder, it a generic tool for tracking everything apart from code, so using DVC we can not only track data but also our saved model and can maintain a Model Registry.</p>
+<p>Working of DVC is quite simple also.</p>
+<ol type="1">
+<li>It uses similar flow as git and is a completely command line tool like git.</li>
+<li>Whenever we ask dvc to track a particular file it tracks it and creates a .dvc metafile. For example 20gb_finance_data.csv when tracked using dvc it will generate 20gb_finance_data.dvc</li>
+<li>Now this .dvc file has to be tracked using git.</li>
+<li>When ever at any point of time we checkout a git commit, with code this metafile will also come out and then using dvc we checkout the corresponding data for the .dvc file.</li>
+</ol>
+<p><img src="images/project-versions.png" class="img-fluid"></p>
+<p>so if we see we have not only versioned and tracked our data but also our models, from tracking models I mean tracking weights of a particular model</p>
 </section>
-<section id="timing-profiling-with-lprun" class="level1">
-<h1>Timing Profiling with Lprun</h1>
-<p>line_profiler is a package for doing line-by-line timing profiling of functions.</p>
-<p>Install using</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install line_profiler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Python provides a builtin profiler, but we will be using Line profiler for reasons stated below.</p>
-<p>The current profiling tools supported in Python 2.7 and later only time function calls. This is a good first step for locating hotspots in one’s program and is frequently all one needs to do to optimize the program. However, sometimes the cause of the hotspot is actually a single line in the function, and that line may not be obvious from just reading the source code. These cases are particularly frequent in scientific computing. Functions tend to be larger (sometimes because of legitimate algorithmic complexity, sometimes because the programmer is still trying to write FORTRAN code), and a single statement without function calls can trigger lots of computation when using libraries like numpy. cProfile only times explicit function calls, not special methods called because of syntax. Consequently, a relatively slow numpy operation on large arrays like this,</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>a[large_index_array] <span class="op">=</span> some_other_large_array</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>is a hotspot that never gets broken out by cProfile because there is no explicit function call in that statement.</p>
-<p>LineProfiler can be given functions to profile, and it will time the execution of each individual line inside those functions. In a typical workflow, one only cares about line timings of a few functions because wading through the results of timing every single line of code would be overwhelming. However, LineProfiler does need to be explicitly told what functions to profile.</p>
-<div class="cell" data-execution_count="5">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># once installed we have load the extension</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext line_profiler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell" data-execution_count="6">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> some_operation(x):</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> x <span class="op">**</span><span class="dv">2</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> x <span class="op">+</span><span class="dv">2</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.concatenate([x,x,x],axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Now the <code>%lprun</code> command will do a line-by-line profiling of any function–in this case, we need to tell it explicitly which functions we’re interested in profiling:</p>
-<div class="cell" data-execution_count="7">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>lprun <span class="op">-</span>f some_operation some_operation(np.random.randn(<span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<pre><code>Timer unit: 1e-06 s
-
-Total time: 7.7e-05 s
-File: &lt;ipython-input-30-80aca4fcfa96&gt;
-Function: some_operation at line 1
-
-Line #      Hits         Time  Per Hit   % Time  Line Contents
-==============================================================
-     1                                           def some_operation(x):
-     2         1         24.0     24.0     31.2      x = x **2
-     3         1         22.0     22.0     28.6      x = x +2
-     4         1         30.0     30.0     39.0      x = np.concatenate([x,x,x],axis=0)
-     5         1          1.0      1.0      1.3      return x
-</code></pre>
-<p>The source code of the function is printed with the timing information for each line. There are six columns of information.</p>
-<ul>
-<li>Line : The line number in the file.</li>
-<li>Hits: The number of times that line was executed.</li>
-<li>Time: The total amount of time spent executing the line in the timer’s units. In the header information before the tables, you will see a line “Timer unit:” giving the conversion factor to seconds. It may be different on different systems.</li>
-<li>Per Hit: The average amount of time spent executing the line once in the timer’s units.</li>
-<li>% Time: The percentage of time spent on that line relative to the total amount of recorded time spent in the function.</li>
-<li>Line Contents: The actual source code. Note that this is always read from disk when the formatted results are viewed, not when the code was executed. If you have edited the file in the meantime, the lines will not match up, and the formatter may not even be able to locate the function for display.</li>
-</ul>
+<section id="configuration-management-and-validation" class="level2">
+<h2 class="anchored" data-anchor-id="configuration-management-and-validation">Configuration Management and Validation</h2>
+<p>In a production environment lot of values to program comes from the run time and these key value pair has to be stored some where various ways people store it are</p>
+<ol type="1">
+<li>Put it in a regular file</li>
+<li>Store it in some database</li>
+<li>Store it in on cloud behind firewalls</li>
+<li>use tools like Consul, Apache Zookeeper etc</li>
+</ol>
+<p>and every choice comes with its on pros and cons.</p>
+<p>Usually JSON or YAML is used for storing config files, YAML being more feature rich.</p>
+<p>Python comes with <a href="https://docs.python.org/3/library/configparser.html">ConfigParser</a> class which implements a basic configuration language which provides a structure similar to what’s found in Microsoft Windows INI files. You can use this to write Python programs which can be customized by end users easily.</p>
+<p>One of the most feature rich config management though not much needed in production setting more useful when doing HyperParameter search or Experimenting with different configuration is <a href="https://github.com/omry/omegaconf">OmegaConf</a>. It is a hierarchical configuration system, with support for merging configurations from multiple sources (YAML config files, dataclasses/objects and CLI arguments) providing a consistent API regardless of how the configuration was created.</p>
+<p>An important need of config management is config value validation in run time and there is no better library than <a href="https://github.com/omry/omegaconf">Pydantic</a> that is the most widely used data validation library for Python.</p>
 </section>
-<section id="memory-profiling-with-mprun" class="level1">
-<h1>Memory Profiling with mprun</h1>
-<p>This is a python module for monitoring memory consumption of a process as well as line-by-line analysis of memory consumption for python programs.</p>
-<p>Install</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> memory_profiler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The only issue mprun doesn’t work on notebook rather on a python file so we will write the code in notebook <code>%%file</code> magic function we will write that into a file and execute mprun on it</p>
-<div class="cell" data-execution_count="8">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext memory_profiler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell" data-execution_count="9">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span><span class="bu">file</span> mprun.py</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> some_operation(x):</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> x <span class="op">**</span><span class="dv">2</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> y <span class="op">+</span><span class="dv">2</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> np.concatenate([x,y,z],axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Overwriting mprun.py</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="10">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mprun <span class="im">import</span> some_operation</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>mprun <span class="op">-</span>f some_operation some_operation(np.random.randn(<span class="dv">100000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code></code></pre>
-</div>
-</div>
-<pre><code>Line #    Mem usage    Increment   Line Contents
-================================================
-     2     62.5 MiB     62.5 MiB   def some_operation(x):
-     3     63.3 MiB      0.8 MiB       y = x **2
-     4     64.0 MiB      0.8 MiB       z = y +2
-     5     66.3 MiB      2.3 MiB       result = np.concatenate([x,y,z],axis=0)
-     6     66.3 MiB      0.0 MiB       return result</code></pre>
-<ul>
-<li>The first column represents the line number of the code that has been profiled.</li>
-<li>The second column (Mem usage) the memory usage of the Python interpreter after that line has been executed.</li>
-<li>The third column (Increment) represents the difference in memory of the current line with respect to the last one.</li>
-<li>The last column (Line Contents) prints the code that has been profiled.</li>
-</ul>
+<section id="model-monitoring" class="level2">
+<h2 class="anchored" data-anchor-id="model-monitoring">Model Monitoring</h2>
+<p>In terms of Model monitoring there are three aspects which needs to be measured all the time, and special emphasis has to be given to create a Feedback loop to collect user feedback and use it for model improvement.</p>
+<ol type="1">
+<li>Measuring the Resource Cosumption.
+<ol type="1">
+<li>Amount of resource consumption (CPU, GPU, Storage)</li>
+<li>Spike in model usage that leads to increase in nodes a.k.a Auto Scaling</li>
+<li>Latency and Throughput</li>
+</ol></li>
+<li>Measuring the Models Prediction quality
+<ol type="1">
+<li>Data Drift</li>
+<li>Model Prediction Quality</li>
+</ol></li>
+<li>Measuring Model Meta Data
+<ol type="1">
+<li>Frequency of the training</li>
+<li>Model Versioning</li>
+</ol></li>
+</ol>
+<p>Data points described in 1 and 3 is of time series nature hence we need a mechanism to store the data in a DB and then show it in a dashboard.</p>
+<p>TIG (Telegraf-InfluxDb-Grafana) comes to the resuce.</p>
+<p><img src="images/tig.png" class="img-fluid"></p>
+<p>Telegraf -&gt; Mechanism to send data to influxdb on specific time intervals. In python we can use <a href="https://statsd.readthedocs.io/en/stable/index.html">Statsd</a> library to send data.</p>
+<p>Influx DB -&gt; Stores the data.</p>
+<p>Grafana -&gt; Helps to visualize data stored in Influx DB.</p>
+<p>The same can be done with Prometheus and Grafana</p>
+<p><img src="images/Prometheus.png" class="img-fluid"></p>
+<p>Prometheus Server has exporters which pull metrics from different sources and stores it locally which can be then queried using PromQL. Grafana uses PromQL to show the data.</p>
+<p>Telegraf with InfluxDB provides flexibility in data collection and storage, making it well-suited for scalable, long-term retention of metrics data.</p>
+<p>When it comes to measuring Data Drift and Model prediction Quality, it is bit different.</p>
+<p>Based on the nature of the problem, Data Drift models that can captures Outliers, Anomalies has to be placed. Model selection is highly dependent on the business, here TIG can be used to measure things.</p>
+<p>In terms Model predictive quality there is needs to be some ground truth against which we can measure those changes but it unlikely that there will be something like that present, given there is also problem of data drift. What we can do is measure the drop i.e drop in engagment, user count, purchase etc. These events can be measured by paid tools like Amplitude, Google Analytics, Firebase or with some custom solution.</p>
 </section>
-<section id="memory-leakage-using-pympler" class="level1">
-<h1>Memory Leakage using pympler</h1>
-<p>Pympler is a development tool to measure, monitor and analyze the memory behavior of Python objects in a running Python application.</p>
-<p>By pympling a Python application, detailed insight in the size and the lifetime of Python objects can be obtained. Undesirable or unexpected runtime behavior like memory bloat and other “pymples” can easily be identified.</p>
-<p>Pympler integrates three previously separate modules into a single, comprehensive profiling tool. The asizeof module provides basic size information for one or several Python objects, module muppy is used for on-line monitoring of a Python application and module Class Tracker provides off-line analysis of the lifetime of selected Python objects.</p>
-<p>A web profiling frontend exposes process statistics, garbage visualisation and class tracker statistics.</p>
-<p><a href="https://pythonhosted.org/Pympler/index.html#table-of-content">Hit table of content for tutorial</a></p>
+<section id="logging-and-alerts" class="level2">
+<h2 class="anchored" data-anchor-id="logging-and-alerts">Logging and Alerts</h2>
+<p>Logging is a necessity of production.</p>
+<p>Python comes with a feature rich way of generating logs in <a href="https://docs.python.org/3/library/logging.html">Logging Module</a> and only in depth tutorial to know everything <a href="https://docs.python.org/3/howto/logging.html#logging-howto">Logging How To</a> and <a href="https://docs.python.org/3/howto/logging-cookbook.html">Logging Cookbook</a>.</p>
+<p>When there are multiple services from where logs get generated, There needs to be way to efficiently collecting, aggregating and analyse that data.</p>
+<p>There are multiple ways of doing it. I am listing a few here</p>
+<ol type="1">
+<li>ELK stack with an extra Filebeat</li>
+<li>AWS Cloudwatch</li>
+<li>Apache Flume</li>
+<li>Fluentd</li>
+</ol>
+<p>ELK stack (Elastic Search , Log Stash, Kibana) -&gt; When the web servers generate logs those logs will get read by Log Stash and we can read those logs from Log Stash directly, but to take a step further we can filter and process those logs using Log Stash Grok and make the unstructed generate log into a structured Log which can be then stored in Elastic Search and visualize on Kibana.</p>
+<p>Filebeat uses a backpressure-sensitive protocol when sending data to Logstash or Elasticsearch to account for higher volumes of data. If Logstash is busy crunching data, it lets Filebeat know to slow down its read. Once the congestion is resolved, Filebeat will build back up to its original pace and keep on shippin’.</p>
+<p>It is very common to using Elastic search for this purpose apart from using search tool.</p>
+<p><img src="images/elk.webp" class="img-fluid"></p>
+<p><img src="images/kibana.png" class="img-fluid"></p>
+<p>Same can be done using AWS Cloudwatch, if you entire infrastructure is on AWS. Amazon CloudWatch collects and visualizes real-time logs, metrics, and event data in automated dashboards to streamline your infrastructure and application maintenance.</p>
+<p><img src="images/cloudwatch.png" class="img-fluid"></p>
+<p>Now whether to go with ELK stack or fluentd or Cloudwatch or any other tool depends completely on the scale the logs will be generated, infrastructure needs, affordability, value generated out of those logs.</p>
+<p>As an important measure it is not advised to delete old logs instantly rather archive it on Amazon S3 and then delete after certain amount of time pases.</p>
+<p>Whether we are logging or monitoring every other tools has a built in support for alerts and these alerts has to be generated based on certain criteria the frequency or time till the alerts has to be checked all of them can be customized. Grafana, Kibana, Cloudwatch, Fluentd all of them supports it. We can send alerts to email, slack, discord, sms there are tons of plugin which gives out of the box support for every other communication channel.</p>
 </section>
-<section id="read-more" class="level1">
-<h1>Read More</h1>
-<p><a href="https://rushter.com/blog/python-memory-managment/">Understanding Python Memory Managment</a></p>
-<p><a href="https://rushter.com/blog/python-garbage-collector/">Python Garbage Collector</a></p>
+<section id="thank-you" class="level2">
+<h2 class="anchored" data-anchor-id="thank-you">Thank you</h2>
 
 
 </section>
@@ -960,11 +850,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../posts/Python/parallel_processing.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Parallelism and Concurrency</span>
+      <a href="../../posts/Machine Learning/Attention.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Different types of Attentions</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../posts/Machine Learning/metrics.html" class="pagination-link">
+        <span class="nav-page-text">Metrics for Machine Learning</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
