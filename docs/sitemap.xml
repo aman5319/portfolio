@@ -2,74 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://aman5319.github.io/portfolio/about.html</loc>
-    <lastmod>2023-10-22T15:07:06.100Z</lastmod>
+    <lastmod>2023-10-22T15:16:13.457Z</lastmod>
   </url>
   <url>
     <loc>https://aman5319.github.io/portfolio/posts/NLP/rnn_lstm_gru.html</loc>
-    <lastmod>2023-10-22T15:07:02.820Z</lastmod>
+    <lastmod>2023-10-22T15:16:10.608Z</lastmod>
   </url>
   <url>
     <loc>https://aman5319.github.io/portfolio/posts/NLP/embeddings.html</loc>
-    <lastmod>2023-10-22T15:07:00.533Z</lastmod>
-  </url>
-  <url>
-    <loc>https://aman5319.github.io/portfolio/posts/Optimization/optimisers_in_dl.html</loc>
-    <lastmod>2023-10-22T15:06:58.041Z</lastmod>
-  </url>
-  <url>
-    <loc>https://aman5319.github.io/portfolio/posts/Python/functional_programming.html</loc>
-    <lastmod>2023-10-22T15:06:55.140Z</lastmod>
-  </url>
-  <url>
-    <loc>https://aman5319.github.io/portfolio/posts/Python/parallel_processing.html</loc>
-    <lastmod>2023-10-22T15:06:53.430Z</lastmod>
-  </url>
-  <url>
-    <loc>https://aman5319.github.io/portfolio/posts/Computer Vision/convolution.html</loc>
-    <lastmod>2023-10-22T15:06:51.826Z</lastmod>
-  </url>
-  <url>
-    <loc>https://aman5319.github.io/portfolio/posts/Machine Learning/metrics.html</loc>
-    <lastmod>2023-10-22T15:06:47.054Z</lastmod>
-  </url>
-  <url>
-    <loc>https://aman5319.github.io/portfolio/posts/Machine Learning/data_model_manage_prod.html</loc>
-    <lastmod>2023-10-22T15:06:45.199Z</lastmod>
-  </url>
-  <url>
-    <loc>https://aman5319.github.io/portfolio/posts/Machine Learning/Weight_Initializer.html</loc>
-    <lastmod>2023-10-22T15:06:43.972Z</lastmod>
-  </url>
-  <url>
-    <loc>https://aman5319.github.io/portfolio/posts/Machine Learning/Attention.html</loc>
-    <lastmod>2023-10-22T15:06:45.984Z</lastmod>
-  </url>
-  <url>
-    <loc>https://aman5319.github.io/portfolio/posts/Machine Learning/Regularization.html</loc>
-    <lastmod>2023-10-22T15:06:48.175Z</lastmod>
-  </url>
-  <url>
-    <loc>https://aman5319.github.io/portfolio/posts/Computer Vision/object_detection.html</loc>
-    <lastmod>2023-10-22T15:06:50.460Z</lastmod>
-  </url>
-  <url>
-    <loc>https://aman5319.github.io/portfolio/posts/Python/profiling.html</loc>
-    <lastmod>2023-10-22T15:06:54.191Z</lastmod>
+    <lastmod>2023-10-22T15:16:08.535Z</lastmod>
   </url>
   <url>
     <loc>https://aman5319.github.io/portfolio/posts/Python/big_data_processing.html</loc>
-    <lastmod>2023-10-22T15:06:56.099Z</lastmod>
+    <lastmod>2023-10-22T15:16:06.443Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aman5319.github.io/portfolio/posts/Python/profiling.html</loc>
+    <lastmod>2023-10-22T15:16:04.718Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aman5319.github.io/portfolio/posts/Computer Vision/convolution.html</loc>
+    <lastmod>2023-10-22T15:16:03.101Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aman5319.github.io/portfolio/posts/Machine Learning/Regularization.html</loc>
+    <lastmod>2023-10-22T15:16:00.597Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aman5319.github.io/portfolio/posts/Machine Learning/Attention.html</loc>
+    <lastmod>2023-10-22T15:15:58.445Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aman5319.github.io/portfolio/temp/data_model_manage_prod.html</loc>
+    <lastmod>2023-10-22T15:15:54.213Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aman5319.github.io/portfolio/posts/Machine Learning/Weight_Initializer.html</loc>
+    <lastmod>2023-10-22T15:15:57.659Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aman5319.github.io/portfolio/posts/Machine Learning/metrics.html</loc>
+    <lastmod>2023-10-22T15:15:59.495Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aman5319.github.io/portfolio/posts/Computer Vision/object_detection.html</loc>
+    <lastmod>2023-10-22T15:16:01.894Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aman5319.github.io/portfolio/posts/Python/parallel_processing.html</loc>
+    <lastmod>2023-10-22T15:16:04.053Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aman5319.github.io/portfolio/posts/Python/functional_programming.html</loc>
+    <lastmod>2023-10-22T15:16:05.548Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aman5319.github.io/portfolio/posts/Optimization/optimisers_in_dl.html</loc>
+    <lastmod>2023-10-22T15:16:07.463Z</lastmod>
   </url>
   <url>
     <loc>https://aman5319.github.io/portfolio/posts/NLP/linguistics.html</loc>
-    <lastmod>2023-10-22T15:07:01.725Z</lastmod>
+    <lastmod>2023-10-22T15:16:09.624Z</lastmod>
   </url>
   <url>
     <loc>https://aman5319.github.io/portfolio/posts/NLP/nlp_overview.html</loc>
-    <lastmod>2023-10-22T15:07:03.544Z</lastmod>
+    <lastmod>2023-10-22T15:16:11.258Z</lastmod>
   </url>
   <url>
     <loc>https://aman5319.github.io/portfolio/index.html</loc>
-    <lastmod>2023-10-22T15:07:05.564Z</lastmod>
+    <lastmod>2023-10-22T15:16:13.000Z</lastmod>
   </url>
 </urlset>
