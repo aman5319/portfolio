@@ -23,40 +23,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -399,6 +365,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#models" id="toc-models" class="nav-link" data-scroll-target="#models">Models</a></li>
   <li><a href="#architectures" id="toc-architectures" class="nav-link" data-scroll-target="#architectures">Architectures</a></li>
   </ul></li>
+  <li><a href="#important-topics-that-have-shaped-nlp" id="toc-important-topics-that-have-shaped-nlp" class="nav-link" data-scroll-target="#important-topics-that-have-shaped-nlp">Important topics that have shaped NLP</a>
+  <ul class="collapse">
+  <li><a href="#grounding" id="toc-grounding" class="nav-link" data-scroll-target="#grounding">Grounding</a></li>
+  <li><a href="#nli-natural-language-inference" id="toc-nli-natural-language-inference" class="nav-link" data-scroll-target="#nli-natural-language-inference">NLI (Natural Language Inference)</a></li>
+  <li><a href="#coreference-resolution" id="toc-coreference-resolution" class="nav-link" data-scroll-target="#coreference-resolution">Coreference resolution</a></li>
+  <li><a href="#constituency-parsing-and-dependency-parsing" id="toc-constituency-parsing-and-dependency-parsing" class="nav-link" data-scroll-target="#constituency-parsing-and-dependency-parsing">Constituency parsing and Dependency parsing</a></li>
+  <li><a href="#semantic-parsing" id="toc-semantic-parsing" class="nav-link" data-scroll-target="#semantic-parsing">Semantic Parsing</a></li>
+  <li><a href="#machine-translation" id="toc-machine-translation" class="nav-link" data-scroll-target="#machine-translation">Machine Translation</a></li>
+  </ul></li>
   <li><a href="#thank-you" id="toc-thank-you" class="nav-link" data-scroll-target="#thank-you">Thank you</a></li>
   </ul></li>
   </ul>
@@ -593,21 +568,170 @@ Different task has different Handcrafted data.</code></pre>
 </ol>
 </section>
 </section>
+<section id="important-topics-that-have-shaped-nlp" class="level2">
+<h2 class="anchored" data-anchor-id="important-topics-that-have-shaped-nlp">Important topics that have shaped NLP</h2>
+<section id="grounding" class="level3">
+<h3 class="anchored" data-anchor-id="grounding">Grounding</h3>
+<p>Grounding refers to the process of connecting or mapping natural language expressions to their corresponding real-world entities or concepts. It is a fundamental aspect of NLU systems, which aim to bridge the gap between human language and the world’s knowledge and objects. Grounding allows NLU systems to understand and interpret language in a way that aligns with the physical and conceptual world.</p>
+<p>There are several forms of grounding in NLU:</p>
+<ol type="1">
+<li><p><strong>Referential Grounding</strong>: This involves linking words or phrases in natural language to specific entities in the real world. For example, in the sentence “The Eiffel Tower is a famous landmark,” referential grounding would involve identifying “the Eiffel Tower” as a reference to the actual structure in Paris.</p></li>
+<li><p><strong>Spatial Grounding</strong>: This is about understanding the spatial relationships and locations described in language. For instance, when someone says, “The cat is on the table,” spatial grounding would involve identifying the cat’s location relative to the table.</p></li>
+<li><p><strong>Temporal Grounding</strong>: This involves relating language to time. For example, understanding phrases like “tomorrow,” “last week,” or “in the future” and connecting them to specific points in time.</p></li>
+<li><p><strong>Ontological Grounding</strong>: This is about mapping language to a structured knowledge representation or ontology. For instance, understanding that “apple” can refer to both the fruit and the technology company and distinguishing between them based on the context.</p></li>
+<li><p><strong>Semantic Grounding</strong>: This relates to understanding the meaning of words and phrases in a semantic context. It involves recognizing word sense disambiguation, word sense induction, and other techniques for interpreting the meaning of words within the given context.</p></li>
+</ol>
+</section>
+<section id="nli-natural-language-inference" class="level3">
+<h3 class="anchored" data-anchor-id="nli-natural-language-inference">NLI (Natural Language Inference)</h3>
+<p>Natural Language Inference, which is a fundamental task in natural language understanding (NLU). It involves determining the relationship between two given sentences: a “premise” and a “hypothesis.” The goal is to determine whether the hypothesis is entailed, contradicted, or neutral with respect to the information presented in the premise. NLI is crucial for various NLU applications, including question answering, text summarization, sentiment analysis, and more.</p>
+<p>Two widely recognized datasets for NLI are SNLI (Stanford Natural Language Inference) and MultiNLI. These datasets are used for training and evaluating NLI models:</p>
+<ol type="1">
+<li>SNLI (Stanford Natural Language Inference):
+<ul>
+<li>SNLI is one of the pioneering datasets for NLI. It contains a collection of sentence pairs labeled with one of three categories: “entailment,” “contradiction,” or “neutral.”</li>
+<li>The dataset consists of sentences that are manually generated and crowd-sourced annotations to provide labels.</li>
+</ul></li>
+<li>MultiNLI (The Multi-Genre Natural Language Inference Corpus):
+<ul>
+<li>MultiNLI is an extension of SNLI and is designed to be more challenging. It contains sentence pairs from various genres, which helps NLI models generalize better across different text types and styles.</li>
+<li>It offers a more diverse set of language samples, making it a valuable resource for NLI research.</li>
+</ul></li>
+</ol>
+<p>Examples of NLI tasks include:</p>
+<ul>
+<li>Given the premise “The cat is sitting on the windowsill” and the hypothesis “A feline is resting near the window,” the NLI model should determine that the hypothesis entails the premise (entailment).</li>
+<li>For the premise “The dog is chasing the mailman,” and the hypothesis “The mailman is chasing the dog,” the model should recognize that the hypothesis contradicts the premise (contradiction).</li>
+<li>If the premise is “The sun is shining brightly,” and the hypothesis is “The weather is beautiful,” the NLI model should indicate that the hypothesis is neutral with respect to the premise (neutral).</li>
+</ul>
+<p>NLI is an essential benchmark for evaluating the performance of NLU models, as it assesses their ability to comprehend and reason about the relationships between sentences, which is crucial for various natural language understanding tasks.</p>
+</section>
+<section id="coreference-resolution" class="level3">
+<h3 class="anchored" data-anchor-id="coreference-resolution">Coreference resolution</h3>
+<p>Coreference resolution is a natural language processing (NLP) task that involves determining when two or more expressions (words or phrases) in a text refer to the same entity or concept. The primary goal of co-reference resolution is to identify which words or phrases in a text are related to one another in terms of their reference to a common entity, such as a person, place, or thing. This task is crucial for understanding the structure and meaning of text, as it helps in creating coherent and cohesive interpretations of documents.</p>
+<p>Here’s a breakdown of coreference resolution and its importance:</p>
+<ol type="1">
+<li><strong>Definition of Coreference Resolution</strong>:
+<ul>
+<li>Co-reference resolution involves identifying co-referent expressions. For example, in the sentence “John said he was tired,” the pronoun “he” co-refers to “John.”</li>
+<li>It can be applied to different types of expressions, including pronouns (he, she, it), definite noun phrases (the cat, this book), and indefinite noun phrases (a dog, some people).</li>
+</ul></li>
+<li><strong>Different Datasets</strong>:
+<ul>
+<li>There are several datasets used for training and evaluating coreference resolution models. Some popular datasets include:
+<ul>
+<li><strong>OntoNotes</strong>: A widely used dataset that provides text documents with annotations for coreference resolution.</li>
+<li><strong>CoNLL-2012</strong>: Part of the CoNLL Shared Task series, this dataset contains news articles with annotated coreferences.</li>
+<li><strong>ACE</strong>: The Automatic Content Extraction (ACE) program includes a dataset for entity coreference, which is widely used for evaluation.</li>
+<li><strong>Web Anaphora Corpus</strong>: This dataset includes web documents and their coreference annotations.</li>
+</ul></li>
+</ul></li>
+<li><strong>Importance of Coreference Resolution</strong>:
+<ul>
+<li><strong>Text Coherence</strong>: Coreference resolution helps in maintaining text coherence by ensuring that different mentions of the same entity are connected correctly. It makes the text easier to understand and follow.</li>
+<li><strong>Information Extraction</strong>: In information extraction tasks, such as named entity recognition and relation extraction, it is essential to know which entities are being referred to in a text to extract relevant information.</li>
+<li><strong>Question Answering</strong>: In question-answering systems, resolving co-references is crucial to understand and answer questions correctly.</li>
+<li><strong>Summarization</strong>: In text summarization, identifying coreferences is necessary to produce coherent and concise summaries.</li>
+</ul></li>
+<li><strong>Examples</strong>:
+<ul>
+<li>In a news article, coreference resolution is used to determine that “President Obama” and “he” refer to the same person.</li>
+<li>In a chatbot application, coreference resolution helps the bot understand that “it” in “I bought a new phone. It has a great camera” refers to the phone.</li>
+<li>In an academic paper, coreference resolution helps in identifying that “the study” and “the research” refer to the same research project.</li>
+</ul></li>
+</ol>
+<p>coreference resolution is a crucial task in NLP that plays a significant role in various applications, including machine translation, sentiment analysis, and information retrieval, as it enables a more accurate and coherent understanding of text.</p>
+</section>
+<section id="constituency-parsing-and-dependency-parsing" class="level3">
+<h3 class="anchored" data-anchor-id="constituency-parsing-and-dependency-parsing">Constituency parsing and Dependency parsing</h3>
+<p>Constituency parsing and dependency parsing are two common techniques in natural language processing (NLP) used to analyze the grammatical structure of sentences in a language. They help in understanding the relationships between words in a sentence, which is crucial for various NLP tasks such as machine translation, information extraction, and sentiment analysis.</p>
+<ol type="1">
+<li><p><strong>Constituency Parsing</strong>:</p>
+<ul>
+<li><p><strong>Definition</strong>: Constituency parsing, also known as phrase structure parsing, involves breaking down a sentence into smaller constituents (phrases) based on a predefined grammar, typically represented using a context-free grammar (CFG). It organizes words into hierarchical structures, with phrases contained within other phrases.</p></li>
+<li><p><strong>Datasets</strong>: Constituency parsing typically uses datasets like the Penn Treebank, which contains sentences annotated with parse trees in a context-free grammar format.</p></li>
+<li><p><strong>Importance</strong>: Constituency parsing provides a hierarchical representation of a sentence, which is helpful for syntactic analysis and understanding the grammatical relationships between words. This is essential for tasks like text generation, grammar correction, and summarization.</p></li>
+<li><p><strong>Example</strong>:</p>
+<p>Sentence: “The quick brown fox jumps over the lazy dog.”</p>
+<p>Parse Tree:</p>
+<pre><code>(S
+  (NP (DT The) (JJ quick) (JJ brown) (NN fox))
+  (VP (VBZ jumps)
+    (PP (IN over)
+      (NP (DT the) (JJ lazy) (NN dog))))
+)</code></pre></li>
+</ul></li>
+<li><p><strong>Dependency Parsing</strong>:</p>
+<ul>
+<li><p><strong>Definition</strong>: Dependency parsing focuses on capturing the grammatical relationships between words in a sentence in terms of directed links (dependencies). Each word is associated with a head word to which it is syntactically related. This results in a tree structure where words are nodes, and dependencies are edges.</p></li>
+<li><p><strong>Datasets</strong>: Dependency parsing uses datasets like the Universal Dependencies Project, which contains sentences annotated with dependency trees.</p></li>
+<li><p><strong>Importance</strong>: Dependency parsing is valuable for tasks like information extraction, named entity recognition, and machine translation. It provides a more direct representation of the syntactic structure and word relationships in a sentence.</p></li>
+<li><p><strong>Example</strong>:</p>
+<p>Sentence: “The quick brown fox jumps over the lazy dog.”</p>
+<p>Dependency Tree:</p>
+<pre><code>jumps(ROOT-0, jumps-4)
+├── fox(nsubj-4, fox-3)
+│   ├── The(det-1, The-0)
+│   ├── quick(amod-2, quick-1)
+│   └── brown(amod-3, brown-2)
+├── dog(nmod-4, dog-7)
+│   ├── over(case-6, over-5)
+│   └── lazy(amod-7, lazy-6)
+│       └── The(det-1, The-0)</code></pre></li>
+</ul></li>
+</ol>
+<p>constituency parsing and dependency parsing are two different approaches to representing the syntactic structure of sentences. Constituency parsing provides a hierarchical, phrasal structure, while dependency parsing focuses on word-to-word relationships. The choice between them depends on the specific NLP task and the type of linguistic information needed. Both are fundamental for understanding and processing natural language text.</p>
+<p><a href="https://corenlp.run/">Core NLP Run</a></p>
+<p><img src="images/const.png" class="img-fluid"> <img src="images/depen.png" class="img-fluid"></p>
+</section>
+<section id="semantic-parsing" class="level3">
+<h3 class="anchored" data-anchor-id="semantic-parsing">Semantic Parsing</h3>
+<p>Semantic parsing is a natural language processing (NLP) task that involves mapping natural language expressions to a structured, formal representation of their meaning. This structured representation can be in the form of logical forms, knowledge graphs, or programming code, depending on the specific application. Semantic parsing is crucial in various NLP applications, and it plays a vital role in natural language understanding and human-computer interaction.</p>
+<p>At the core of many semantic parsing systems are grammar rules that define how to parse natural language sentences. These rules describe the syntax of the language and the structure of sentences. For example, a basic grammar rule might specify that a “flight” query consists of a “from” location, a “to” location, and optionally, a “with” clause for additional conditions.</p>
+<p>For example, find flights from new york to london for tomorrow,</p>
+<p>maps to a structured representation like:</p>
+<pre><code>(query
+  (from new york)
+  (to london)
+  (on tomorrow))</code></pre>
+<p><strong>Different Datasets</strong>: There are several datasets commonly used in semantic parsing research. Each dataset serves a specific purpose and has its own characteristics. Some notable ones include:</p>
+<ol type="1">
+<li><p><strong>ATIS (Airline Travel Information System)</strong>: This dataset is used for training and evaluating semantic parsers in the context of airline booking and travel information. It contains queries about flights, reservations, and related information.</p></li>
+<li><p><strong>GeoQuery</strong>: GeoQuery focuses on querying a geographic database using natural language. It includes questions about geographical locations, distances, and related queries.</p></li>
+<li><p><strong>Spider</strong>: The Spider dataset is designed for complex SQL query generation from natural language questions. It is particularly challenging because it involves understanding complex database structures and generating precise SQL queries.</p></li>
+<li><p><strong>SCAN</strong>: The SCAN dataset involves language-based navigation tasks where a model must interpret natural language instructions to navigate through grid-like environments.</p></li>
+<li><p><strong>WikiSQL</strong>: This dataset contains questions about relational databases, requiring systems to generate SQL queries that extract information from a given database.</p></li>
+</ol>
+<p>Examples</p>
+<ol type="1">
+<li><p><strong>Chatbots and Virtual Assistants</strong>: Virtual assistants like Siri and Alexa rely on semantic parsing to comprehend user commands and execute actions.</p></li>
+<li><p><strong>Data Analysis</strong>: Semantic parsing is used in tools for data analysis, where users can describe complex queries in natural language to extract insights from large datasets.</p></li>
+<li><p><strong>Programming Assistants</strong>: Developers can use semantic parsing to write code more efficiently by describing their intent in natural language, and the system generates the corresponding code.</p></li>
+</ol>
+<p><strong>Challenges</strong>: Semantic parsing is a challenging task for several reasons:</p>
+<ol type="1">
+<li><strong>Ambiguity</strong>: Natural language is often ambiguous, and a single sentence can have multiple valid interpretations. Semantic parsers need to disambiguate and select the correct interpretation.</li>
+</ol>
+<p>Ambiguous Natural Language Query: “Find flights from New York to Chicago with a stopover.”</p>
+<p>The ambiguity here lies in the term “with a stopover.” It could be interpreted in different ways:</p>
+<pre><code>The user is looking for flights that have a stopover (a connecting flight) during the journey.
+The user is looking for direct flights from New York to Chicago, and the phrase "with a stopover" is providing additional information about the type of flight (e.g., the user prefers flights with a stopover).</code></pre>
+<p>Semantic parsing aims to disambiguate such queries and convert them into a structured representation, which can then be further used to retrieve relevant information from a database or perform an action, like generating an SQL query.</p>
+<ol type="1">
+<li><p><strong>Variability</strong>: People express the same ideas in different ways, making it difficult to create comprehensive training datasets that cover all possible phrasings.</p></li>
+<li><p><strong>Domain-specific Knowledge</strong>: Some semantic parsing tasks require domain-specific knowledge, which may not be readily available in training data.</p></li>
+<li><p><strong>Compositionality</strong>: Many queries involve compositional meaning, where the meaning of the whole is determined by the meanings of its parts. Understanding how words and phrases combine is a complex task.</p></li>
+</ol>
+<p>semantic parsing is important in bridging the gap between natural language and structured data, but it remains a challenging problem due to the complexities and nuances of human language. Researchers continue to work on improving semantic parsing techniques to make them more accurate and versatile.</p>
+</section>
+<section id="machine-translation" class="level3">
+<h3 class="anchored" data-anchor-id="machine-translation">Machine Translation</h3>
+<p>There is no need for explanation, but one thing were focus is more on Multilingual MT.</p>
+<p>We came a long way from rule-based and statistical approaches to cutting-edge Neural Networks. And above problems have shaped the world of NLP.</p>
+</section>
+</section>
 <section id="thank-you" class="level2">
 <h2 class="anchored" data-anchor-id="thank-you">Thank you</h2>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Constituency Parsing</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Dependency Parsing</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># semantics</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># NLI</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Grounding</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Co-reference resolutin</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Multilingual MT</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># corenlp.run</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
 
 
 </section>
