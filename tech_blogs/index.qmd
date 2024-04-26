@@ -1,0 +1,18 @@
+---
+title: "Tech Blogs"
+subtitle: 'Sharing My Learning in Math, Programming and AI'
+listing:
+  contents: .
+  sort: "date desc"
+  type: default
+  image-align: left
+  categories: true
+  sort-ui: true
+  filter-ui: true
+  page-size: 25
+  fields: [image, date, title, description, categories, author, reading-time]
+
+page-layout: full
+title-block-banner: false
+comments: false
+---

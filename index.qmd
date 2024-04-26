@@ -1,18 +1,85 @@
 ---
-title: "My Blogs"
-subtitle: 'Sharing My Journey and Learning'
-listing:
-  contents: posts
-  sort: "date desc"
-  type: default
-  image-align: left
-  categories: true
-  sort-ui: true
-  filter-ui: true
-  page-size: 25
-  fields: [image, date, title, description, categories, author, reading-time]
+title: Aman Pandey
+#subtitle:
+# description:  
 
-page-layout: full
-title-block-banner: false
+back-to-top-navigation: false
+about:
+  id: about-section
+  image: profile.jpg
+  template: trestles
+  links:
+      - icon: envelope
+        text: Email
+        href: mailto:amanpandey@mailfence.com
+        target: _blank
+      - icon: file-pdf
+        text: Resume
+        href: https://drive.google.com/drive/folders/1pTPR0vPX1UoQYfyvQLu8Pn-Wc6hqrjGf?usp=sharing
+        target: _blank
+      - icon: stack-overflow
+        text: StackOverflow
+        href: https://stackoverflow.com/users/7447124/aman5319
+        target: _blank
+      - icon: linkedin
+        text: LinkedIn
+        href: https://www.linkedin.com/in/aman5319/
+        target: _blank
+      - icon: github
+        text: Github
+        href: https://github.com/aman5319
+        target: _blank
+      - icon: instagram
+        text: Instagram
+        href: https://www.instagram.com/aman_on_palebluedot
+      - icon: pin-map
+        text: Bangalore, India
 comments: false
+page-layout: full
+sidebar: false
 ---
+<!-- :::{#about-section} -->
+
+Data Scientist with expertise in **Natural Language Processing** and **Recommendation Engines**.
+
+*Enthusiastic about Math, Programming and Free Software.*
+<!-- ::: -->
+
+:::{.panel-tabset}
+
+# Bio
+  I have worked majorly in **Natual Language Processing**, and **Applied AI research** across different industry domains with a global perspective. I've collaborated with international teams under cross-functional environments both in industry and academia.
+
+  Something I believe so deeply is **Free software**, and **Free Education** for everyone which lead me conduct multiple meetups, workshop, events. What I learned from the community I give back to the community.
+
+  **I advocate for open research.**
+  These days I am fueled by **enthusiasm to do mathematics** from completely different perspective.
+
+  
+
+# Skills
+
+**Computer Programming** | Python | Java | C++ | PyTorch | GNU/Linux | Distributed and Parallel Programming | Large Scale Data Processing | AWS | Model Monitoring
+
+**Deep Learning** | Machine Learning | Bayesian Active Learning | Metric Learning | Multi-Task Learning | Transfer Learning 
+
+**AI Specalities** | NLP | NLG | NLU | Recommendation Systems | Explainable AI 
+
+# Non Job Pursuits
+**Member in Free Software Movement Karnataka(FSMK 2015 - 2020)** | Android Teacher for 7 days Bootcamp | Organized bootcamps in multiple colleges | Bringing Awarness and knowledge about the Open Eco-System to the society | Events and Conferences representing FSMK | 
+
+**President of College GNU/Linux group(Toggle 2018-2019)** | Organizing Events and Workshops in college | 
+
+**Entirety.ai(Feb 2019 - Mar 2021)** | Discuss on current trend and Hands on Experience in Deep Learning | Event Ambassador for Pie and AI Meetup Bangalore | Talks and Meetups in Bangalore | collaborating with other meetup group and companies like Nvidia and Amazon
+
+**Adjunct faculty at Praxis Buisness School (July 2019 - July 2020)** | Teaching Deep learning and Model Deployment to PG students | 
+
+**Haskell Study Group (2022)** | Organized study group consisting of 50 members from world wide.| Learned Haskell and FP together 
+
+**Pycon** | Poster presentation(2019) | CFP Reviewer (2023) | CFP Mentorship (2023)
+
+**100 Hour Certification Course in Astronomy and Astrophysics (2023 - Present)** | M.P Birla Institute of Fundamental Research
+:::
+
+
+

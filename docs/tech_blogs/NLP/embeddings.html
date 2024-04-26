@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Aman Pandey">
+<meta name="dcterms.date" content="2019-10-25">
+<meta name="description" content="Word2vec, Glove, Fastext, ELMO, Character-Aware Language Model">
+
+<title>Aman Pandey - Word Embeddings</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Aman Pandey - Word Embeddings">
+<meta property="og:description" content="Word2vec, Glove, Fastext, ELMO, Character-Aware Language Model">
+<meta property="og:image" content="https://aman5319.github.io/portfolio/tech_blogs/NLP/images/embedding.PNG">
+<meta property="og:site-name" content="Aman Pandey">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Aman Pandey</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../tech_blogs" rel="" target="">
+ <span class="menu-text">Tech Blogs</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../non_tech_blogs" rel="" target="">
+ <span class="menu-text">Non Tech Blogs</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Word Embeddings</h1>
+                  <div>
+        <div class="description">
+          Word2vec, Glove, Fastext, ELMO, Character-Aware Language Model
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">deep-learning</div>
+                <div class="quarto-category">nlp</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Aman Pandey </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 25, 2019</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#word-embeddings" id="toc-word-embeddings" class="nav-link active" data-scroll-target="#word-embeddings">Word Embeddings</a>
+  <ul class="collapse">
+  <li><a href="#word2vec" id="toc-word2vec" class="nav-link" data-scroll-target="#word2vec">Word2Vec</a>
+  <ul class="collapse">
+  <li><a href="#skipgram" id="toc-skipgram" class="nav-link" data-scroll-target="#skipgram">Skipgram</a></li>
+  <li><a href="#training-word2vec-model" id="toc-training-word2vec-model" class="nav-link" data-scroll-target="#training-word2vec-model">Training Word2Vec Model</a></li>
+  </ul></li>
+  <li><a href="#global-vector-for-word-representationglove" id="toc-global-vector-for-word-representationglove" class="nav-link" data-scroll-target="#global-vector-for-word-representationglove">Global Vector for Word Representation(GloVe)</a>
+  <ul class="collapse">
+  <li><a href="#global-matrix-factorization---count-based-approach" id="toc-global-matrix-factorization---count-based-approach" class="nav-link" data-scroll-target="#global-matrix-factorization---count-based-approach">Global Matrix Factorization - Count based approach</a></li>
+  <li><a href="#local-context-window-direct-prediction" id="toc-local-context-window-direct-prediction" class="nav-link" data-scroll-target="#local-context-window-direct-prediction">Local Context Window Direct prediction</a></li>
+  <li><a href="#glove-embedding-generation-algorithm" id="toc-glove-embedding-generation-algorithm" class="nav-link" data-scroll-target="#glove-embedding-generation-algorithm">GloVe embedding generation algorithm</a></li>
+  </ul></li>
+  <li><a href="#word-analogies" id="toc-word-analogies" class="nav-link" data-scroll-target="#word-analogies">Word Analogies</a></li>
+  <li><a href="#enriching-word-vectors-with-subword-information" id="toc-enriching-word-vectors-with-subword-information" class="nav-link" data-scroll-target="#enriching-word-vectors-with-subword-information">Enriching Word Vectors with Subword Information</a>
+  <ul class="collapse">
+  <li><a href="#model-architecture" id="toc-model-architecture" class="nav-link" data-scroll-target="#model-architecture">Model Architecture</a></li>
+  </ul></li>
+  <li><a href="#elmo-embeddings-from-language-model" id="toc-elmo-embeddings-from-language-model" class="nav-link" data-scroll-target="#elmo-embeddings-from-language-model">ELMo (Embeddings from Language Model)</a></li>
+  <li><a href="#character-aware-language-model" id="toc-character-aware-language-model" class="nav-link" data-scroll-target="#character-aware-language-model">Character Aware Language Model</a></li>
+  </ul></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/aman5319/portfolio/blob/main/tech_blogs/NLP/embeddings.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/aman5319/portfolio/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="word-embeddings" class="level1">
+<h1>Word Embeddings</h1>
+<p>When you’re dealing with words in text, you end up with tens of thousands of word classes to analyze; one for each word in a vocabulary. Trying to one-hot encode these words is massively inefficient because most values in a one-hot vector will be set to zero. So, the matrix multiplication that happens in between a one-hot input vector and a first, hidden layer will result in mostly zero-valued hidden outputs.</p>
+<p>To solve this problem and greatly increase the efficiency of our networks, we use what are called <strong>embeddings</strong>. Embeddings are just a fully connected layer like you’ve seen before. We call this layer the embedding layer and the weights are embedding weights. We skip the multiplication into the embedding layer by instead directly grabbing the hidden layer values from the weight matrix. We can do this because the multiplication of a one-hot encoded vector with a matrix returns the row of the matrix corresponding the index of the “on” input unit.</p>
+<p>BOW and TF-IDF are spare representation of Tokens. In contrast Embedding refer to dense vector representations of Tokens in a continuous vector space. These embeddings are used to represent words or other linguistic units in a way that captures semantic relationships and contextual information.</p>
+<p>Embeddings are a fundamental component of many NLP applications, enabling models to understand and work with textual data in a way that captures semantic information and relationships between words. They have revolutionized the field of NLP and have significantly improved the performance of various NLP tasks.</p>
+<pre><code>1. Word2Vec
+2. Glove
+3. FastText        
+4. ELMO</code></pre>
+<p><img src="images/embedding.PNG" class="img-fluid"></p>
+<p>Instead of doing the matrix multiplication, we use the weight matrix as a lookup table. We encode the words as integers, for example “heart” is encoded as 958, “mind” as 18094. Then to get hidden layer values for “heart”, you just take the 958th row of the embedding matrix. This process is called an <strong>embedding lookup</strong> and the number of hidden units is the <strong>embedding dimension</strong>.</p>
+<p>There is nothing magical going on here. The embedding lookup table is just a weight matrix. The embedding layer is just a hidden layer. The lookup is just a shortcut for the matrix multiplication. The lookup table is trained just like any weight matrix.</p>
+<p>Embeddings aren’t only used for words of course. You can use them for any model where you have a massive number of classes. A particular type of model called <strong>Word2Vec</strong> uses the embedding layer to find vector representations of words that contain semantic meaning.</p>
+<section id="word2vec" class="level2">
+<h2 class="anchored" data-anchor-id="word2vec">Word2Vec</h2>
+<p><a href="https://arxiv.org/pdf/1310.4546.pdf">Word2Vec</a> <a href="https://arxiv.org/abs/1301.3781">Efficient Estimation of Word Representations in Vector Space</a></p>
+<p>Word2Vec is one of the most popular technique to learn word embeddings using shallow neural network.</p>
+<p>We’re going to train a simple neural network with a single hidden layer to perform a certain task, but then we’re not actually going to use that neural network for the task we trained it on! Instead, the goal is actually just to learn the weights of the hidden layer–we’ll see that these weights are actually the “word vectors” that we’re trying to learn.</p>
+<p>Different model architectures that can be used with Word2Vec</p>
+<ol type="1">
+<li>CBOW Neural Network Model</li>
+<li>Skipgram Neural Network Model</li>
+</ol>
+<p><img src="images/cbow_skipgram.PNG" class="img-fluid"></p>
+<p>Different ways to train Word2vec Model: 1. Heirarchial Softmax 2. Negative Sampling</p>
+<section id="skipgram" class="level3">
+<h3 class="anchored" data-anchor-id="skipgram">Skipgram</h3>
+<p><img src="images/skipgram_g.PNG" class="img-fluid"></p>
+<p><strong>eg: The quick brown fox jumps over the lazy dog</strong> <img src="images/skipgram.PNG" class="img-fluid"></p>
+<p>We’re going to train the neural network to do the following. Given a specific word in the middle of a sentence (the input word), look at the words <strong>nearby</strong> and pick one at random. The network is going to tell us the probability for every word in our vocabulary of being the “nearby word” that we chose.</p>
+<p><strong>nearby</strong> - there is actually a “window size” parameter to the algorithm. A typical window size might be 5, meaning 5 words behind and 5 words ahead (10 in total).</p>
+<p>We’ll train the neural network to do this by feeding it word pairs found in our training documents. The network is going to learn the statistics from the number of times each pairing shows up. So, for example, the network is probably going to get many more training samples of (“Soviet”, “Union”) than it is of (“Soviet”, “Sasquatch”). When the training is finished, if you give it the word “Soviet” as input, then it will output a much higher probability for “Union” or “Russia” than it will for “Sasquatch”.</p>
+<section id="skipgram-model-details" class="level4">
+<h4 class="anchored" data-anchor-id="skipgram-model-details">Skipgram Model Details</h4>
+<p>Skipgram architecture consists of: 1. <a href="https://pytorch.org/docs/stable/nn.html#embedding">Embedding layer / Hidden Layer</a></p>
+<p>An Embedding layer takes in a number of inputs, importantly: * <strong>num_embeddings</strong> – the size of the dictionary of embeddings, or how many rows you’ll want in the embedding weight matrix * <strong>embedding_dim</strong> – the size of each embedding vector; the embedding dimension.(300 features is what Google used in their published model trained on the Google news dataset (you can download it from here)</p>
+<ol start="2" type="1">
+<li>Softmax Output Layer<br> The output layer will have output neuron (one per word in our vocabulary) will produce an output between 0 and 1, and the sum of all these output values will add up to 1.</li>
+</ol>
+<p><img src="images/skip_gram_arch.PNG" class="img-fluid"></p>
+<p><strong>Working</strong> 1. The input words are passed in as batches of input word tokens. 2. This will go into a hidden layer of linear units (our embedding layer). 3. Then, finally into a softmax output layer. We’ll use the softmax layer to make a prediction about the context words by sampling, as usual.</p>
+</section>
+</section>
+<section id="training-word2vec-model" class="level3">
+<h3 class="anchored" data-anchor-id="training-word2vec-model">Training Word2Vec Model</h3>
+<p>Word2Vec network is a huge network in terms of parameters. Say we had word vectors with 300 components, and a vocabulary of 10,000 words. Recall that the neural network had two weight matrices–a hidden layer and output layer. Both of these layers would have a weight matrix with 300 x 10,000 = 3 million weights each!</p>
+<p>Hence to reduce compute burden of the training process,the research paper proposed following two innovations: 1. <strong>Subsampling frequent words</strong> to decrease the number of training examples. 2. Modifying the optimization objective with a technique they called <strong>Negative Sampling</strong>,instead of normal cross entropy which causes each training sample to update only a small percentage of the model’s weights which makes training the network very inefficient.</p>
+<section id="subsampling" class="level4">
+<h4 class="anchored" data-anchor-id="subsampling">Subsampling</h4>
+<p>Words that show up often such as “the”, “of”, and “for” don’t provide much context to the nearby words. If we discard some of them, we can remove some of the noise from our data and in return get faster training and better representations. This process is called subsampling by Mikolov. For each word <span class="math inline">\(w_i\)</span> in the training set, we’ll discard it with probability given by</p>
+<p><span class="math display">\[ P(w_i) = 1 - \sqrt{\frac{t}{f(w_i)}} \]</span></p>
+<p>where <span class="math inline">\(t\)</span> is a threshold parameter and <span class="math inline">\(f(w_i)\)</span> is the frequency of word <span class="math inline">\(w_i\)</span> in the total dataset.</p>
+</section>
+<section id="negative-sampling" class="level4">
+<h4 class="anchored" data-anchor-id="negative-sampling">Negative Sampling</h4>
+<p>As discussed above,the the skip-gram neural network has a tremendous number of weights, all of which would be updated slightly by every one of our millions or billions of training samples!</p>
+<p>Negative sampling addresses this by having each training sample only modify a small percentage of the weights, rather than all of them.</p>
+<p>With negative sampling, we are instead going to randomly select just a small number of “negative” words (let’s say 5) to update the weights for. (In this context, a “negative” word is one for which we want the network to output a 0 for). We will also still update the weights for our “positive” word (which is the word “quick” in our current example).</p>
+<p><strong><em>The paper says that selecting 5-20 words works well for smaller datasets, and you can get away with only 2-5 words for large datasets.</em></strong></p>
+</section>
+<section id="selecting-negative-samples" class="level4">
+<h4 class="anchored" data-anchor-id="selecting-negative-samples">Selecting Negative Samples</h4>
+<p>The “negative samples” (that is, the 5 output words that we’ll train to output 0) are selected using a “unigram distribution”, where more frequent words are more likely to be selected as negative samples.</p>
+<p><strong>Modification in Cost Function</strong></p>
+<p>We change the loss function to only care about correct example and a small amount of wrong examples. <img src="https://render.githubusercontent.com/render/math?math=-%20%5Clarge%20%5Clog%7B%5Csigma%5Cleft%28u_%7Bw_O%7D%5Chspace%7B0.001em%7D%5E%5Ctop%20v_%7Bw_I%7D%5Cright%29%7D%20-%0A%5Csum_i%5EN%20%5Cmathbb%7BE%7D_%7Bw_i%20%5Csim%20P_n%28w%29%7D%5Clog%7B%5Csigma%5Cleft%28-u_%7Bw_i%7D%5Chspace%7B0.001em%7D%5E%5Ctop%20v_%7Bw_I%7D%5Cright%29%7D&amp;mode=display" class="img-fluid"></p>
+<p>First part of the Loss function: <img src="https://render.githubusercontent.com/render/math?math=%5Clarge%20%5Clog%7B%5Csigma%5Cleft%28u_%7Bw_O%7D%5Chspace%7B0.001em%7D%5E%5Ctop%20v_%7Bw_I%7D%5Cright%29%7D&amp;mode=display" class="img-fluid"> we take the log-sigmoid of the inner product of the output word vector and the input word vector.</p>
+<p>Second part of the Loss function:</p>
+<p>let’s first look at</p>
+<p><span class="math display">\[\large \sum_i^N \mathbb{E}_{w_i \sim P_n(w)}\]</span></p>
+<p>This means we’re going to take a sum over words <span class="math inline">\(w_i\)</span> drawn from a noise distribution <span class="math inline">\(w_i \sim P_n(w)\)</span>. The noise distribution is basically our vocabulary of words that aren’t in the context of our input word. In effect, we can randomly sample words from our vocabulary to get these words. <span class="math inline">\(P_n(w)\)</span> is an arbitrary probability distribution though, which means we get to decide how to weight the words that we’re sampling. This could be a uniform distribution, where we sample all words with equal probability. Or it could be according to the frequency that each word shows up in our text corpus, the unigram distribution <span class="math inline">\(U(w)\)</span>. The authors found the best distribution to be <span class="math inline">\(U(w)^{3/4}\)</span>, empirically. The power makes less frequent words be sampled more often</p>
+<p>Finally, in</p>
+<p><span class="math display">\[\large \log{\sigma\left(-u_{w_i}\hspace{0.001em}^\top v_{w_I}\right)},\]</span></p>
+<p>we take the log-sigmoid of the negated inner product of a noise vector with the input vector.</p>
+<p><img src="images/neg_sampling_loss.PNG" class="img-fluid"></p>
+<p>To give you an intuition for what we’re doing here, remember that the sigmoid function returns a probability between 0 and 1. The first term in the loss pushes the probability that our network will predict the correct word <span class="math inline">\(w_O\)</span> towards 1. In the second term, since we are negating the sigmoid input, we’re pushing the probabilities of the noise words towards 0.</p>
+</section>
+</section>
+</section>
+<section id="global-vector-for-word-representationglove" class="level2">
+<h2 class="anchored" data-anchor-id="global-vector-for-word-representationglove">Global Vector for Word Representation(GloVe)</h2>
+<p><a href="https://www.aclweb.org/anthology/D14-1162">GLoVe</a></p>
+<p><strong>Motivation</strong></p>
+<p>The Word2Vec -<strong><em>context window-based methods</em></strong> suffer from the disadvantage of not learning from the global corpus statistics. As a result, repetition and large-scale patterns may not be learned as well with these models.</p>
+<p>This method combines elements from the two main word embedding models which existed when GloVe was proposed: 1. Count based approach - Global matrix factorization 2. Direct Prediction - Local context window methods</p>
+<p><img src="images/count_based_vs_direct_pred.PNG" class="img-fluid"></p>
+<section id="global-matrix-factorization---count-based-approach" class="level3">
+<h3 class="anchored" data-anchor-id="global-matrix-factorization---count-based-approach">Global Matrix Factorization - Count based approach</h3>
+<p>It is the process of using matrix factorization methods from linear algebra to perform rank reduction on a large term-frequency matrix. These matrices can be represented as : 1. Term-Document Frequency - rows are words and the columns are documents (or sometimes paragraphs) 2. Term-Term Frequencies - words on both axes and measure co-occurrence</p>
+<p><strong>Latent semantic analysis (LSA)</strong> It is a technique in natural language processing for analyzing relationships between a set of documents and the terms they contain by applying <strong>Global matrix factorization</strong> to term-document frequency matrices. In <strong>LSA</strong> the high-dimensional matrix is reduced via <strong>singular value decomposition (SVD).</strong></p>
+<p><img src="images/svd.jpg" class="img-fluid"></p>
+</section>
+<section id="local-context-window-direct-prediction" class="level3">
+<h3 class="anchored" data-anchor-id="local-context-window-direct-prediction">Local Context Window Direct prediction</h3>
+<ol type="1">
+<li><strong>Skip-gram model</strong><br> By passing a window over the corpus line-by-line and learning to predict either the surroundings of a given word<br>
+</li>
+<li><strong>Continuous Bag of Words Model (CBOW)</strong><br> Predict a word given its surroundings. Note the bag-of-words problem is often shortened to “CBOW”.</li>
+</ol>
+<p><strong>Skip-gram</strong>: works well with small amount of the training data, represents well even rare words or phrases.<br> <strong>CBOW</strong>: several times faster to train than the skip-gram, slightly better accuracy for the frequent words.</p>
+<p><img src="images/cbow_skipgram.PNG" class="img-fluid"></p>
+</section>
+<section id="glove-embedding-generation-algorithm" class="level3">
+<h3 class="anchored" data-anchor-id="glove-embedding-generation-algorithm">GloVe embedding generation algorithm</h3>
+<p>GloVe technique improves on these previous methods by making changes in the following:</p>
+<ol type="1">
+<li><strong>Co-occurance Probabilities</strong><br> Instead of learning the raw co-occurrence probabilities, it may make more sense to learn ratios of these co-occurrence probabilities, which seem to better discriminate subtleties in term-term relevance.</li>
+</ol>
+<p>To illustrate this, we borrow an example from their paper: suppose we wish to study the relationship between two words, i = ice and j = steam. We’ll do this by examining the co-occurrence probabilities of these words with various “probe” words.</p>
+<p>Co-occurrence probability of an arbitrary word i with an arbitrary word j to be the probability that word j appears in the context of word i. <img src="images/co-occurance_matrix.PNG" class="img-fluid"> <strong><em>X_i</em></strong> is defined as the number of times any word appears in the context of word i, so it’s defined as the sum over all words k of the number of times word k occurs in the context of word i.</p>
+<p>Let us take few probe words and see how does the ratio appears: 1. If we choose a probe word k = solid which is closely related to i = ice but not to j = steam, we expect the ratio P_{ik}/P_{jk} of co-occurrence probabilities to be large 2. If we choose a probe word k = gas we would expect the same ratio to be small, since steam is more closely related to gas than ice is. 3. If we choose a probe word k = water , which are closely related to both ice and steam, but not more to one than the other ,we expect our ratio to be close to 1 since there shouldn’t be any bias to one of ice or steam 4. If we choose a probe word k = fashion ,which are not closely related to either of the words in question, we expect our ratio to be close to 1 since there shouldn’t be any bias to one of ice or steam</p>
+<p><img src="images/co-occurance_ex.PNG" class="img-fluid"></p>
+<p>Noting that the ratio P<sub>ik</sub> /P<sub>jk</sub> depends on three words i, j, and k, the most general model takes the form, <img src="images/naive_form.PNG" class="img-fluid"></p>
+<p><strong><em>In this equation, the right-hand side is extracted from the corpus, and F may depend on some as-of-yet unspecified parameters. The number of possibilities for F is vast, but by enforcing a few desiderata we can select a unique choice</em></strong>. We have two word vectors which we’d like to discriminate between, and a context word vector which is used to this effect.So to encode information about the ratios between two words, the authors suggest using vector differences as inputs to our function <strong>Vector Difference Model</strong> <img src="images/vector_difference_model.PNG" class="img-fluid"></p>
+<p>So now,vector difference of the two words <strong>i</strong> and <strong>j</strong> we’re comparing as an input instead of both of these words individually, since our output is a ratio between their co-occurrence probabilities with the context word.</p>
+<p>Now we have two arguments, the context word vector, and the vector difference of the two words we’re comparing. Since the authors wish to take scalar values to scalar values (note the ratio of probabilities is a scalar), the dot product of these two arguments is taken</p>
+<p><img src="images/scalar_input_model.PNG" class="img-fluid"></p>
+<p>Next, note that for word-word co-occurrence matrices, the distinction between a word and a context word is arbitrary and that we are free to exchange the two roles.Our final model should be invariant under this relabeling, but above equation is not.</p>
+<p>After applying Homomorphism condition: <img src="images/homomorphism.PNG" class="img-fluid"></p>
+<p>we arrive at the equation as in the paper <img src="images/glove_homo.PNG" class="img-fluid"></p>
+</section>
+</section>
+<section id="word-analogies" class="level2">
+<h2 class="anchored" data-anchor-id="word-analogies">Word Analogies</h2>
+<p>There is no concept of word analogies with algorithms like word2vec and Glove.They just suddenly emerge out of the model and training process.</p>
+<p><img src="images/word_analogies.PNG" class="img-fluid"></p>
+</section>
+<section id="enriching-word-vectors-with-subword-information" class="level2">
+<h2 class="anchored" data-anchor-id="enriching-word-vectors-with-subword-information">Enriching Word Vectors with Subword Information</h2>
+<p>Continuous word representations, trained on large unlabeled corpora are useful for many natural language processing tasks. Popular models that learn such representations ignore the morphology of words, by assigning a dis-tinct vector to each word. This is a limitation,especially for languages with large vocabularies and many rare words.</p>
+<p>Considering Unigram word model they are higher chances of getting rare words during testing because we can’t take infinite size corpous which includes all the words.</p>
+<p>Here each word is represented as a bag of character n-grams. A vector representation of each character n-gram is summed to get word vector.</p>
+<p>By representing each word as a bag of character n-grams a SkipGram model with Negative sampling is trained.</p>
+<p>By using a distinct vector representation for each word, the skipgram model ignores the internal structure of words.</p>
+<p>Hence Fasttext comes with the approach of incorporating sub-word level information.</p>
+<p>So breaking a token -&gt; “characteristics” into 3 token -&gt; char_, acter_, istics_</p>
+<p>and to make it even better they incorporate n-grams with the actual tokens in text. This adds more feature regarding the local context of how the words are used together.</p>
+<p>More specifically they have used bi-gram.</p>
+<p>For example:-</p>
+<pre><code>text = I love my country
+
+bi-gram feature = "I" , "love" , "my", "country" , "I love" , "love my" , "my country"</code></pre>
+<p><img src="images/subword_1.png" class="img-fluid"> <img src="images/subword_2.png" class="img-fluid"></p>
+<p>Hyperparameter choice for generating Fasttext embeddings</p>
+<ol type="1">
+<li>Generating fasttext embedding will take more time compared to word2vec model.</li>
+<li>As the corpus size grows, the memory requirement grows too - the number of ngrams that get hashed into the same ngram bucket would grow. So the choice of hyperparameter controlling the total hash buckets including the n-gram min and max size have a bearing.</li>
+</ol>
+<p>This N-gram feature was used to generate embeddings which then fasttext used to perform text classification which gave them phenomenal results.</p>
+<section id="model-architecture" class="level3">
+<h3 class="anchored" data-anchor-id="model-architecture">Model Architecture</h3>
+<p><img src="images/fasttext_Arch.png" class="img-fluid"></p>
+<p>All the input tokens for a document are passed to an Embedding layer after which they are averaged out to generate an embedding for the sentence. The Sentence embeddings is passed to a Fully Connected Softmax layer for classification.</p>
+<p>When the number of classes is large, computing the linear classifier is computationally expensive. Moreprecisely, the computational complexity is O(kh) where k is the number of classes and h the dimension of the text representation. In order to improve the running time, Hierarchical softmax is used droping the the computational complexity O(hlog2(k)).</p>
+<p>Normal Softmax <img src="images/softmax.png" class="img-fluid"></p>
+<p>Hierarchical Softmax <img src="images/h_softmax.png" class="img-fluid"></p>
+<p>In Hierarchical softmax the task is to form tree.</p>
+<p>Good Tree <img src="images/good_tree.png" class="img-fluid"></p>
+<p>Bad Tree <img src="images/bad_tree.png" class="img-fluid"></p>
+<p>Hierarchical softmax is not an approximate optimization algorithm. It accelerates the optimization by adding human orchestrations which could be highly biased.</p>
+</section>
+</section>
+<section id="elmo-embeddings-from-language-model" class="level2">
+<h2 class="anchored" data-anchor-id="elmo-embeddings-from-language-model"><a href="https://arxiv.org/pdf/1802.05365.pdf">ELMo (Embeddings from Language Model)</a></h2>
+<p>The point where word2vec, Glove and fasttext failed is, The meaning, semantics of a words changes with respect to the words it is surrounded by in a sentence and these models wheren’t able to represent that.</p>
+<p>For example:- ” 1. Apple is in profit. 2. Apple is tasty.</p>
+<p>Apple in first sentence refers to the company whereas apple in second sentence refers to fruit.</p>
+<p>In word2vec model this one word with two meaning will be represented by same vector.</p>
+<p>To solve this issue <code>ELMo</code> uses stacked bi-LSTM to generate embeddings for each words which is context dependent.</p>
+<p>so In the above example Apple in first and second case will have two different vector representation.</p>
+<pre><code>  ELMo is a deep contextualized word representation that models both (1) complex characteristics of word use (e.g., syntax and semantics), and (2) how these uses vary across linguistic contexts (i.e., to model polysemy). These word vectors are learned functions of the internal states of a deep bidirectional language model (biLM), which is pre-trained on a large text corpus. They can be easily added to existing models and significantly improve the state of the art across a broad range of challenging NLP problems, including question answering, textual entailment and sentiment analysis.
+       
+    ELMo representations are:
+
+    * Contextual: The representation for each word depends on the entire context in which it is used.
+    * Deep: The word representations combine all layers of a deep pre-trained neural network.
+    * Direction: From both left-to-right and right-to-left directions.</code></pre>
+<p>Since ELMo embeddings are trained in a unsupervised way. These embeddings can be used for downstream task in supervised way.</p>
+</section>
+<section id="character-aware-language-model" class="level2">
+<h2 class="anchored" data-anchor-id="character-aware-language-model"><a href="https://arxiv.org/pdf/1508.06615.pdf">Character Aware Language Model</a></h2>
+<p>Character-aware language models work at a character level. They model words as sequences of characters and use character-level neural networks, such as convolutional neural networks (CNNs) or recurrent neural networks (RNNs), to generate word embeddings directly from characters.</p>
+<p><img src="images/char_rnn.png" class="img-fluid"> <img src="images/char_rnn_1.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="reference" class="level1">
+<h1>Reference</h1>
+<ol type="1">
+<li><a href="https://math.stackexchange.com/questions/1037327/extended-bayes-theorem-pa-b-c-d-constructing-a-bayesian-network">Bayes Rule</a></li>
+<li><a href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/">Word2Vec from Chris McCormick</a></li>
+<li><a href="https://monkeylearn.com/blog/word-embeddings-transform-text-numbers/">Word Embedding</a></li>
+<li><a href="https://p.migdal.pl/2017/01/06/king-man-woman-queen-why.html">Word2Vec</a></li>
+<li><a href="https://arxiv.org/pdf/1301.3781.pdf">First Word2Vec paper</a> from Mikolov et al.</li>
+<li><a href="http://jalammar.github.io/">Video: Intuition &amp; Use-Cases of Embeddings in NLP &amp; beyond</a></li>
+<li><a href="http://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf">Neural Information Processing Systems, paper</a> with improvements for Word2Vec also from Mikolov et al.</li>
+<li><a href="https://github.com/udacity/deep-learning-v2-pytorch/blob/master/word2vec-embeddings/Negative_Sampling_Solution.ipynb">Skipgram-Pytorch</a></li>
+<li><a href="https://github.com/dthiagarajan/word2vec-pytorch">Word2Vec-Pytorch</a></li>
+<li><a href="https://towardsdatascience.com/light-on-math-ml-intuitive-guide-to-understanding-glove-embeddings-b13b4f19c010">Glove</a></li>
+<li><a href="https://arxiv.org/pdf/1607.04606.pdf">Enriching Word Vectors with Subword Information</a></li>
+</ol>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp("https:\/\/aman5319\.github\.io\/portfolio\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+      }
+    }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="aman5319/portfolio" data-repo-id="R_kgDOJ44pkw" data-category="Q&amp;A" data-category-id="DIC_kwDOJ44pk84CXwVt" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Blog made with 💜 and <a href="https://quarto.org/">Quarto</a>, by Aman Pandey. License: <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>.</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:amanpandey@mailfence.com">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
