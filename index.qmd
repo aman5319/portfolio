@@ -38,48 +38,49 @@ comments: false
 page-layout: full
 sidebar: false
 ---
+
 <!-- :::{#about-section} -->
 
 Data Scientist with expertise in **Natural Language Processing** and **Recommendation Engines**.
 
-*Enthusiastic about Math, Programming and Free Software.*
-<!-- ::: -->
+*Enthusiastic about Math, Programming and Free Software.* <!-- ::: -->
 
-:::{.panel-tabset}
-
+::: panel-tabset
 # Bio
-  I have worked majorly in **Natual Language Processing**, and **Applied AI research** across different industry domains with a global perspective. I've collaborated with international teams under cross-functional environments both in industry and academia.
 
-  Something I believe so deeply is **Free software**, and **Free Education** for everyone which lead me conduct multiple meetups, workshop, events. What I learned from the community I give back to the community.
+I'm Aman Kumar Pandey, a Data Scientist with 6+ years of experience working at the intersection of applied AI, recommender systems, and multilingual NLP. My work blends research and engineering — from building large-scale retrieval + ranking pipelines to enabling NLP in low-resource settings. I believe in open research, free software, and using technology to empower communities.
 
-  **I advocate for open research.**
-  These days I am fueled by **enthusiasm to do mathematics** from completely different perspective.
+Outside work, I contribute through teaching, community-led open-source AI initiatives, and occasionally dive into functional programming and math.
 
-  
+Let’s connect and explore ideas in AI, recommender systems, or multilingual tech for real-world impact.
 
 # Skills
 
-**Computer Programming** | Python | Java | C++ | PyTorch | GNU/Linux | Distributed and Parallel Programming | Large Scale Data Processing | AWS | Model Monitoring
+**Computer Programming** \| Python \| Java \| C++ \| PyTorch \| GNU/Linux \| Distributed and Parallel Programming \| Large Scale Data Processing \| AWS \| Model Monitoring
 
-**Deep Learning** | Machine Learning | Bayesian Active Learning | Metric Learning | Multi-Task Learning | Transfer Learning 
+**Deep Learning** \| Machine Learning \| Bayesian Active Learning \| Metric Learning \| Multi-Task Learning \| Transfer Learning
 
-**AI Specalities** | NLP | NLG | NLU | Recommendation Systems | Explainable AI 
+**AI Specalities** \| NLP \| NLG \| NLU \| Recommendation Systems \| Explainable AI
 
 # Non Job Pursuits
-**Member in Free Software Movement Karnataka(FSMK 2015 - 2020)** | Android Teacher for 7 days Bootcamp | Organized bootcamps in multiple colleges | Bringing Awarness and knowledge about the Open Eco-System to the society | Events and Conferences representing FSMK | 
 
-**President of College GNU/Linux group(Toggle 2018-2019)** | Organizing Events and Workshops in college | 
+**Member in Free Software Movement Karnataka(FSMK 2015 - 2020)** \| Android Teacher for 7 days Bootcamp \| Organized bootcamps in multiple colleges \| Bringing Awarness and knowledge about the Open Eco-System to the society \| Events and Conferences representing FSMK \|
 
-**Entirety.ai(Feb 2019 - Mar 2021)** | Discuss on current trend and Hands on Experience in Deep Learning | Event Ambassador for Pie and AI Meetup Bangalore | Talks and Meetups in Bangalore | collaborating with other meetup group and companies like Nvidia and Amazon
+**President of College GNU/Linux group(Toggle 2018-2019)** \| Organizing Events and Workshops in college \|
 
-**Adjunct faculty at Praxis Buisness School (July 2019 - July 2020)** | Teaching Deep learning and Model Deployment to PG students | 
+**Entirety.ai(Feb 2019 - Mar 2021)** \| Discuss on current trend and Hands on Experience in Deep Learning \| Event Ambassador for Pie and AI Meetup Bangalore \| Talks and Meetups in Bangalore \| collaborating with other meetup group and companies like Nvidia and Amazon
 
-**Haskell Study Group (2022)** | Organized study group consisting of 50 members from world wide.| Learned Haskell and FP together 
+**Adjunct faculty at Praxis Buisness School (July 2019 - July 2020)** \| Teaching Deep learning and Model Deployment to PG students \|
 
-**Pycon** | Poster presentation(2019) | CFP Reviewer (2023) | CFP Mentorship (2023)
+**Haskell Study Group (2022)** \| Organized study group consisting of 50 members from world wide.\| Learned Haskell and FP together
 
-**100 Hour Certification Course in Astronomy and Astrophysics (2023 - Present)** | M.P Birla Institute of Fundamental Research
+**Pycon** \| Poster presentation(2019) \| CFP Reviewer (2023) \| CFP Mentorship (2023)
+
+**100 Hour Certification Course in Astronomy and Astrophysics (2023)** \| M.P Birla Institute of Fundamental Research
+
+**Data Management Software for Marine Conservation(2024)** \| Reefwatch
+
+**Climate Science (2024)** \| Neuromatch
+
+**Animal Detection Camera Trap Images(2025-present)** \| Holématthi Nature Foundation
 :::
-
-
-
