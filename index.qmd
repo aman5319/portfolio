@@ -29,9 +29,6 @@ about:
         text: Github
         href: https://github.com/aman5319
         target: _blank
-      - icon: instagram
-        text: Instagram
-        href: https://www.instagram.com/aman_on_palebluedot
       - icon: pin-map
         text: Bangalore, India
 comments: false
