@@ -1,7 +1,12 @@
 [
   {
+    "listing": "/non_tech_blogs/index.html",
+    "items": []
+  },
+  {
     "listing": "/tech_blogs/index.html",
     "items": [
+      "/tech_blogs/Machine Learning/entropy.html",
       "/tech_blogs/Python/parallel_processing.html",
       "/tech_blogs/Python/big_data_processing.html",
       "/tech_blogs/Machine Learning/data_model_manage_prod.html",
@@ -19,9 +24,5 @@
       "/tech_blogs/NLP/rnn_lstm_gru.html",
       "/tech_blogs/NLP/nlp_overview.html"
     ]
-  },
-  {
-    "listing": "/non_tech_blogs/index.html",
-    "items": []
   }
 ]
