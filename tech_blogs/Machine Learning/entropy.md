@@ -1,7 +1,7 @@
 ---
 title: Entropy
 author: Aman Pandey
-date: "10/07/2025"
+date: "07/10/2025"
 description: Universe’s most universal law.
 editor: visual
 image: "images/entropy_ven.png"
@@ -15,7 +15,7 @@ Entropy is the universe’s most universal law, shaping everything from energy f
 - In mathematics, it’s a formula that measures uncertainty.
 - In physics, it’s the law that governs how heat and energy spread.
 - In chemistry, it’s the tally of molecular disorder.
-- In information theory, it’s the currency of surprise in messages.
+- In information theory, it’s the currency of surprise in messages, data compression and transfer over noisy channels.
 - In machine learning, it’s the score of impurity in decision-making.
 
 
@@ -300,6 +300,8 @@ Hence we are adding up the entropy at each step from start to the end node.
 The only function which can do all this $$ H(i) = - \log(pi) $$
 
 Hence entropy is converted in log probabilities, now we are just calculating entropy of one event but in a random process there can be multiple outcomes and so instead of thinking about uncertainity of one event let's think about average uncertainity.
+
+Note:- Shanon Gave how this formulae satisfies few more properties and how with limit we can get the proof of this. But we are skipping it.
 
 $$
 H = - \sum_{i=1}^{n} p_i \log(p_i), \quad \text{where } p_i \text{ is the probability of the $i$-th event}
@@ -691,3 +693,24 @@ Missing Information = IG(A;X) - IG(A;Y) \\
 E_{X}[D_{KL}(P^*(A∣X)  ∣∣  Q(A∣X))] = \text{Missing Information} \\
 \end{aligned}
 
+
+## Physics and Information Theory Relation
+
+From Wikipedia -
+
+Relationship to thermodynamic entropy
+
+The inspiration for adopting the word entropy in information theory came from the close resemblance between Shannon's formula and very similar known formulae from statistical mechanics.
+
+
+In statistical thermodynamics the most general formula for the thermodynamic entropy S of a thermodynamic system is the Gibbs entropy.
+
+$$
+S=-k_{\text{B}}\sum _{i}p_{i}\ln p_{i}\
+$$
+
+where kB is the Boltzmann constant, and pi is the probability of a microstate. The Gibbs entropy was defined by J. Willard Gibbs in 1878 after earlier work by Ludwig Boltzmann (1872).
+
+
+# Why doesn't time flows backward?
+# Why doesn't milk and coffee unmix itself?

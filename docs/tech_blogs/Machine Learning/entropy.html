@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aman Pandey">
-<meta name="dcterms.date" content="2025-10-07">
+<meta name="dcterms.date" content="2025-07-10">
 <meta name="description" content="Universe’s most universal law.">
 
 <title>Entropy – Aman Pandey</title>
@@ -180,7 +180,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 7, 2025</p>
+        <p class="date">July 10, 2025</p>
       </div>
     </div>
     
@@ -209,7 +209,10 @@ window.Quarto = {
   <li><a href="#information-gain" id="toc-information-gain" class="nav-link" data-scroll-target="#information-gain">Information Gain</a></li>
   <li><a href="#kl-divergence" id="toc-kl-divergence" class="nav-link" data-scroll-target="#kl-divergence">KL Divergence</a></li>
   <li><a href="#cross-entropy" id="toc-cross-entropy" class="nav-link" data-scroll-target="#cross-entropy">Cross Entropy</a></li>
+  <li><a href="#physics-and-information-theory-relation" id="toc-physics-and-information-theory-relation" class="nav-link" data-scroll-target="#physics-and-information-theory-relation">Physics and Information Theory Relation</a></li>
   </ul></li>
+  <li><a href="#why-doesnt-time-flows-backward" id="toc-why-doesnt-time-flows-backward" class="nav-link" data-scroll-target="#why-doesnt-time-flows-backward">Why doesn’t time flows backward?</a></li>
+  <li><a href="#why-doesnt-milk-and-coffee-unmix-itself" id="toc-why-doesnt-milk-and-coffee-unmix-itself" class="nav-link" data-scroll-target="#why-doesnt-milk-and-coffee-unmix-itself">Why doesn’t milk and coffee unmix itself?</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/aman5319/portfolio/edit/main/tech_blogs/Machine Learning/entropy.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/aman5319/portfolio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -227,7 +230,7 @@ window.Quarto = {
 <li>In mathematics, it’s a formula that measures uncertainty.</li>
 <li>In physics, it’s the law that governs how heat and energy spread.</li>
 <li>In chemistry, it’s the tally of molecular disorder.</li>
-<li>In information theory, it’s the currency of surprise in messages.</li>
+<li>In information theory, it’s the currency of surprise in messages, data compression and transfer over noisy channels.</li>
 <li>In machine learning, it’s the score of impurity in decision-making.</li>
 </ul>
 <p>But are all of these really talking about the same thing?<br> Are they all just using one tool entropy dressed in different clothes?<br> Let’s unpack each of them.</p>
@@ -449,6 +452,7 @@ What it means:
 <p>Hence we are adding up the entropy at each step from start to the end node.</p>
 <p>The only function which can do all this <span class="math display">\[ H(i) = - \log(pi) \]</span></p>
 <p>Hence entropy is converted in log probabilities, now we are just calculating entropy of one event but in a random process there can be multiple outcomes and so instead of thinking about uncertainity of one event let’s think about average uncertainity.</p>
+<p>Note:- Shanon Gave how this formulae satisfies few more properties and how with limit we can get the proof of this. But we are skipping it.</p>
 <p><span class="math display">\[
 H = - \sum_{i=1}^{n} p_i \log(p_i), \quad \text{where } p_i \text{ is the probability of the $i$-th event}
 \]</span></p>
@@ -725,9 +729,26 @@ KL terms - The error i.e how far you are from truth.</code></pre>
 Missing Information = IG(A;X) - IG(A;Y) \\
 E_{X}[D_{KL}(P^*(A∣X)  ∣∣  Q(A∣X))] = \text{Missing Information} \\
 \end{aligned}\]</span>
-
-
 </section>
+<section id="physics-and-information-theory-relation" class="level2">
+<h2 class="anchored" data-anchor-id="physics-and-information-theory-relation">Physics and Information Theory Relation</h2>
+<p>From Wikipedia -</p>
+<p>Relationship to thermodynamic entropy</p>
+<p>The inspiration for adopting the word entropy in information theory came from the close resemblance between Shannon’s formula and very similar known formulae from statistical mechanics.</p>
+<p>In statistical thermodynamics the most general formula for the thermodynamic entropy S of a thermodynamic system is the Gibbs entropy.</p>
+<p><span class="math display">\[
+S=-k_{\text{B}}\sum _{i}p_{i}\ln p_{i}\
+\]</span></p>
+<p>where kB is the Boltzmann constant, and pi is the probability of a microstate. The Gibbs entropy was defined by J. Willard Gibbs in 1878 after earlier work by Ludwig Boltzmann (1872).</p>
+</section>
+</section>
+<section id="why-doesnt-time-flows-backward" class="level1">
+<h1>Why doesn’t time flows backward?</h1>
+</section>
+<section id="why-doesnt-milk-and-coffee-unmix-itself" class="level1">
+<h1>Why doesn’t milk and coffee unmix itself?</h1>
+
+
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
