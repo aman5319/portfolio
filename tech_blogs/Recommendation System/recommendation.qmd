@@ -1,0 +1,208 @@
+---
+title: "Dating, Dining, and Doomscrolling: The Algorithms Behind Modern Choice"
+author: "Aman Pandey"
+date: "12/09/2025"
+editor: visual
+categories: [deep-learning, attention]
+description: "Overview of Recommendation system - Workshop for Pycon India 2025"
+image: images/pycon_2025_logo.png
+---
+
+# This was workshop for Pycon India 2025
+
+# Dating, Dining, and Doomscrolling: The Algorithms Behind Modern Choice  
+
+
+## Abstract
+
+Recommendation systems are no longer just about suggesting the next movie, they now shape everything from what we eat and wear to who we date, what we watch, and even what we believe. In this hands-on workshop, we’ll explore the powerful systems behind these “invisible puppeteers” of modern digital life.
+
+You’ll learn not just how recommendation systems work, but how they shape your choices, reinforce (or challenge) your biases, and how companies fine-tune them to maximize retention, revenue, and engagement. We’ll build and break down a recommendation pipeline from retrieval to ranking and dive into production challenges, optimization tricks, and the ethical trade-offs involved.
+
+We’ll also discuss how users can hack these systems to personalize their feeds and how developers can design fairer, more diverse systems. Whether you're into dating apps, content feeds, or building ML pipelines, this workshop will help you understand the full spectrum of RecSys.
+
+## Description of the workshop
+
+### **1. Introduction (10 mins)**
+
+-   **Welcome and Overview**
+
+    -   Introduction to the workshop: What are recommendation systems and why do they matter?
+
+    -   Real-world examples:
+
+        -   Dating apps (e.g., Tinder)
+        -   Content feeds (e.g., Instagram)
+        -   Food recommendations (e.g., Zomato)
+
+    -   **Goals of the workshop**:
+
+        -   Learn how RecSys work
+        -   Dive into their challenges
+        -   Understand their ethical implications
+
+-   **Audience Poll / Engagement**
+
+    -   Quick questions to gauge familiarity with RecSys
+
+    -   Brief survey:
+
+        -   Who uses these systems?
+        -   Who’s familiar with the tech behind them?
+
+------------------------------------------------------------------------
+
+### 2. Foundations of Recommendation Systems (30 mins)
+
+**Goal**: Give a strong conceptual grounding before diving into implementation.
+
+-   **Types of Training Data**
+
+    -   Explicit Feedback: Ratings, thumbs-up/down
+    -   Implicit Feedback: Clicks, dwell time, views, purchases
+
+-   **Interaction Types**
+
+    -   Positive-only vs. Positive & Negative Feedback
+
+-   **System Categories by Use-Case**
+
+    -   General-purpose, Context-aware, Sequential, Knowledge-based RecSys
+
+-   **Core Approaches**
+
+    -   Collaborative Filtering (User-based vs. Item-based)
+    -   Content-Based Filtering
+    -   Hybrid Models
+
+-   **Application Examples**
+
+    -   Netflix → Hybrid
+    -   Amazon → Item-based CF
+    -   Tinder → Context-aware
+    -   Spotify → Sequential
+    -   Zomato → Content + CF
+    -   Pratilipi → Long-tail engagement via diversity-aware models
+
+-   **Recommendation Pipeline**
+
+    -   Retrieval Stage: Candidate generation
+    -   Ranking Stage: Sorting by relevance
+    -   Exploration vs. Exploitation
+
+-   **Ranking Methods**
+
+    -   Pointwise / Pairwise / Listwise
+
+-   **Metrics that Matter**
+
+    -   Offline Metrics: Precision\@K, Recall, MAP, NDCG
+
+    -   Business Goal Alignment:
+
+        -   YouTube → Watch Time
+        -   Tinder → Match Rate
+
+------------------------------------------------------------------------
+
+### **3. Hands-On Session: Building a Recommendation System (40 mins)**
+
+**Goal**: Implement and understand the inner workings of a real model.
+
+-   **Exercise 1: Building a Two-Tower Model (30 mins)**
+
+    -   Use PyTorch to build a simple two-tower architecture
+    -   Demonstrate user-item embedding and dot-product similarity
+    -   Step-by-step: Data loading → Model → Loss → Training
+
+-   **Exercise 2: Evaluating Your Model (10 mins)**
+
+    -   Use standard metrics: Precision, Recall, MAP
+    -   Compare online metrics vs. offline metrics
+
+------------------------------------------------------------------------
+
+### **Break (10 mins)**
+
+------------------------------------------------------------------------
+
+### **4. Challenges in Recommendation Systems (30 mins)**
+
+#### **Real-World Problems**
+
+-   **Bias in Training Data**: Echo chambers, skewed preferences
+-   **Cold Start**: New users/items with little interaction data
+-   **Scalability**: Latency and compute at scale
+
+#### **Ethical Challenges**
+
+-   **Algorithmic Bias & Fairness**: Impact on sensitive attributes
+
+-   **Diversity vs. Personalization**: Avoiding homogenized content
+
+-   **Debiasing Techniques**:
+
+    -   **Exposure Bias**: Overexposure to certain items
+    -   **Popularity Bias**: Trend dominance
+    -   **Selection Bias**: Skewed relevance due to interaction patterns
+
+#### **Case Study: Pratilipi**
+
+-   How an Indian storytelling platform balances fairness, diversity, and engagement
+
+------------------------------------------------------------------------
+
+### **5. Hands-On Recap & Final Exercise (30 mins)**
+
+**Mini Lab**: Use your model to explore bias, diversity, and fairness.
+
+-   Apply:
+
+    -   Diversity boosting
+    -   Popularity debiasing
+    -   Freshness filters
+
+-   **Re-evaluate**:
+
+    -   Compare fairness, diversity, and relevance metrics before and after
+
+-   **Group Reflection**:
+
+    -   Discuss improvements, regressions, and trade-offs
+
+------------------------------------------------------------------------
+
+### **6. Gaming the System: How Users Can Personalize Their Feeds (10 mins)**
+
+-   How users can influence their recommendation feed (e.g., YouTube, Spotify)
+-   Implications of over-personalization (filter bubbles, doomscrolling)
+-   Tips for better and diverse recommendations
+
+------------------------------------------------------------------------
+
+### **7. Conclusion & Q&A (20 mins)**
+
+-   **Wrap-Up**
+
+-   **Q&A**: Open floor for questions on theory, implementation, or ethics
+
+-   **Additional Resources**:
+
+    -   GitHub repo with code, datasets, and readings
+    -   Encourage continued learning and experimentation
+
+Here is the presentation I used in the talk:
+
+## Slides
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTqljoRBK2RE9Dufvl5LdOZhWWbIcB0_W7IOCR8Sb-XJfkCqPro03bSyJFjTN739StCWJmn5e9T1i45/pubembed?start=false&amp;loop=false&amp;delayms=30000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+
+</iframe>
+
+## Explore the Code
+
+You can interact with the notebook on Google Colab.
+
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1kP0FmUbw7SROzSuMiYZkcjBMEJx0pzDJ?usp=sharing)
+
+[![](https://img.shields.io/badge/GitHub-Repo-blue?logo=github)](https://github.com/aman5319/pycon_india_2025)

@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Aman Pandey">
+<meta name="dcterms.date" content="2025-12-09">
+<meta name="description" content="Overview of Recommendation system - Workshop for Pycon India 2025">
 
-<title>Beyond the Screen: Adventures in Reality – Aman Pandey</title>
+<title>Dating, Dining, and Doomscrolling: The Algorithms Behind Modern Choice – Aman Pandey</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +26,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-3a01e2046221230fdceeea94b1ec5d67.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-a4a11d514c7d463668e07712114998e6.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-2d7b555c8139e1218026ae7dd17bce4a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-3a01e2046221230fdceeea94b1ec5d67.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-a4a11d514c7d463668e07712114998e6.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-2d7b555c8139e1218026ae7dd17bce4a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,80 +71,26 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-description','listing-categories','listing-author','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Beyond the Screen: Adventures in Reality – Aman Pandey">
+<meta property="og:title" content="Dating, Dining, and Doomscrolling: The Algorithms Behind Modern Choice – Aman Pandey">
+<meta property="og:description" content="Overview of Recommendation system - Workshop for Pycon India 2025">
+<meta property="og:image" content="https://aman5319.github.io/portfolio/tech_blogs/Recommendation System/images/pycon_2025_logo.png">
 <meta property="og:site_name" content="Aman Pandey">
+<meta property="og:image:height" content="757">
+<meta property="og:image:width" content="784">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Aman Pandey</span>
     </a>
   </div>
@@ -154,11 +101,11 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../tech_blogs"> 
+    <a class="nav-link" href="../../tech_blogs"> 
 <span class="menu-text">Tech Blogs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../non_tech_blogs"> 
+    <a class="nav-link" href="../../non_tech_blogs"> 
 <span class="menu-text">Non Tech Blogs</span></a>
   </li>  
 </ul>
@@ -175,168 +122,290 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Dating, Dining, and Doomscrolling: The Algorithms Behind Modern Choice</h1>
+                  <div>
+        <div class="description">
+          Overview of Recommendation system - Workshop for Pycon India 2025
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">deep-learning</div>
+                <div class="quarto-category">attention</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Aman Pandey </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 9, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div></div></div>
-<!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Beyond the Screen: Adventures in Reality</h1>
-</div>
-
-
-
-<div class="quarto-title-meta column-page-left">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<!-- Oceangraphy
-Marine Biology
-Forest
-India's Physical features (Mountains, rivers, hiils)
-Learn Geography 
-Snow Leopard
-Wildlife
-Biking
-Giving stargazing sessions.
- -->
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title" data-direction="asc">
-          Title
-        </option>
-         <option value="listing-date-sort" data-direction="asc">
-          Date - Oldest
-        </option>
-         <option value="listing-date-sort" data-direction="desc">
-          Date - Newest
-        </option>
-         <option value="listing-author" data-direction="asc">
-          Author
-        </option>
-     </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#this-was-workshop-for-pycon-india-2025" id="toc-this-was-workshop-for-pycon-india-2025" class="nav-link active" data-scroll-target="#this-was-workshop-for-pycon-india-2025">This was workshop for Pycon India 2025</a></li>
+  <li><a href="#dating-dining-and-doomscrolling-the-algorithms-behind-modern-choice" id="toc-dating-dining-and-doomscrolling-the-algorithms-behind-modern-choice" class="nav-link" data-scroll-target="#dating-dining-and-doomscrolling-the-algorithms-behind-modern-choice">Dating, Dining, and Doomscrolling: The Algorithms Behind Modern Choice</a>
+  <ul class="collapse">
+  <li><a href="#abstract" id="toc-abstract" class="nav-link" data-scroll-target="#abstract">Abstract</a></li>
+  <li><a href="#description-of-the-workshop" id="toc-description-of-the-workshop" class="nav-link" data-scroll-target="#description-of-the-workshop">Description of the workshop</a>
+  <ul class="collapse">
+  <li><a href="#introduction-10-mins" id="toc-introduction-10-mins" class="nav-link" data-scroll-target="#introduction-10-mins"><strong>1. Introduction (10 mins)</strong></a></li>
+  <li><a href="#foundations-of-recommendation-systems-30-mins" id="toc-foundations-of-recommendation-systems-30-mins" class="nav-link" data-scroll-target="#foundations-of-recommendation-systems-30-mins">2. Foundations of Recommendation Systems (30 mins)</a></li>
+  <li><a href="#hands-on-session-building-a-recommendation-system-40-mins" id="toc-hands-on-session-building-a-recommendation-system-40-mins" class="nav-link" data-scroll-target="#hands-on-session-building-a-recommendation-system-40-mins"><strong>3. Hands-On Session: Building a Recommendation System (40 mins)</strong></a></li>
+  <li><a href="#break-10-mins" id="toc-break-10-mins" class="nav-link" data-scroll-target="#break-10-mins"><strong>Break (10 mins)</strong></a></li>
+  <li><a href="#challenges-in-recommendation-systems-30-mins" id="toc-challenges-in-recommendation-systems-30-mins" class="nav-link" data-scroll-target="#challenges-in-recommendation-systems-30-mins"><strong>4. Challenges in Recommendation Systems (30 mins)</strong></a></li>
+  <li><a href="#hands-on-recap-final-exercise-30-mins" id="toc-hands-on-recap-final-exercise-30-mins" class="nav-link" data-scroll-target="#hands-on-recap-final-exercise-30-mins"><strong>5. Hands-On Recap &amp; Final Exercise (30 mins)</strong></a></li>
+  <li><a href="#gaming-the-system-how-users-can-personalize-their-feeds-10-mins" id="toc-gaming-the-system-how-users-can-personalize-their-feeds-10-mins" class="nav-link" data-scroll-target="#gaming-the-system-how-users-can-personalize-their-feeds-10-mins"><strong>6. Gaming the System: How Users Can Personalize Their Feeds (10 mins)</strong></a></li>
+  <li><a href="#conclusion-qa-20-mins" id="toc-conclusion-qa-20-mins" class="nav-link" data-scroll-target="#conclusion-qa-20-mins"><strong>7. Conclusion &amp; Q&amp;A (20 mins)</strong></a></li>
+  </ul></li>
+  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
+  <li><a href="#explore-the-code" id="toc-explore-the-code" class="nav-link" data-scroll-target="#explore-the-code">Explore the Code</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/aman5319/portfolio/edit/main/tech_blogs/Recommendation System/recommendation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/aman5319/portfolio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
-</div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-left" data-index="0" data-listing-file-modified-sort="1756541965404">
-<div class="thumbnail">
-<p><a href="../non_tech_blogs/strength_technique_bjj.html" class="no-external"></a></p><a href="../non_tech_blogs/strength_technique_bjj.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="../non_tech_blogs/strength_technique_bjj.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../non_tech_blogs/strength_technique_bjj.html" class="no-external"></a>
-</h3>
-<div class="listing-subtitle">
-<a href="../non_tech_blogs/strength_technique_bjj.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../non_tech_blogs/strength_technique_bjj.html" class="no-external"></a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="../non_tech_blogs/strength_technique_bjj.html" class="no-external"></a></p><a href="../non_tech_blogs/strength_technique_bjj.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-left" data-index="1" data-listing-file-modified-sort="1756541916836">
-<div class="thumbnail">
-<p><a href="../non_tech_blogs/cetaceans.html" class="no-external"></a></p><a href="../non_tech_blogs/cetaceans.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="../non_tech_blogs/cetaceans.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../non_tech_blogs/cetaceans.html" class="no-external"></a>
-</h3>
-<div class="listing-subtitle">
-<a href="../non_tech_blogs/cetaceans.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../non_tech_blogs/cetaceans.html" class="no-external"></a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="../non_tech_blogs/cetaceans.html" class="no-external"></a></p><a href="../non_tech_blogs/cetaceans.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-left" data-index="2" data-listing-file-modified-sort="1756541841301">
-<div class="thumbnail">
-<p><a href="../non_tech_blogs/panthera.html" class="no-external"></a></p><a href="../non_tech_blogs/panthera.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="../non_tech_blogs/panthera.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../non_tech_blogs/panthera.html" class="no-external"></a>
-</h3>
-<div class="listing-subtitle">
-<a href="../non_tech_blogs/panthera.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../non_tech_blogs/panthera.html" class="no-external"></a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="../non_tech_blogs/panthera.html" class="no-external"></a></p><a href="../non_tech_blogs/panthera.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-left" data-index="3" data-listing-file-modified-sort="1756541735212">
-<div class="thumbnail">
-<p><a href="../non_tech_blogs/sea_turtles.html" class="no-external"></a></p><a href="../non_tech_blogs/sea_turtles.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="../non_tech_blogs/sea_turtles.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../non_tech_blogs/sea_turtles.html" class="no-external"></a>
-</h3>
-<div class="listing-subtitle">
-<a href="../non_tech_blogs/sea_turtles.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../non_tech_blogs/sea_turtles.html" class="no-external"></a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="../non_tech_blogs/sea_turtles.html" class="no-external"></a></p><a href="../non_tech_blogs/sea_turtles.html" class="no-external">
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="this-was-workshop-for-pycon-india-2025" class="level1">
+<h1>This was workshop for Pycon India 2025</h1>
+</section>
+<section id="dating-dining-and-doomscrolling-the-algorithms-behind-modern-choice" class="level1">
+<h1>Dating, Dining, and Doomscrolling: The Algorithms Behind Modern Choice</h1>
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<p>Recommendation systems are no longer just about suggesting the next movie, they now shape everything from what we eat and wear to who we date, what we watch, and even what we believe. In this hands-on workshop, we’ll explore the powerful systems behind these “invisible puppeteers” of modern digital life.</p>
+<p>You’ll learn not just how recommendation systems work, but how they shape your choices, reinforce (or challenge) your biases, and how companies fine-tune them to maximize retention, revenue, and engagement. We’ll build and break down a recommendation pipeline from retrieval to ranking and dive into production challenges, optimization tricks, and the ethical trade-offs involved.</p>
+<p>We’ll also discuss how users can hack these systems to personalize their feeds and how developers can design fairer, more diverse systems. Whether you’re into dating apps, content feeds, or building ML pipelines, this workshop will help you understand the full spectrum of RecSys.</p>
+</section>
+<section id="description-of-the-workshop" class="level2">
+<h2 class="anchored" data-anchor-id="description-of-the-workshop">Description of the workshop</h2>
+<section id="introduction-10-mins" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-10-mins"><strong>1. Introduction (10 mins)</strong></h3>
+<ul>
+<li><p><strong>Welcome and Overview</strong></p>
+<ul>
+<li><p>Introduction to the workshop: What are recommendation systems and why do they matter?</p></li>
+<li><p>Real-world examples:</p>
+<ul>
+<li>Dating apps (e.g., Tinder)</li>
+<li>Content feeds (e.g., Instagram)</li>
+<li>Food recommendations (e.g., Zomato)</li>
+</ul></li>
+<li><p><strong>Goals of the workshop</strong>:</p>
+<ul>
+<li>Learn how RecSys work</li>
+<li>Dive into their challenges</li>
+<li>Understand their ethical implications</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Audience Poll / Engagement</strong></p>
+<ul>
+<li><p>Quick questions to gauge familiarity with RecSys</p></li>
+<li><p>Brief survey:</p>
+<ul>
+<li>Who uses these systems?</li>
+<li>Who’s familiar with the tech behind them?</li>
+</ul></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="foundations-of-recommendation-systems-30-mins" class="level3">
+<h3 class="anchored" data-anchor-id="foundations-of-recommendation-systems-30-mins">2. Foundations of Recommendation Systems (30 mins)</h3>
+<p><strong>Goal</strong>: Give a strong conceptual grounding before diving into implementation.</p>
+<ul>
+<li><p><strong>Types of Training Data</strong></p>
+<ul>
+<li>Explicit Feedback: Ratings, thumbs-up/down</li>
+<li>Implicit Feedback: Clicks, dwell time, views, purchases</li>
+</ul></li>
+<li><p><strong>Interaction Types</strong></p>
+<ul>
+<li>Positive-only vs.&nbsp;Positive &amp; Negative Feedback</li>
+</ul></li>
+<li><p><strong>System Categories by Use-Case</strong></p>
+<ul>
+<li>General-purpose, Context-aware, Sequential, Knowledge-based RecSys</li>
+</ul></li>
+<li><p><strong>Core Approaches</strong></p>
+<ul>
+<li>Collaborative Filtering (User-based vs.&nbsp;Item-based)</li>
+<li>Content-Based Filtering</li>
+<li>Hybrid Models</li>
+</ul></li>
+<li><p><strong>Application Examples</strong></p>
+<ul>
+<li>Netflix → Hybrid</li>
+<li>Amazon → Item-based CF</li>
+<li>Tinder → Context-aware</li>
+<li>Spotify → Sequential</li>
+<li>Zomato → Content + CF</li>
+<li>Pratilipi → Long-tail engagement via diversity-aware models</li>
+</ul></li>
+<li><p><strong>Recommendation Pipeline</strong></p>
+<ul>
+<li>Retrieval Stage: Candidate generation</li>
+<li>Ranking Stage: Sorting by relevance</li>
+<li>Exploration vs.&nbsp;Exploitation</li>
+</ul></li>
+<li><p><strong>Ranking Methods</strong></p>
+<ul>
+<li>Pointwise / Pairwise / Listwise</li>
+</ul></li>
+<li><p><strong>Metrics that Matter</strong></p>
+<ul>
+<li><p>Offline Metrics: Precision@K, Recall, MAP, NDCG</p></li>
+<li><p>Business Goal Alignment:</p>
+<ul>
+<li>YouTube → Watch Time</li>
+<li>Tinder → Match Rate</li>
+</ul></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="hands-on-session-building-a-recommendation-system-40-mins" class="level3">
+<h3 class="anchored" data-anchor-id="hands-on-session-building-a-recommendation-system-40-mins"><strong>3. Hands-On Session: Building a Recommendation System (40 mins)</strong></h3>
+<p><strong>Goal</strong>: Implement and understand the inner workings of a real model.</p>
+<ul>
+<li><p><strong>Exercise 1: Building a Two-Tower Model (30 mins)</strong></p>
+<ul>
+<li>Use PyTorch to build a simple two-tower architecture</li>
+<li>Demonstrate user-item embedding and dot-product similarity</li>
+<li>Step-by-step: Data loading → Model → Loss → Training</li>
+</ul></li>
+<li><p><strong>Exercise 2: Evaluating Your Model (10 mins)</strong></p>
+<ul>
+<li>Use standard metrics: Precision, Recall, MAP</li>
+<li>Compare online metrics vs.&nbsp;offline metrics</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="break-10-mins" class="level3">
+<h3 class="anchored" data-anchor-id="break-10-mins"><strong>Break (10 mins)</strong></h3>
+<hr>
+</section>
+<section id="challenges-in-recommendation-systems-30-mins" class="level3">
+<h3 class="anchored" data-anchor-id="challenges-in-recommendation-systems-30-mins"><strong>4. Challenges in Recommendation Systems (30 mins)</strong></h3>
+<section id="real-world-problems" class="level4">
+<h4 class="anchored" data-anchor-id="real-world-problems"><strong>Real-World Problems</strong></h4>
+<ul>
+<li><strong>Bias in Training Data</strong>: Echo chambers, skewed preferences</li>
+<li><strong>Cold Start</strong>: New users/items with little interaction data</li>
+<li><strong>Scalability</strong>: Latency and compute at scale</li>
+</ul>
+</section>
+<section id="ethical-challenges" class="level4">
+<h4 class="anchored" data-anchor-id="ethical-challenges"><strong>Ethical Challenges</strong></h4>
+<ul>
+<li><p><strong>Algorithmic Bias &amp; Fairness</strong>: Impact on sensitive attributes</p></li>
+<li><p><strong>Diversity vs.&nbsp;Personalization</strong>: Avoiding homogenized content</p></li>
+<li><p><strong>Debiasing Techniques</strong>:</p>
+<ul>
+<li><strong>Exposure Bias</strong>: Overexposure to certain items</li>
+<li><strong>Popularity Bias</strong>: Trend dominance</li>
+<li><strong>Selection Bias</strong>: Skewed relevance due to interaction patterns</li>
+</ul></li>
+</ul>
+</section>
+<section id="case-study-pratilipi" class="level4">
+<h4 class="anchored" data-anchor-id="case-study-pratilipi"><strong>Case Study: Pratilipi</strong></h4>
+<ul>
+<li>How an Indian storytelling platform balances fairness, diversity, and engagement</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="hands-on-recap-final-exercise-30-mins" class="level3">
+<h3 class="anchored" data-anchor-id="hands-on-recap-final-exercise-30-mins"><strong>5. Hands-On Recap &amp; Final Exercise (30 mins)</strong></h3>
+<p><strong>Mini Lab</strong>: Use your model to explore bias, diversity, and fairness.</p>
+<ul>
+<li><p>Apply:</p>
+<ul>
+<li>Diversity boosting</li>
+<li>Popularity debiasing</li>
+<li>Freshness filters</li>
+</ul></li>
+<li><p><strong>Re-evaluate</strong>:</p>
+<ul>
+<li>Compare fairness, diversity, and relevance metrics before and after</li>
+</ul></li>
+<li><p><strong>Group Reflection</strong>:</p>
+<ul>
+<li>Discuss improvements, regressions, and trade-offs</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="gaming-the-system-how-users-can-personalize-their-feeds-10-mins" class="level3">
+<h3 class="anchored" data-anchor-id="gaming-the-system-how-users-can-personalize-their-feeds-10-mins"><strong>6. Gaming the System: How Users Can Personalize Their Feeds (10 mins)</strong></h3>
+<ul>
+<li>How users can influence their recommendation feed (e.g., YouTube, Spotify)</li>
+<li>Implications of over-personalization (filter bubbles, doomscrolling)</li>
+<li>Tips for better and diverse recommendations</li>
+</ul>
+<hr>
+</section>
+<section id="conclusion-qa-20-mins" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion-qa-20-mins"><strong>7. Conclusion &amp; Q&amp;A (20 mins)</strong></h3>
+<ul>
+<li><p><strong>Wrap-Up</strong></p></li>
+<li><p><strong>Q&amp;A</strong>: Open floor for questions on theory, implementation, or ethics</p></li>
+<li><p><strong>Additional Resources</strong>:</p>
+<ul>
+<li>GitHub repo with code, datasets, and readings</li>
+<li>Encourage continued learning and experimentation</li>
+</ul></li>
+</ul>
+<p>Here is the presentation I used in the talk:</p>
+</section>
+</section>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTqljoRBK2RE9Dufvl5LdOZhWWbIcB0_W7IOCR8Sb-XJfkCqPro03bSyJFjTN739StCWJmn5e9T1i45/pubembed?start=false&amp;loop=false&amp;delayms=30000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+</iframe>
+</section>
+<section id="explore-the-code" class="level2">
+<h2 class="anchored" data-anchor-id="explore-the-code">Explore the Code</h2>
+<p>You can interact with the notebook on Google Colab.</p>
+<p><a href="https://colab.research.google.com/drive/1kP0FmUbw7SROzSuMiYZkcjBMEJx0pzDJ?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid"></a></p>
+<p><a href="https://github.com/aman5319/pycon_india_2025"><img src="https://img.shields.io/badge/GitHub-Repo-blue?logo=github.png" class="img-fluid"></a></p>
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -906,6 +975,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<script src="https://giscus.app/client.js" data-repo="aman5319/portfolio" data-repo-id="R_kgDOJ44pkw" data-category="Q&amp;A" data-category-id="DIC_kwDOJ44pk84CXwVt" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark">
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -914,7 +987,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/aman5319/portfolio/edit/main/non_tech_blogs/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/aman5319/portfolio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/aman5319/portfolio/edit/main/tech_blogs/Recommendation System/recommendation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/aman5319/portfolio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
@@ -931,5 +1004,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

@@ -80,4 +80,10 @@ Let’s connect and explore ideas in AI, recommender systems, or multilingual te
 **Climate Science (2024)** \| Neuromatch
 
 **Animal Detection Camera Trap Images(2025-present)** \| Holématthi Nature Foundation
+
+**Data Management Software for Marine Conservation(2025) v2** \| Reefwatch
+
+**Pycon India 2025** \| Presented Workshop
+
+
 :::
