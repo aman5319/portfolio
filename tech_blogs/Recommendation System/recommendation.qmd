@@ -1,7 +1,7 @@
 ---
 title: "Dating, Dining, and Doomscrolling: The Algorithms Behind Modern Choice"
 author: "Aman Pandey"
-date: "12/09/2025"
+date: "09/15/2025"
 editor: visual
 categories: [deep-learning, attention]
 description: "Overview of Recommendation system - Workshop for Pycon India 2025"
@@ -10,8 +10,7 @@ image: images/pycon_2025_logo.png
 
 # This was workshop for Pycon India 2025
 
-# Dating, Dining, and Doomscrolling: The Algorithms Behind Modern Choice  
-
+# Dating, Dining, and Doomscrolling: The Algorithms Behind Modern Choice
 
 ## Abstract
 

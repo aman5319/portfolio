@@ -1,14 +1,5 @@
 [
   {
-    "listing": "/non_tech_blogs/index.html",
-    "items": [
-      "/non_tech_blogs/strength_technique_bjj.html",
-      "/non_tech_blogs/cetaceans.html",
-      "/non_tech_blogs/panthera.html",
-      "/non_tech_blogs/sea_turtles.html"
-    ]
-  },
-  {
     "listing": "/tech_blogs/index.html",
     "items": [
       "/tech_blogs/Recommendation System/recommendation.html",
@@ -29,6 +20,14 @@
       "/tech_blogs/NLP/embeddings.html",
       "/tech_blogs/NLP/rnn_lstm_gru.html",
       "/tech_blogs/NLP/nlp_overview.html"
+    ]
+  },
+  {
+    "listing": "/non_tech_blogs/index.html",
+    "items": [
+      "/non_tech_blogs/strength_technique_bjj.html",
+      "/non_tech_blogs/panthera.html",
+      "/non_tech_blogs/sea_turtles.html"
     ]
   }
 ]
