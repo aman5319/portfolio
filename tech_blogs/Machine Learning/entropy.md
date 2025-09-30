@@ -813,9 +813,10 @@ Landauer calculated that erasing one bit always releases at least
 $$
 E_{min}=k_{\text{B}} \ln{2}≈2.87×10^{−21} joules 
 $$
-
 $$
-k_B \quad \text{= Boltzmann constant} \\  
+k_B \quad \text{= Boltzmann constant}
+$$
+$$
 T   \quad \text{= temperature of the environment}
 $$
 
