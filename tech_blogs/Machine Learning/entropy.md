@@ -157,9 +157,8 @@ If you have noticed one thing we were till now measuring the distribution using 
 
 There is another one more of way looking at **entropy from Clausius** -
 
-    entropy as the unavailability of energy to do useful
-    work a practical way to understand what entropy means
-    beyond just counting microstates.
+Entropy as the unavailability of energy to do useful work a practical way   
+to understand what entropy means beyond just counting microstates.
 
 
 What does this mean?
@@ -169,6 +168,7 @@ Energy can exist in many forms: heat, mechanical work, chemical energy, etc.
 Not all energy in a system can be converted into useful work. Some energy is "lost" or dispersed in ways that can't be harnessed to do things like move a piston, run a motor, or power a machine.
 
 Entropy quantifies that "lost" or unavailable portion of energy  the part that is spread out or randomized so much that you cannot concentrate or convert it back into work.
+
 
 ---
 
@@ -236,11 +236,90 @@ what will happen if we get to know more things the uncertaininty decreases hence
 
 ---
 
+## Why Universe Entropy is always increasing and life exists ?
+
+Our universe has got stars, planets, black holes, galaxies and lot more things, now a star or a black hole is source of accumulated energy.  
+We all know stars die, black holes do evaporate, and hence one day they will not exist.
+
+
+Now lets discuss 4 time horizons to see what is entropy at each point of time.
+
+#### Time - Just after big bang
+
+This was the time when all atoms were in soup of plasama the space in which it was contained was small and isloated.  
+The atoms, energy were all equally distributed in entire space evenly with very small gradients of energy at any particular place,  
+so we can't say precisiely whether it is high or low because we don't have any compartive measure but we can say it was uniform.
+
+
+#### Now 
+
+After 13.8 billion years, the universe has got lots of stars, galaxies, blackholes and empty spaces, so the energy across universe is 
+not distributed evenly, there are clumps of energy in particular places hence we can say energy spread from concentrated stores to
+into dispersed forms in a fixed amount of space equals to higher entropy,  
+one thing to note is - when a star dies it sends its energy and matter into the space most of which is lost in vastness of  
+space as dust and small rocks, what are chances that these rocks and dusts will clump up together to form a big star again  
+it is zero without any external aid.
+
+We can say any patch of universe if energy is measured it is not same it is not identical hence entropy is  
+increasing when compared to previous time.
+
+This accumulation or gradient of energy in local patches is what brings life into existence.
+
+#### In a very distant future.
+
+One day all the stars, galaxies, blackhole everything will die that time the energy spread will be even  
+any patch we will measure it will be the same so entropy from the previous has kept increasing and it reached it peak  
+and hence we call it equillibrium. But remember since our universe is expanding and if it keeps expanding, the equillibrium  
+never reaches expansion creates new room for energy to spread hence global entropy will keep increasing but measured locally it will be constant.
+
+
+Equilibrium = no energy gradients left to drive processes. Hence no clumps then no life.
+Hence our universe entropy will keep increasing with time.
+
+
+Another thing to note here is the difference in  early on and very distant future of our universe is one will be uniform  
+low entropy and other will be uniform high entropy, reason for uniform low entropy is just after big bang our universe  
+had uniform smooth plasma and since gravity favours clumping there is only a certain way the matter and energy arranges  
+that it doen't let gravity clump thing together and this configuration is extremely unlikely hence low entropy.
+
+And Due to tiny quantum fluctuations in density slowly matter started clumping and here we are now.
+
+## Why Time Flows Forward - And Why Coffee Doesn’t Unmix
+
+What “Time Going Backward” Really Means
+
+Saying “time flows backward” doesn’t just mean clocks reverse. Physically, it would mean that every particle and every bit  
+of energy retraces its exact previous path, returning the system to its earlier state.
+
+Example - Coffee and Milk:  
+- Forward: milk spreads through coffee → entropy increases → system becomes uniform.  
+- Backward: every molecule of milk and coffee would have to move exactly back to their  
+- original positions → entropy decreases → coffee separates from milk perfectly.
+
+
+Example - Stars:
+- Forward: star explodes → matter and energy spread out → entropy increases.
+- Backward: gas and radiation would have to converge precisely to re-form the original star → entropy decreases.  
+
+
+As it would be self-explanatory, increase of entropy gives time its direction - the “arrow of time.”
+and to go back we need external energy. 
+
+
+This gives another clarity - 
+Entropy is a macroscopic concept: it describes the number of microstates consistent with a macrostate.  
+At the microscopic level, every particle just follows deterministic (or quantum) rules - there’s no “entropy” acting on each particle.  
+Entropy emerges statistically when you look at large numbers of particles together.  
+
 
 # Information Entropy
-A key measure in information theory is entropy. Entropy quantifies the amount of uncertainty involved in the value of a random variable or the outcome of a random process.
+A key measure in information theory is entropy. Entropy quantifies the amount of uncertainty involved in the value of a random variable or the outcome of a random process. 
+
+In a similar way in physics how we looked at it like spread of energy here it is same spread in probability distribution.
 
 For example, consider rain in two locations: the Amazon rainforest and a tropical city. In the Amazon, it rains almost every day, so the outcome is fairly predictable low uncertainty, low entropy. In the tropical city, rain is less predictable, so the uncertainty is higher higher entropy.
+
+A spread out probability distribution will always have high entropy compared to a narrower one where entropy will be low.
 
 A very important question can arise why are we measuring uncertainty and not certainty itself, because if we talk about any process and if something is guranteed it conveys no new information.
 
@@ -486,7 +565,6 @@ More standard way of defining KL Divergence is
 $$
 D_{KL}(P∣∣Q)=\sum_{z}P(z)\log⁡\frac{P(z)}{Q(z)}
 $$
-	​
 
 ---
 
@@ -668,7 +746,7 @@ Entropy of A with respect to Q = Entropy of A + KL term
 this can be formally written as 
 
 $$
-H(P^*, Q) = H(P^*) + KL terms
+H(P^*, Q) = H(P^*) + KL_terms
 $$
 To prove it we can write
 
@@ -711,6 +789,52 @@ $$
 
 where kB is the Boltzmann constant, and pi is the probability of a microstate. The Gibbs entropy was defined by J. Willard Gibbs in 1878 after earlier work by Ludwig Boltzmann (1872).
 
+## But a deeper connection exists - Landauer's Principle
+Information is very much physical
+Imagine you have a tiny computer memory, storing a single bit: either 0 or 1. At this moment, you don’t know its state - it could be either.  
 
-# Why doesn't time flows backward?
-# Why doesn't milk and coffee unmix itself?
+There’s uncertainty here, a kind of hidden information.
+
+Now, suppose you decide to erase the bit and set it to 0. At first glance, it seems like nothing big happened - just a tiny reset. 
+But physics says otherwise: the uncertainty you removed has to go somewhere. That “lost” information is transformed into energy,  
+which spreads as heat into the environment.
+
+Physical systems follow the laws of thermodynamics. Nature doesn’t allow uncertainty to vanish for free.  
+
+To erase the bit, you are forcing the system into a single definite state.  
+
+This “forcing” requires energy, which cannot disappear. That energy manifests as heat in the surroundings.  
+
+Think of it like squeezing a sponge: you reduce the disorder inside, but the water you squeeze out has to  
+go somewhere - it spreads into the environment.
+
+Landauer calculated that erasing one bit always releases at least
+
+$$
+E_{min}=k_{\text{B}} \ln{2}≈2.87×10^{−21} joules \\
+k_B \quad \text{= Boltzmann constant} \\
+T   \quad \text{= temperature of the environment}
+$$
+
+Even in a perfectly efficient system, you cannot erase a bit without producing at least this amount of heat.
+
+The deeper insight is that information and physical entropy are two sides of the same coin.  
+Reducing uncertainty in information is like forcing particles into a more ordered state - nature  
+responds by increasing disorder somewhere else, usually as heat.  
+
+
+In other words, information is physical, and every act of forgetting leaves a footprint in the universe.
+
+This is Landauer’s principle: erasing information has a fundamental energy cost.
+
+At room temperature, the minimum energy required to erase one bit is: Tiny? Absolutely.  
+
+But modern CPUs perform billions or even trillions of bit operations every second.  
+Multiply that tiny number by billions - and suddenly, heat adds up fast.
+
+For example:  
+- 1 billion bit erasures per second → ~2.87 picojoules per second.  
+- 10 trillion bit erasures per second → ~28.7 nanojoules per second.
+
+And this is just the fundamental minimum. Real chips are far less efficient: moving electrons, charging capacitors,  
+and switching transistors require millions of times more energy per bit than the Landauer limit.
